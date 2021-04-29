@@ -1,0 +1,1 @@
+    #(home).toggleClass("show");
