@@ -6,6 +6,9 @@ var element = document.getElementById("users");
 element.classList.add("show");
 </script>
 <div class="container">
+    <div style="margin-top:30px;" class="row text-center">
+    <img style="width:100%; height:350px;margin-left:5px;" src="{{ URL::to('/images/users2.png') }}">
+    </div>
     <div style="margin-top:30px;" class="row">
         <div class="col-12 col-md-auto">
             <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
@@ -77,10 +80,10 @@ element.classList.add("show");
 </tbody>
 </table>
     </div>
-    <div style="margin-top:30px; margin-left: 60px;" class="row">
+    <div style="margin-top:30px; margin-left: 60px;" class="row text-center">
 
     <button class="btn btn-outline"><</button>
-    <p class="text-center"> Page 1 of 5 </p>
+    <h6 style="margin-top:10px;"class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
     <button class="btn btn-outline">></button>
 
     </div>
