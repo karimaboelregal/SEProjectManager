@@ -61,3 +61,11 @@
     display:block;
     text-transform:uppercase;
 }
+.container-fluid {
+    margin-left: 200px;
+}
+@media (max-width: 768px) {
+    .container-fluid {
+        margin-left: 50px;
+    }
+}    
