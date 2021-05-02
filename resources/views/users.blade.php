@@ -14,16 +14,16 @@ element.classList.add("show");
             <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Import data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Export data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 180px;"class="btn btn-outline">Delete selected users</button>
+            <button style="padding:5px; width: 180px;"class="btn btn-outline">Delete selected users</button>
         </div>
 
     </div>
