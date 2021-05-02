@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Admin') }}</title>
     <style>
 
     .login {
@@ -91,7 +91,7 @@ background-color:#C63E47 !important;
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style="background-color:#ffffff">
-<nav class="navbar navbar-light" style="background-color: #525252;">
+<nav class="navbar navbar-light" style="background-color: #525252;width:100%">
   <a class="navbar-brand text-light" href="#">Welcome</a>
 </nav>
 <main class="py-10">
