@@ -2,7 +2,7 @@
     margin-left:50px;
     margin-top:50px;
     width:220px;
-    height:150px;
+    height:250px;
     perspective: 1000px;
 }
 
@@ -34,7 +34,7 @@
     border-color: #d9534f;
     border-radius:5px;
     text-align: center;
-    line-height: 60px;
+    line-height: 80px;
 }
 
 
@@ -55,6 +55,7 @@
     border-radius:5px;
 }
 .turningButton span{
+    margin-top: -25px;
     color:black;
     font-size:45px;
     display:block;

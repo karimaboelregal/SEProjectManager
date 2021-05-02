@@ -49,7 +49,6 @@
         border-bottom:none;
         background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
         background-size:50% 2px;
-        
         font-family: "Times New Roman", Times, serif;
         font-size: 18px;
         transition: background-size 0.5s;
@@ -86,11 +85,12 @@ background-color:#C63E47 !important;
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color:#ffffff">
+<body style="background-color:#ffffff;width:100%;">
 <nav class="navbar navbar-light" style="background-color: #525252;width:100%">
   <a class="navbar-brand text-light" href="#">Welcome</a>
 </nav>
