@@ -29,6 +29,10 @@ Route::get('/courses', function () {
 Route::get('/projects', function () {
     return view('projects');
 });
+Route::get('/student_home', function () {
+    return view('student_home');
+});
+
 
 Auth::routes();
 
