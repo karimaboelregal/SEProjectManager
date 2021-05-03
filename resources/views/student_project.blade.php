@@ -11,29 +11,12 @@
 <style>
 /* projects tab */
 
-/* Rectangle 5 */
-.col-xl, .col-xl-auto, .col-xl-12,
-.col-xl-11, .col-xl-10,
-.col-xl-9, .col-xl-8,
-.col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3,
- .col-xl-2, .col-xl-1, .col-lg, .col-lg-auto, .col-lg-12, 
- .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7,
-  .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2,
-   .col-lg-1, .col-md, .col-md-auto, .col-md-12, .col-md-11, 
-   .col-md-10, .col-md-9, .col-md-8, .col-md-7,
-    .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2,
-     .col-md-1, .col-sm, .col-sm-auto, .col-sm-12, .col-sm-11,
-      .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6,
-       .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1,
-        .col, .col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, 
-.col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
-position: relative;
-width: 100%;
-padding-right: 30px;
-padding-left: 35px;
-margin-right: 30px;
-margin-left: 30px;
+
+.turningButtonContainer{
+    margin-left:0px;
+    margin-top:0px;
 }
+
 
 
 </style>
@@ -41,24 +24,93 @@ margin-left: 30px;
 <div class ="container">
 
 <h1>Deliverables</h1>
+<div class = "row">
+    <div class="col">
+        <div class="turningButtonContainer" style="width:300px;height:220px;">
+            <div class="turningButtonContainerInner">
+                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">Proposal</span></div>
+                <div class="turnedButton" style="padding:0px;">
+                    <p>
+                        <p class="text-center" style="margin-top:-5px;">Details</p>
+                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">The software requirment specification is a document a super detailed document of how your software will be </p><br>
+                    <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="turningButtonContainer" style="width:300px;height:220px;">
+            <div class="turningButtonContainerInner">
+                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SRS</span></div>
+                <div class="turnedButton" style="padding:0px;">
+                    <p>
+                        <p class="text-center" style="margin-top:-5px;">Details</p>
+                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">The software requirment specification is a document a super detailed document of how your software will be </p><br>
+                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="turningButtonContainer" style="width:300px;height:220px;">
+            <div class="turningButtonContainerInner">
+                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SDD</span></div>
+                <div class="turnedButton" style="padding:0px;">
+                    <p>
+                        <p class="text-center" style="margin-top:-5px;">Details</p>
+                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">One of the most technical material you would ever use</p><br>
+                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 <div class="row">
     <div class="col">
         <button style="margin-top: 10px; width:150px; " type="button" class="btn btn-outline-dark">Suggestions</button>
-
-    </div>
-    <div class="col">
-        <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Discussion</button>
-
     </div>
     <div class="col">
         <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Open</button>
 
     </div>
 
-
 </div>
 
+<!-- discussion section -->
+<div class = "row" style="padding-left:20px;padding-top:20px;">
+<h3>Discussion</h3>
+</div>
+<div class="row">
+    <div class="col-sm-7">
+        
+        <hr />
+        <div class="review-block">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+                    <div class="review-block-name"><a href="#">Dr. Essam</a></div>
+                    
+                </div>
+                <div class="col-sm-9">
+                    
+                    <div class="review-block-description">Add More Wire frames</div>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class= "col">
+                    <textarea id="review" name="review" style="height:50%" placeholder="Whats on your mind" maxlength="150"></textarea>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
 
 </div>
 
