@@ -12,14 +12,14 @@
     
         <input style="width:75%;margin: 0 auto;" type="text" class="inputDesign text-center" name="Search" placeholder="Search"><button class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>-->
-        <div style="margin-top:30px;margin-left:75px;" class="row">
+        <div style="margin-top:80px;margin-left:250px;" class="row">
             <div class="col-12 col-md-auto">
                 <input type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;" class="btn btn-outline"><i class="fa fa-search"></i></button>
             </div>
             
         </div>
 
-        <div style="margin-top:30px;margin-left:px;max-width:110vh;" class="row text-center">
+        <div style="margin-top:30px;margin-left:100px;max-width:110vh;" class="row text-center">
             <div class="turningButtonContainer">
                 <div class="turningButtonContainerInner">
                     <div class="turningButton"><i style="font-size:35px;margin-top:55px;" class="icons far fa-dot-circle"></i><span>SE</span></div>

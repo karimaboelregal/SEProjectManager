@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.627),rgba(0, 0, 0, 0.6)) , url("images/loginbackground.png");
+  background-color: black;
+
+}
+
+</style>
 <div class="wrapper">
   <div class="login">
     <div class="loginHead ">

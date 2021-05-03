@@ -37,6 +37,10 @@ Route::get('/student_home', function () {
     return view('student_home');
 });
 
+Route::get('/course', function () {
+    return view('course');
+});
+
 Route::get('/student_profile', function () {
     return view('student_profile');
 });
