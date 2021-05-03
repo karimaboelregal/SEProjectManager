@@ -5,16 +5,27 @@
 var element = document.getElementById("users");
 element.classList.add("show");
 </script>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+  <div style="width:100%; height:40px; background-color:#C63E47"><p class="text-center" style="color:#fff;font-size:25px;">Select a file</p></div>
+    <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
+    <div class="row">
+<button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;"class="btn btn-outline">upload</button>
+<button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;"class="btn btn-outline" id="close">close</button>
+</div>
+</div>
+</div>
 <div class="container">
     <div style="margin-top:30px;" class="row text-center">
-    <img style="width:100%; height:350px;margin-left:5px;" src="{{ URL::to('/images/users2.png') }}">
     </div>
-    <div style="margin-top:30px;" class="row">
+    <div style="margin-top:30px;margin-left:80px;" class="row">
         <div class="col-12 col-md-auto">
             <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline">Import data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline" id="import">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
@@ -85,7 +96,29 @@ element.classList.add("show");
     <button class="btn btn-outline"><</button>
     <h6 style="margin-top:10px;"class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
     <button class="btn btn-outline">></button>
+<script>
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("import");
+var span = document.getElementById("close");
+
+// Get the <span> element that closes the modal
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
     </div>
 </div>
 

@@ -29,6 +29,9 @@ Route::get('/courses', function () {
 Route::get('/projects', function () {
     return view('projects');
 });
+Route::get('/edituser', function () {
+    return view('edituser');
+});
 
 Auth::routes();
 

@@ -22,10 +22,7 @@
 
       </div>
     </div>
-    <div class> 
-    <main class="py-10">
     @yield('content2')
-</main>
 
 </body>
 </html>
