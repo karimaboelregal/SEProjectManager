@@ -9,7 +9,6 @@
 
     <title>{{ config('app.name', 'Admin') }}</title>
     <style>
-
     .login {
         margin-top: 100px;
         width: 400px;
@@ -28,7 +27,7 @@
     flex-direction: column; 
     justify-content: center;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     padding: 20px;
     }
     #formContent {
@@ -92,12 +91,14 @@ background-color:#C63E47 !important;
 
 <body style="background-color:#ffffff;width:100%;">
 
-<nav class="navbar navbar-light" style="background-color: #525252;width:100%">
+<nav class="navbar navbar-light" style="background-color: #C63E47;width:100%">
   <a class="navbar-brand text-light" href="#">Welcome</a>
 </nav>
 <main class="py-10">
     @yield('content')
 </main>
-
+<footer class="row">
+@extends('layouts.footer')
+</footer>
 </body>
 </html>

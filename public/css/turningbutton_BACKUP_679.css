@@ -86,6 +86,7 @@
 .norms:hover {
     background-color:#f7f7f7 !important;
 }
+<<<<<<< HEAD
 
 .modal {
     width: 100%; /* Full width */
@@ -109,3 +110,5 @@
 .close {
     cursor: pointer;
 }
+=======
+>>>>>>> fe0242646e5f824fd728d4120766f25f970360ac

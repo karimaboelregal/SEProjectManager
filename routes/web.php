@@ -29,8 +29,16 @@ Route::get('/courses', function () {
 Route::get('/projects', function () {
     return view('projects');
 });
+Route::get('/edituser', function () {
+    return view('edituser');
+});
+
 Route::get('/student_home', function () {
     return view('student_home');
+});
+
+Route::get('/course', function () {
+    return view('course');
 });
 
 Route::get('/student_profile', function () {
