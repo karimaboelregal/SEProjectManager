@@ -101,8 +101,12 @@
             </div>
             <hr />
             <div class="row">
-                <div class= "col">
-                    <textarea id="review" name="review" style="height:50%" placeholder="Whats on your mind" maxlength="150"></textarea>
+                <div class = "col-10">
+                    <div class="col"><textarea id="review" name="review" style="height:70%;width:90%;" placeholder="Whats on your mind" maxlength="150"></textarea></div>
+                </div>
+                <div class = "col-2">
+                    <button style="margin-top: 10px; width:100px; " type="button" class="btn btn-outline-dark">Send</button>
+
                 </div>
             </div>
 
