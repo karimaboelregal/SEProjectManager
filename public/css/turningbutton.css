@@ -2,8 +2,9 @@
     margin-left:50px;
     margin-top:50px;
     width:220px;
-    height:150px;
+    height:250px;
     perspective: 1000px;
+
 }
 
 .turningButtonContainerInner {
@@ -13,28 +14,34 @@
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-decoration: none;
     border-radius:5px;
-    cursor: pointer;
 
 }
 
 .turningButtonContainer:hover .turningButtonContainerInner {
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
 }
 
 .turningButton {
     position: absolute;
     width:100%;
     height:100%;
-    border: 1px solid;
     background-color: white;
     color: black;
     font-size: 16px;
-    cursor: pointer;
+    text-align: center;
+    line-height: 80px;
+    border: 1px solid;
     border-color: #d9534f;
     border-radius:5px;
-    text-align: center;
-    line-height: 60px;
+
 }
 
 
@@ -44,19 +51,38 @@
 }
 
 .turnedButton {
+    padding:15px;
     text-align: left;
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: #d9534f;
     color: white;
-    transform: rotateY(-180deg);
-    padding: 15px;
+    transform: rotateY(180deg);
+    border: 1px solid;
+    border-color: #d9534f;
     border-radius:5px;
 }
 .turningButton span{
+    margin-top: -25px;
     color:black;
     font-size:45px;
     display:block;
     text-transform:uppercase;
+}
+.container-fluid {
+    margin-left: 150px;
+}
+@media (max-width: 768px) {
+    .container-fluid {
+        margin-left: 50px;
+    }
+}    
+
+.norms {
+    border: 1px solid #f7f7f7 !important;
+    background-color:#f7f7f7 !important;
+}
+.norms:hover {
+    background-color:#f7f7f7 !important;
 }
