@@ -33,6 +33,9 @@ Route::get('/student_home', function () {
     return view('student_home');
 });
 
+Route::get('/student_profile', function () {
+    return view('student_profile');
+});
 
 Auth::routes();
 
