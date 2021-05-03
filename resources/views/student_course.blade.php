@@ -29,10 +29,10 @@
 
 
     <div class = "row">
-    
-    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Project</button>
+
+    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark" onclick="location.href = 'student_project'">Project</button>
+
     <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Create Team</button>
-    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">My Team</button>
     </div>
 
 
