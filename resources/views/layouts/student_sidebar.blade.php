@@ -20,6 +20,9 @@
 
                 <a id="profile" href="/student_profile" class="list-group-item list-group-item-action darkRed text-dark text"><span class="text-nowrap"><i class="icons fa fa-user"></i></i>
                         <h6>Profile</h6></a></span>
+                <a id="team" href="/student_team" class="list-group-item list-group-item-action darkRed text-dark text"><span class="text-nowrap"><i class="icons fa fa-users"></i></i>
+                        <h6>My Team</h6></a></span>
+
 
                 
                 

@@ -37,6 +37,10 @@ Route::get('/student_profile', function () {
     return view('student_profile');
 });
 
+Route::get('/student_team', function () {
+    return view('student_team');
+});
+
 Auth::routes();
 
 
