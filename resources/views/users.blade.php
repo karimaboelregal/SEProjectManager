@@ -24,6 +24,7 @@ element.classList.add("show");
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 180px;"class="btn btn-outline">Delete selected users</button>
+
         </div>
 
     </div>
