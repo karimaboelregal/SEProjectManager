@@ -41,6 +41,10 @@ Route::get('/student_team', function () {
     return view('student_team');
 });
 
+Route::get('/student_course', function () {
+    return view('student_course');
+});
+
 Auth::routes();
 
 
