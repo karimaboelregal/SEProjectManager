@@ -89,7 +89,9 @@ background-color:#C63E47 !important;
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body style="background-color:#ffffff;width:100%;">
+
 <nav class="navbar navbar-light" style="background-color: #525252;width:100%">
   <a class="navbar-brand text-light" href="#">Welcome</a>
 </nav>

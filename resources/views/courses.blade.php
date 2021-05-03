@@ -58,4 +58,3 @@ element.classList.add("show");
 </div>
 </body>
 @endsection
-
