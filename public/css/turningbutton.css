@@ -88,7 +88,7 @@
 }
 
     
-    .modal {
+    .modal-file {
         width: 300px;
         height: 300px;
         position: absolute;
@@ -107,7 +107,7 @@
 }
 
     /* Modal Content/Box */
-    .modal-content {
+    .modal-file-content {
         background-color: #ffffff;
         margin: 15% auto;
         /* 15% from the top and centered */

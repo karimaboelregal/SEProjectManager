@@ -110,9 +110,9 @@
 </div>
 <!-- Modal -->
 <!-- myModalHorizontal -->
-<div id="myModalHorizontal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="myModalHorizontal" class="modal modal-file" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content modal-file-content">
         <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
             <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
         </div>

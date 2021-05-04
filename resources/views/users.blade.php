@@ -4,10 +4,10 @@
 var element = document.getElementById("users");
 element.classList.add("show");
 </script>
-<div id="myModal" class="modal">
+<div id="myModal" class="modal modal-file">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content modal-file-content">
   <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;"><p class="text-center" style="color:#fff;font-size:25px;">Select a file</p></div>
     <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
     <div class="row">
