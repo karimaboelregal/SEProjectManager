@@ -110,9 +110,7 @@
 </div>
 <!-- Modal -->
 <!-- myModalHorizontal -->
-<div id="myModalHorizontal" class="modal">
-
-
+<div id="myModalHorizontal" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Modal content -->
     <div class="modal-content">
         <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
@@ -121,7 +119,7 @@
         <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
         <div class="row">
             <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-            <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline" id="close">close</button>
+            <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
         </div>
     </div>
 </div>

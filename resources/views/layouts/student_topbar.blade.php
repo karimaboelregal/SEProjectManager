@@ -159,6 +159,13 @@
 
 
                 </li>
+
+                <li class="nav-item" id="profile" style="margin-right:5px!important;">
+                    <a href="/student_profile" class="nav-link m-2 menu-item"><i class="fa fa-user"></i> profile</a>
+
+
+                </li>
+
                 <li class="nav-item" id="teams" style="margin-right:5px!important;">
                     <a href="/student_team" class="nav-link m-2 menu-item"><i class="fa fa-users"></i> Team</a>
 
