@@ -1,25 +1,11 @@
-@extends('layouts.student_sidebar')
-@extends('layouts.app')
-@section('content2')
+@extends('layouts.student_topbar')
+@section('content')
 <script>
     var element = document.getElementById("home");
     element.classList.add("show");
 
 </script>
 
-<body>
-<style>
-/* projects tab */
-
-
-.turningButtonContainer{
-    margin-left:0px;
-    margin-top:0px;
-}
-
-
-
-</style>
 
 <div class ="container">
 
@@ -33,7 +19,11 @@
                     <p>
                         <p class="text-center" style="margin-top:-5px;">Details</p>
                         <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">The software requirment specification is a document a super detailed document of how your software will be </p><br>
-                    <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                    
+                    <button type="submit" class="btn btn-light norms" style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#myModalHorizontal">Add submission</button>
+
+
+
                 </div>
             </div>
         </div>
@@ -106,6 +96,9 @@
                 </div>
                 <div class = "col-2">
                     <button style="margin-top: 10px; width:100px; " type="button" class="btn btn-outline-dark">Send</button>
+                    
+
+
 
                 </div>
             </div>
@@ -118,6 +111,69 @@
 
 </div>
 
-</body>
+<!-- Modal -->
+<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-hidden="true" style="display:block;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header" style="background: #C63E47">
+                
+                
+                <h4 class="modal-title" id="myModalLabel" style="color: whitesmoke;">File Submission</h4>
+            </div> <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                   deadline 1st january 2020
+                </div>
+                
+                <div class="modal-body">
+                    <div class="modal-footer" id="modal_footer">
+                    
+                  
+                    <button style="margin-top: 10px; width:100px; " type="button" class="btn btn-outline-dark">Submit File</button>
+                    <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+
+                    <button style="margin-top: 10px; width:100px; " type="button" data-dismiss="modal" aria-label="Close"  class="btn btn-outline-dark">Close</button>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+    /* projects tab */
+
+
+    .turningButtonContainer {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+
+    .modal {
+        width:350px !important;
+        margin-left: -150px !important;
+        margin-top: -150px !important;
+        overflow: hidden !important;
+    }
+
+    html,body
+    {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0px !important;
+        padding: 0px !important;
+        overflow-x: hidden !important;
+    }
+
+
+
+   
+</style>
+
 @endsection
 

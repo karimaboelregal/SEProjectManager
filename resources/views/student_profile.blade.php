@@ -1,6 +1,5 @@
-@extends('layouts.student_sidebar')
-@extends('layouts.app')
-@section('content2')
+@extends('layouts.student_topbar')
+@section('content')
 <script>
     var element = document.getElementById("profile");
     element.classList.add("show");
