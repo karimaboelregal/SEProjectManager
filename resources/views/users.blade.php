@@ -1,6 +1,5 @@
-@extends('layouts.sidebar')
 @extends('layouts.app')
-@section('content2')
+@section('content')
 <script>
 var element = document.getElementById("users");
 element.classList.add("show");
@@ -9,7 +8,7 @@ element.classList.add("show");
 
   <!-- Modal content -->
   <div class="modal-content">
-  <div style="width:100%; height:40px; background-color:#C63E47"><p class="text-center" style="color:#fff;font-size:25px;">Select a file</p></div>
+  <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;"><p class="text-center" style="color:#fff;font-size:25px;">Select a file</p></div>
     <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
     <div class="row">
 <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;"class="btn btn-outline">upload</button>
