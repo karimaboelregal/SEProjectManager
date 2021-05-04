@@ -1,5 +1,6 @@
 @extends('layouts.student_topbar')
 @section('content')
+
 <script>
     var element = document.getElementById("home");
     element.classList.add("show");
@@ -7,7 +8,9 @@
 </script>
 
 
+
 <div class ="container">
+
 
 <h1>Deliverables</h1>
 <div class = "row">
@@ -110,39 +113,25 @@
 </div>
 
 </div>
-
 <!-- Modal -->
-<div class="modal fade" id="myModalHorizontal" tabindex="-1" role="dialog" aria-hidden="true" style="display:block;">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header" style="background: #C63E47">
-                
-                
-                <h4 class="modal-title" id="myModalLabel" style="color: whitesmoke;">File Submission</h4>
-            </div> <!-- Modal Body -->
-            <div class="modal-body">
-                <div>
-                   deadline 1st january 2020
-                </div>
-                
-                <div class="modal-body">
-                    <div class="modal-footer" id="modal_footer">
-                    
-                  
-                    <button style="margin-top: 10px; width:100px; " type="button" class="btn btn-outline-dark">Submit File</button>
-                    <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-
-                    <button style="margin-top: 10px; width:100px; " type="button" data-dismiss="modal" aria-label="Close"  class="btn btn-outline-dark">Close</button>
+<!-- myModalHorizontal -->
+<div id="myModalHorizontal" class="modal">
 
 
-
-
-                    </div>
-                </div>
-            </div>
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
+            <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
+        </div>
+        <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
+        <div class="row">
+            <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+            <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline" id="close">close</button>
         </div>
     </div>
+</div>
+
+
 
 <style>
     /* projects tab */
@@ -152,15 +141,9 @@
         margin-left: 0px;
         margin-top: 0px;
     }
+    
 
-
-    .modal {
-        width:350px !important;
-        margin-left: -150px !important;
-        margin-top: -150px !important;
-        overflow: hidden !important;
-    }
-
+    
     html,body
     {
         width: 100% !important;
