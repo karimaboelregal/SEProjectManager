@@ -1,10 +1,8 @@
-@extends('layouts.sidebar')
-@extends('layouts.app')
-@section('content2')
+@extends('layouts.student_topbar')
+@section('content')
 <script>
     var element = document.getElementById("courses");
     element.classList.add("show");
-
 </script>
 
 <body>
@@ -26,6 +24,14 @@
         <a href="#">Lecture 1 intro</a>
         <br>
         <a href="#">Lecture 2 The process</a>
+
+
+    <div class = "row">
+
+    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark" onclick="location.href = 'student_project'">Project</button>
+
+    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Create Team</button>
+    </div>
 
 
 

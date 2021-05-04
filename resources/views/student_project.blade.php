@@ -63,21 +63,15 @@
 </div>
 
 <div class="row d-flex justify-content-center">
-    <div class="col d-flex justify-content-center">
-        <button style="margin-top: 10px; width:150px; " type="button" class="btn btn-outline-dark">Suggestions</button>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Open</button>
-
-    </div>
-
+        <button style="margin-top: 10px; margin-left:5px;width:150px; " type="button" class="btn btn-outline-dark">Suggestions</button>
+        <button style="margin-top: 10px; margin-left:5px;width:150px;" type="button" class="btn btn-outline-dark">view details</button>
 </div>
 
 <!-- discussion section -->
-<div class = "row" style="padding-left:20px;padding-top:20px;">
+<div class = "row d-flex justify-content-center" style="padding-left:20px;padding-top:20px;">
 <h3>Discussion</h3>
 </div>
-<div class="row">
+<div class="row d-flex justify-content-center">
     <div class="col-sm-7">
         
         <hr />
