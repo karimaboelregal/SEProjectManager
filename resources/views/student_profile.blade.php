@@ -1,9 +1,6 @@
 @extends('layouts.student_topbar')
 @section('content')
 <script>
-    var element = document.getElementById("profile");
-    element.classList.add("show");
-
 </script>
 
 
@@ -13,10 +10,10 @@
     <link href="{{ asset('css/student_profile.css') }}" rel="stylesheet">
 
 
-<div class ="container-fluid" style="padding-top:20px;">
+<div class ="container-fluid" style="padding-top:20px;max-width:50%;">
 
     <form method="">
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
@@ -44,11 +41,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
                 <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
             </div>
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             
             <div class="col-md-12 text-center">
                 <div class="tab-content profile-tab" id="myTabContent">

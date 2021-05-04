@@ -16,10 +16,8 @@ element.classList.add("show");
 </div>
 </div>
 </div>
-<div class="container">
-    <div style="margin-top:30px;" class="row text-center">
-    </div>
-    <div style="margin-top:30px;margin-left:80px;" class="row">
+
+    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
         <div class="col-12 col-md-auto">
             <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
         </div>
@@ -38,9 +36,9 @@ element.classList.add("show");
         </div>
 
     </div>
-    <div style="margin-top:30px; margin-left: 60px;" class="row">
+    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
 
-    <table class="table">
+    <table class="table" style="width:70%;">
     <thead>
         <tr class="text-center" style="background-color: #C63E47; color:white;">
             <th scope="col">#</th>
@@ -91,11 +89,14 @@ element.classList.add("show");
 </tbody>
 </table>
     </div>
-    <div style="margin-top:30px; margin-left: 60px;" class="row text-center">
-
+    <div style="margin-top:10px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div class="row" style="width:70%;">
     <button class="btn btn-outline"><</button>
     <h6 style="margin-top:10px;"class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
     <button class="btn btn-outline">></button>
+    </div>
+</div>
+
 <script>
 var modal = document.getElementById("myModal");
 

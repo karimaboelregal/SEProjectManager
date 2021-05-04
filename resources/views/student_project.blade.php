@@ -2,7 +2,7 @@
 @section('content')
 
 <script>
-    var element = document.getElementById("home");
+    var element = document.getElementById("projects");
     element.classList.add("show");
 
 </script>
@@ -10,11 +10,12 @@
 
 
 <div class ="container">
-
+    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
 
 <h1>Deliverables</h1>
-<div class = "row">
-    <div class="col">
+</div>
+    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div class="col d-flex justify-content-center">
         <div class="turningButtonContainer" style="width:300px;height:220px;">
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">Proposal</span></div>
@@ -31,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col d-flex justify-content-center">
         <div class="turningButtonContainer" style="width:300px;height:220px;">
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SRS</span></div>
@@ -44,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col d-flex justify-content-center">
         <div class="turningButtonContainer" style="width:300px;height:220px;">
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SDD</span></div>
@@ -61,11 +62,11 @@
 
 </div>
 
-<div class="row">
-    <div class="col">
+<div class="row d-flex justify-content-center">
+    <div class="col d-flex justify-content-center">
         <button style="margin-top: 10px; width:150px; " type="button" class="btn btn-outline-dark">Suggestions</button>
     </div>
-    <div class="col">
+    <div class="col d-flex justify-content-center">
         <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Open</button>
 
     </div>
@@ -94,7 +95,7 @@
             </div>
             <hr />
             <div class="row">
-                <div class = "col-10">
+                <div class = "col-10 ">
                     <div class="col"><textarea id="review" name="review" style="height:70%;width:90%;" placeholder="Whats on your mind" maxlength="150"></textarea></div>
                 </div>
                 <div class = "col-2">

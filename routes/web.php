@@ -36,6 +36,9 @@ Route::get('/edituser', function () {
 Route::get('/student_home', function () {
     return view('student_home');
 });
+Route::get('/student_projects', function () {
+    return view('student_projects');
+});
 
 Route::get('/course', function () {
     return view('course');

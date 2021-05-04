@@ -154,13 +154,13 @@
 
 
                 </li>
-                <li class="nav-item" id="users" style="margin-right:5px!important;">
-                    <a href="/student_profile" class="nav-link m-2 menu-item"><i class="fa fa-user"></i> Profile</a>
+                <li class="nav-item" id="projects" style="margin-right:5px!important;">
+                    <a href="/student_projects" class="nav-link m-2 menu-item"><i class="fa fa-cog"></i> Projects</a>
 
 
                 </li>
-                <li class="nav-item" id="courses" style="margin-right:5px!important;">
-                    <a href="/student_team" class="nav-link m-2 menu-item"><i class="fa fa-users"></i> Users</a>
+                <li class="nav-item" id="teams" style="margin-right:5px!important;">
+                    <a href="/student_team" class="nav-link m-2 menu-item"><i class="fa fa-users"></i> Team</a>
 
 
                 </li>

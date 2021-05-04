@@ -1,14 +1,11 @@
 @extends('layouts.student_topbar')
 @section('content')
 <script>
-    var element = document.getElementById("team");
+    var element = document.getElementById("teams");
     element.classList.add("show");
 
 </script>
 <div class="container">
-    <div style="margin-top:30px;" class="row text-center">
-        <img style="width:100%; height:350px;margin-left:5px;" src="{{ URL::to('/images/users2.png') }}">
-    </div>
     
     <div style="margin-top:30px; margin-left: 60px;" class="row">
     <div class="col-12 col-md-auto">

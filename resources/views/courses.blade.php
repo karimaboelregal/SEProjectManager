@@ -9,19 +9,15 @@ element.classList.add("show");
     
         <input style="width:75%;margin: 0 auto;" type="text" class="inputDesign text-center" name="Search" placeholder="Search"><button class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>-->
-    <div style="margin-top:80px;" class="d-flex justify-content-center ">
-        <div class="col-12 col-md-auto">
-            <input type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
-        </div>
-        <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline">Add course</button>
-        </div>
-        <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all courses</button>
-        </div>
+    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+            <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>
-
-    <div style="margin-top:30px;" class="d-flex justify-content-center">
+    <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
+        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Add course</button>
+        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Delete all courses</button>
+        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Delete course</button>
+    </div>
+    <div style="margin-top:30px;max-width:100%;" class="row d-flex justify-content-center ">
         <div class="turningButtonContainer">
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;"class="icons far fa-dot-circle"></i><span>SE</span></div>
