@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.student_topbar')
 @section('content')
 <script>
-var element = document.getElementById("courses");
-element.classList.add("show");
+    var element = document.getElementById("home");
+    element.classList.add("show");
+
 </script>
+
+
 <body>
    <!-- <div style="margin-top:30px;" class="row">
     
@@ -11,11 +14,6 @@ element.classList.add("show");
     </div>-->
     <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
             <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
-    </div>
-    <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
-        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Add course</button>
-        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Delete all courses</button>
-        <button style="width: 150px; margin-left:5px;"class="btn btn-outline">Delete course</button>
     </div>
     <div style="margin-top:30px;max-width:100%;" class="row d-flex justify-content-center ">
         <div class="turningButtonContainer">
@@ -28,7 +26,7 @@ element.classList.add("show");
                 <p class="text-center">Doctor Essam, TA Nada</p></p>
                 <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
                 <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info"><i class="fas fa-align-justify"></i></button>
-                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = 'course'"><i class="fas fa-eye"></i></button>
+                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = 'student_course'"><i class="fas fa-eye"></i></button>
                 </div>
             </div>
         </div>
@@ -42,7 +40,7 @@ element.classList.add("show");
                 <p class="text-center">Doctor Yomna, TA Nada</p></p>
                 <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
                 <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info"><i class="fas fa-align-justify"></i></button>
-                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = 'course'"><i class="fas fa-eye"></i></button>
+                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = 'student_course'"><i class="fas fa-eye"></i></button>
                 </div>
             </div>
         </div>

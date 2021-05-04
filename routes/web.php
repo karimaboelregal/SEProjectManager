@@ -29,6 +29,36 @@ Route::get('/courses', function () {
 Route::get('/projects', function () {
     return view('projects');
 });
+Route::get('/edituser', function () {
+    return view('edituser');
+});
+
+Route::get('/student_home', function () {
+    return view('student_home');
+});
+Route::get('/student_projects', function () {
+    return view('student_projects');
+});
+
+Route::get('/course', function () {
+    return view('course');
+});
+
+Route::get('/student_profile', function () {
+    return view('student_profile');
+});
+
+Route::get('/student_team', function () {
+    return view('student_team');
+});
+
+Route::get('/student_course', function () {
+    return view('student_course');
+});
+
+Route::get('/student_project', function () {
+    return view('student_project');
+});
 
 Auth::routes();
 

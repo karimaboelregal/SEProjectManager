@@ -1,6 +1,3 @@
- #wrapper {
-    overflow-x: hidden;
- }
 
 #sidebar-wrapper {
   min-height: 100vh;
@@ -29,19 +26,25 @@
   margin-left: 0;
 }
 
-@media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
   }
 
   #page-content-wrapper {
     min-width: 0;
-    width: 100%;
   }
 
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+#mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  #pc {
+    width: 100px !important;
+  }
+  
 }
 
 .border-right {
@@ -57,7 +60,4 @@
 .text {
     font-size: 20px;
 
-}
-.show {
-    box-shadow:inset -30px 0px 0px 0px #C63E47;
 }
