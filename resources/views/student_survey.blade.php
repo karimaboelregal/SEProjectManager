@@ -2,7 +2,28 @@
 @section('content')
 
 
+<style>
 
+.radio label input[type=radio]:checked~.bmd-radio:before,
+ label.radio-inline input[type=radio]:checked~.bmd-radio:before {
+background-color: #C63E47;
+
+transform: scale3d(.5,.5,1);
+}
+
+.sv_main.sv_main.sv_bootstrapmaterial_css .btn-default.active {
+background-color: #C63E47;
+
+color: rgb(255, 255, 255);
+}
+
+.btn{
+    background-color:#d9534f !important;
+
+}
+
+
+</style>
 
 
 <script>
