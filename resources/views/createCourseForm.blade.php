@@ -21,11 +21,15 @@
                                             <input type="text" id="desc" name="Description" placeholder="Enter description" class="form-control"></div>
                                         <div class="form-group"><label for="code" class=" form-control-label">Code</label>
                                             <input type="number" id="code" name="Code" placeholder="Code" class="form-control"></div>  
-                                        <div class="form-group"><label for="code" class=" form-control-label">Select Instructor</label>     
-                                            <select  id="select" class="form-control" name="instructor_id">
-                                                <option value="3" selected>Test</option>
+                                        <div class="form-group">
+                                            {!! Form::Label('user', 'Select Instructor') !!}
+                                            <select class="form-control" name="instructor_id">
+                                                @foreach($users as $user)
+                                                <option value="{{$user->id}}">{{$user->Surname}}</option>
+                                                @endforeach
                                             </select>
-                                </div>
+                                        </div>
+                                    </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
                                         <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
