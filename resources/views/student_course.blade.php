@@ -19,6 +19,7 @@ display: block;
 
 <body>
     <div class= "container">
+
         <h2 Style="margin-top:5%;" >Welcome to SE</h2>
 
         <h4 Style="margin-top:5%;">Course Description</h4>
@@ -33,7 +34,7 @@ display: block;
 
         <h4 Style="margin-top:5%;">Lecture Survey</h4>
 
-        <a href="#">Lecture 1 intro</a>
+        <a href="student_survey">Lecture 1 intro</a>
         <br>
         <a href="#">Lecture 2 The process</a>
 

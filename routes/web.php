@@ -60,6 +60,10 @@ Route::get('/student_project', function () {
     return view('student_project');
 });
 
+Route::get('/student_survey', function () {
+    return view('student_survey');
+});
+
 Auth::routes();
 
 

@@ -23,6 +23,7 @@
     },
     "dependencies": {
         "@jkryszto/mdb-for-laravel": "^1.0.0",
-        "mdb-ui-kit": "^3.5.0"
+        "mdb-ui-kit": "^3.5.0",
+        "survey-jquery": "^1.8.46"
     }
 }
