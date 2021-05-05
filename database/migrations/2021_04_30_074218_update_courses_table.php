@@ -14,9 +14,9 @@ class UpdateCoursesTable extends Migration
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->unsignedBigInteger('SurveyId');
-            $table->unsignedBigInteger('InstructorId');
-            $table->unsignedBigInteger('TaskId');
+            $table->unsignedBigInteger('SurveyId')->nullable();
+            $table->unsignedBigInteger('InstructorId')->nullable();
+            $table->unsignedBigInteger('TaskId')->nullable();
             $table->foreign('SurveyId')->references('id')->on('survey');
             $table->foreign('InstructorId')->references('id')->on('users');
             $table->foreign('TaskId')->references('id')->on('submission');    

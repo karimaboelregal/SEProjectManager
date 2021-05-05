@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoursesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,28 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
 Route::get('/users', function () {
     return view('users');
 });
-Route::get('/courses', function () {
-    return view('courses');
-});
+
+Route::get('/courses', [CoursesController::class,'index'])->name('index');
+
+Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
+
+Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
+
+Route::post('/createNewCourse', [CoursesController::class,'createNewCourse'])->name('createNewCourse');
+
+Route::post('/editCourse', [CoursesController::class,'editCourse'])->name('editCourse');
+
+Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])->name('editCourseForm');
+
+Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
+
+
 Route::get('/projects', function () {
     return view('projects');
 });
