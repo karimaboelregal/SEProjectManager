@@ -188,6 +188,7 @@ display: block;
             </div>
         </div>
     </div>
+    <!-- modal ended -->
 
 
 
