@@ -25,7 +25,8 @@ class CoursesController extends Controller
      }
 
      public function createCourseForm(){
-        return view ('createCourseForm');
+        $users = DB::table('users')->get();
+        return view ('createCourseForm',['users'=>$users]);
     }
 
      public function createNewCourse(Request $request){
@@ -44,9 +45,8 @@ class CoursesController extends Controller
         return \redirect('/courses');
     }
     public function dropDownShow(Request $request){
-        $items = DB::table('users')->get()->pluck('Surname','id');
-        $selectID = 1;
-        return view('course',['course'=>$course]);
+        $users = users::pluck('Surname', 'id')->toArray();
+        return view('createCourseForm',['course'=>$course]);
     }
 
     public function editCourse(Request $request){
@@ -70,7 +70,8 @@ class CoursesController extends Controller
     public function editCourseForm(Request $request,$id){
 
         $course = DB::table('courses')->where('id',$id)->get();
-        return view('editCourseForm',['course'=>$course]);
+        $users = DB::table('users')->get();
+        return view('editCourseForm',['course'=>$course,'users'=>$users]);
 
     }
 
