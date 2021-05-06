@@ -26,7 +26,7 @@ element.classList.add("show");
                         <p class="text-center">Instructor</p>
                         <p class="text-center">{{$course->instructor_name}}</p></p>
                         <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course" onclick="location.href = '{{route('deleteCourse',['id'=>$course->id])}}'"><i class="fas fa-trash-alt" ></i></button>
-                        <button data-target="#exampleModalCenter2" data-toggle="modal" style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info" onclick="location.href = '{{route('editCourseForm',['id'=>$course->id])}}'"><i class="fas fa-align-justify"></i></button>
+                        <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info" onclick="location.href = '{{route('editCourseForm',['id'=>$course->id])}}'"><i class="fas fa-align-justify"></i></button>
                         <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = '{{route('ViewCourse',['id'=>$course->id])}}'"><i class="fas fa-eye"></i></button>
                     </div>
             </div> 
