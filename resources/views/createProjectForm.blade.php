@@ -26,7 +26,7 @@
                                         <div class="form-group"><label for="description" class=" form-control-label">Client Email</label>
                                             <input type="text" id="desc" name="client_email" placeholder="Enter client email" class="form-control"></div>
                                         <div class="form-group">
-                                            {!! Form::Label('team', 'Select Team') !!}
+                                        <label for="code" class=" form-control-label">Select team</label>
                                             <select class="form-control" name="team_id">
                                                 @foreach($teams as $team)
                                                 <option value="{{$team->id}}">{{$team->id}}</option>
@@ -34,7 +34,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::Label('course', 'Select course') !!}
+                                        <label for="code" class=" form-control-label">Select course</label>
                                             <select class="form-control" name="course_id">
                                                 @foreach($courses as $course)
                                                 <option value="{{$course->id}}">{{$course->Name}}</option>
