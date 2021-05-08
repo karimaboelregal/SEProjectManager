@@ -1,16 +1,10 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="content">
-            <div class="animated fadeIn">
+<div class="content d-flex justify-content-center" style="margin:5% auto">
 
-
-                <div class="row">
-                 
-
-                    <div class="col-lg-10">
-                        <div class="card">
-                            <div class="card-header"><strong>Course</strong><small> Form</small></div>
+                        <div class="card w-50">
+                            <div class="card-header" style="background-color:#C63E47;color:White"><strong>Course</strong><small> Form</small></div>
                             <div class="card-body card-block">
                             <form action="{{route('createNewCourse')}}" method="post">
                                 <div class="modal-body">
@@ -32,8 +26,8 @@
                                     </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
-                                        <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button class="btn btn-primary" type="submit" value="submit">submit</button>
+                                        <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-outline" type="submit" value="submit">submit</button>
                                     </div>
                                 </div>
                             </form>

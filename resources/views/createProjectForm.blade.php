@@ -1,19 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="content">
-            <div class="animated fadeIn">
+<div class="content d-flex justify-content-center" >
 
-
-                <div class="row">
-                 
-
-                    <div class="col-lg-10">
-                        <div class="card">
-                            <div class="card-header"><strong>Project</strong><small> Form</small></div>
+                        <div class="card w-50">
+                            <div class="card-header" style="background-color:#C63E47;color:White"><strong>Project</strong><small> Form</small></div>
                             <div class="card-body card-block">
                             <form action="{{route('createNewProject')}}" method="post">
-                                <div class="modal-body">
                                         {{csrf_field()}}
                                         <div class="form-group"><label for="name" class=" form-control-label">Project title</label>
                                             <input type="text" id="project_title" name="project_title" placeholder="Enter project name" class="form-control"></div>
@@ -44,8 +37,8 @@
                                     </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
-                                        <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button class="btn btn-primary" type="submit" value="submit">submit</button>
+                                        <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-outline" type="submit" value="submit">submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -59,7 +52,6 @@
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix"></div>
 
 
 
