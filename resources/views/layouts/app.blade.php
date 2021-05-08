@@ -10,7 +10,9 @@
     <title>{{ config('app.name', 'Admin') }}</title>
     <script src="https://kit.fontawesome.com/df4285e61f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ asset('js/Chart.js') }}"></script>
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/verticalstyle.css') }}" rel="stylesheet">     
     <style>
     .login {
         margin-top: 100px;
@@ -155,6 +157,7 @@ background-color:#C63E47 !important;
 </nav>
 <main class="py-10">
     @yield('content')
+    @yield('content2')
 </main>
 <footer class="row">
 @extends('layouts.footer')
