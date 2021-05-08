@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +40,21 @@ Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])-
 
 Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
 
+Route::get('/projects', [ProjectController::class,'index'])->name('index');
 
-Route::get('/projects', function () {
-    return view('projects');
-});
+Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
+
+Route::get('/createProjectForm', [ProjectController::class,'createProjectForm'])->name('createProjectForm');
+
+Route::post('/createNewProject', [ProjectController::class,'createNewProject'])->name('createNewProject');
+
+Route::post('/editProject', [ProjectController::class,'editProject'])->name('editProject');
+
+Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm'])->name('editProjectForm');
+
+Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
+
+
 Route::get('/edituser', function () {
     return view('edituser');
 });

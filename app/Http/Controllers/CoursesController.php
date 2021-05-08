@@ -44,10 +44,6 @@ class CoursesController extends Controller
 
         return \redirect('/courses');
     }
-    public function dropDownShow(Request $request){
-        $users = users::pluck('Surname', 'id')->toArray();
-        return view('createCourseForm',['course'=>$course]);
-    }
 
     public function editCourse(Request $request){
 
