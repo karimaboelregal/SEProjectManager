@@ -31,13 +31,8 @@
             </thead>
             <tbody class="text-center">
                 <tr>
-                    <th height=100 width=150 scope="row">
-                        <div class="align-middle custom-control form-control-lg custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class=" custom-control-label" for="customCheck1" style=""><img style="width:100%; height:100%" src="{{ URL::to('/images/image.jpg') }}"></label> </label>
-                        </div>
-                    </th>
-                    <td class="align-middle">Project Name</td>
+                    <td class="align-middle">1</td>
+                    <td class="align-middle" ><a href="student_project">School system</a></td>
                     <td class="align-middle">SE,HCI</td>
                     <td class="align-middle"> 
                         <button type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>

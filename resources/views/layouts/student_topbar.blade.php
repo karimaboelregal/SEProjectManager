@@ -104,12 +104,12 @@
         }
 
         .navbar .nav-item:hover {
-            box-shadow: inset 0px -5px 0px 0px #C63E47;
+            box-shadow: inset 0px -3px 0px 0px #C63E47;
 
         }
 
         .show {
-            box-shadow: inset 0px -5px 0px 0px #C63E47;
+            box-shadow: inset 0px -3px 0px 0px #C63E47;
 
         }
 

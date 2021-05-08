@@ -50,7 +50,7 @@
         border: 0px;
         border-bottom:none;
         background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
-        background-size:50% 2px;
+        background-size:50% 1px;
         font-family: "Times New Roman", Times, serif;
         font-size: 18px;
         transition: background-size 0.5s;
@@ -58,7 +58,7 @@
     .inputDesign:focus {
         outline: none;
         background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
-        background-size:100% 2px;
+        background-size:100% 1px;
 
     }
 .custom-control-label:before{
@@ -89,11 +89,11 @@ background-color:#C63E47 !important;
   color:white!important;
 }
 .navbar .nav-item:hover {
-    box-shadow:inset 0px -5px 0px 0px #C63E47;
+    box-shadow:inset 0px -3px 0px 0px #C63E47;
 
 }
 .show {
-    box-shadow:inset 0px -5px 0px 0px #C63E47;
+    box-shadow:inset 0px -3px 0px 0px #C63E47;
 
 }
 .norms:hover {

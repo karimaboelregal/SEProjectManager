@@ -29,7 +29,7 @@ Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
 
-Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
+Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm') ;
 
 Route::post('/createNewCourse', [CoursesController::class,'createNewCourse'])->name('createNewCourse');
 
