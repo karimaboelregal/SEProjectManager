@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="content d-flex justify-content-center" style="margin:5% auto">
+<div class="content d-flex align-items-center justify-content-center" style="height:80vh">
 
                         <div class="card w-50">
                             <div class="card-header" style="background-color:#C63E47;color:White"><strong>Course</strong><small> Form</small></div>

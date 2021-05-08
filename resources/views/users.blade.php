@@ -4,25 +4,42 @@
 var element = document.getElementById("users");
 element.classList.add("show");
 </script>
-<div id="myModal" class="modal modal-file">
+    <div class="modal modal-createTeam fade" id="viewde7k">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#d9534f;">
 
-  <!-- Modal content -->
-  <div class="modal-content modal-file-content">
-  <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;"><p class="text-center" style="color:#fff;font-size:25px;">Select a file</p></div>
-    <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
-    <div class="row">
-<button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;"class="btn btn-outline">upload</button>
-<button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;"class="btn btn-outline" id="close">close</button>
-</div>
-</div>
-</div>
+                    <h5 class="modal-title" id="viewTeamModalLabel">View Team</h5>
 
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body my-custom-scrollbar">
+
+    <div class="row d-flex justify-content-center"><input style="d-flex justify-content-center" type="file" style="width:200px"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger closeModal" data-dismiss="modal">Close</button>
+
+
+                        <button type="button" class="btn btn-danger closeModal">Submit</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
         <div class="col-12 col-md-auto">
             <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline" id="import">Import data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" data-target="#viewde7k">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
@@ -45,6 +62,7 @@ element.classList.add("show");
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Courses</th>
+            <th scope="col">Role</th>
             <th scope="col"><i class="fa fa-mouse-pointer"></i></i></th>
         </tr>
     </thead>
@@ -59,6 +77,7 @@ element.classList.add("show");
             <td class="align-middle">Ahmed adel</td>
             <td class="align-middle">ahmedadel@gmail.com</td>
             <td class="align-middle">SE,HCI,105</td>
+            <td class="align-middle">Student</td>
             <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
         </tr>
         <tr>
@@ -71,6 +90,7 @@ element.classList.add("show");
         <td class="align-middle">Jacob</td>
         <td class="align-middle">Thornton</td>
         <td class="align-middle">@fat</td>
+            <td class="align-middle">Professor</td>
             <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
     </tr>
         <tr>
@@ -83,6 +103,8 @@ element.classList.add("show");
         <td class="align-middle">Larry</td>
         <td class="align-middle">the Bird</td>
         <td class="align-middle">@twitter</td>
+            <td class="align-middle">Admin</td>
+
             <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
 
     </tr>
