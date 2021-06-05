@@ -5,7 +5,37 @@
 var element = document.getElementById("home");
 element.classList.add("show");
 </script>
+<style>
+.card-red-shade1{
+  color:white;
+  background-color:#d35454;
 
+
+}
+.card-red-shade2{
+  color:white;
+  background-color:#d96d6d;
+
+
+}
+.card-red-shade3{
+  color:white;
+  background-color:#e08585;
+
+
+}
+.card-red-shade4{
+  color:white;
+  background-color:#e69d9d;
+
+
+
+}
+
+
+
+
+</style>
 <body>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper" style="margin-left: auto;width: 118%;">
@@ -34,7 +64,7 @@ element.classList.add("show");
             <div class="col-md-12 grid-margin transparent">
               <div class="row">
                 <div class="col-md-3 stretch-card transparent">
-                  <div class="card card-tale">
+                  <div class="card card-red-shade1">
                     <div class="card-body">
                       <p class="mb-4">Number of Students</p>
                       <p class="fs-30 mb-2">4006</p>
@@ -42,7 +72,7 @@ element.classList.add("show");
                   </div>
                 </div>
                 <div class="col-md-3 stretch-card transparent">
-                  <div class="card card-dark-blue">
+                  <div class="card card-red-shade2">
                     <div class="card-body">
                       <p class="mb-4">Number of projects</p>
                       <p class="fs-30 mb-2">61344</p>
@@ -50,7 +80,7 @@ element.classList.add("show");
                   </div>
                 </div>
                 <div class="col-md-3 stretch-card transparent">
-                  <div class="card card-light-blue">
+                  <div class="card card-red-shade3">
                     <div class="card-body">
                       <p class="mb-4">Number of courses</p>
                       <p class="fs-30 mb-2">34040</p>
@@ -58,7 +88,7 @@ element.classList.add("show");
                   </div>
                 </div>
                 <div class="col-md-3 stretch-card transparent">
-                  <div class="card card-light-danger">
+                  <div class="card card-red-shade4">
                     <div class="card-body">
                       <p class="mb-4">Number of professors</p>
                       <p class="fs-30 mb-2">47033</p>
@@ -148,7 +178,7 @@ element.classList.add("show");
 										</ul>
                   </div>
                   <div class="add-items d-flex mb-0 mt-2">
-										<button class="text-primary"></i>Add new task</button>
+										<button class="btn btn-danger"></i>Add new task</button>
 									</div>
 								</div>
 							</div>
@@ -189,8 +219,8 @@ $(function(){
     datasets: [
       {
         label               : 'Students',
-        fillColor           : 'rgba(60,141,188,0.9)',
-        strokeColor         : 'rgba(60,141,188,0.8)',
+        fillColor           : 'rgba(193,12,12,0.9)',
+        strokeColor : 'rgba(193,12,12,0.9)',
         pointColor          : '#3b8bba',
         pointStrokeColor    : 'rgba(60,141,188,1)',
         pointHighlightFill  : '#fff',
