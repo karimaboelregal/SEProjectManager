@@ -10,9 +10,15 @@
     <title>{{ config('app.name', 'Admin') }}</title>
     <script src="https://kit.fontawesome.com/df4285e61f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
     <script src="{{ asset('js/Chart.js') }}"></script>
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/verticalstyle.css') }}" rel="stylesheet">     
+    <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css">
+    
+
     <style>
     .login {
         margin-top: 100px;
@@ -63,6 +69,22 @@
         background-size:100% 1px;
 
     }
+div.dataTables_filter input {
+    border: none !important;
+    border-bottom:none;
+    background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
+    background-size:50% 1px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    transition: background-size 0.5s;
+
+}
+div.dataTables_filter input:focus {
+    outline: none !important;
+    background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
+    background-size:100% 1px;
+}
+
 .custom-control-label:before{
   background-color:#C63E47;
   outline: none;
@@ -101,6 +123,12 @@ background-color:#C63E47 !important;
 .norms:hover {
     background-color:#f7f7f7 !important;
 }
+
+.dataTable > thead > tr > th[class*="sort"]:before,
+.dataTable > thead > tr > th[class*="sort"]:after {
+    content: "" !important;
+}
+
 </style>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

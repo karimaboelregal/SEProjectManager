@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ Route::get('/login', function () {
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/users', function () {
-    return view('users');
-});
+
+Route::get('/users', [UsersController::class,'index'])->name('index');
+
 Route::get('/projectstate', function () {
     return view('projectstate');
 });

@@ -22,7 +22,7 @@ element.classList.add("show");
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger closeModal" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger closeModal" id="close" data-dismiss="modal">Close</button>
 
 
                         <button type="button" class="btn btn-danger closeModal">Submit</button>
@@ -34,12 +34,9 @@ element.classList.add("show");
             </div>
         </div>
     </div>
-    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div style="margin-top:80px;width:100%;" class="row d-flex justify-content-center ">
         <div class="col-12 col-md-auto">
-            <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
-        </div>
-        <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" data-target="#viewde7k">Import data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewde7k">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
@@ -53,9 +50,10 @@ element.classList.add("show");
         </div>
 
     </div>
-    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div style="margin-top:30px;width:100% !important;margin-bottom:50px;" class="row d-flex justify-content-center ">
+    <div class="datatable-wide">
 
-    <table class="table" style="width:70%;">
+    <table id="userTable" class="table table-striped dt-responsive nowrap " style="width:100%">
     <thead>
         <tr class="text-center" style="background-color: #C63E47; color:white;">
             <th scope="col">#</th>
@@ -67,58 +65,45 @@ element.classList.add("show");
         </tr>
     </thead>
     <tbody class="text-center">
-        <tr >
-            <th height=100 width=150 scope="row">
-                <div class="align-middle custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">     
-                    <label  class=" custom-control-label" for="customCheck1" style=""><img style="width:100%; height:100%" src="{{ URL::to('/images/image.jpg') }}"></label> </label>  
-                </div>  
-            </th>
-            <td class="align-middle">Ahmed adel</td>
-            <td class="align-middle">ahmedadel@gmail.com</td>
-            <td class="align-middle">SE,HCI,105</td>
-            <td class="align-middle">Student</td>
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-        </tr>
         <tr>
+            @foreach ($users as $user)
+            @echo $user->Email;
+            @endforeach
             <th height=150 width=150 scope="row">
                 <div class="custom-control form-control-lg custom-checkbox">  
                     <input type="checkbox" class="custom-control-input" id="customCheck2">  
                     <label  class="custom-control-label" for="customCheck2" style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
                 </div>  
             </th>
-        <td class="align-middle">Jacob</td>
-        <td class="align-middle">Thornton</td>
-        <td class="align-middle">@fat</td>
+            <td class="align-middle">Jacob</td>
+            <td class="align-middle">Thornton</td>
+            <td class="align-middle">@fat</td>
             <td class="align-middle">Professor</td>
             <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-    </tr>
-        <tr>
-            <th height=100 width=150 scope="row">
-                <div class="custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck3">     
-                    <label  class="custom-control-label" for="customCheck3" style=""><img style="width:100%; height:100%" src="{{ URL::to('/images/image2.jpg') }}"></label> </label>  
-                </div>  
-            </th>
-        <td class="align-middle">Larry</td>
-        <td class="align-middle">the Bird</td>
-        <td class="align-middle">@twitter</td>
-            <td class="align-middle">Admin</td>
-
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-
-    </tr>
+        </tr>
 </tbody>
 </table>
-    </div>
-    <div style="margin-top:10px;max-width:100%;" class="row d-flex justify-content-center ">
-    <div class="row" style="width:70%;">
-    <button class="btn btn-outline"><</button>
-    <h6 style="margin-top:10px;"class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
-    <button class="btn btn-outline">></button>
-    </div>
+</div>
 </div>
 
+<script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+    $('#userTable').DataTable({
+        columnDefs: [
+            { orderable: false, targets: 5 }
+        ],
+        responsive: true,
+        "dom": '<"top" f>rt<"bottom"ip>',
+        buttons: [{className: "btn-dark"}]
+});
+    $('#dtPluginExample_wrapper .col-md-7:eq(0)').addClass("d-flex justify-content-center justify-content-md-end");
+    $('#dtPluginExample_paginate').addClass("mt-3 mt-md-2");
+    $('#dtPluginExample_paginate ul.pagination').addClass("pagination-sm");
+
+})
+
+</script>
 <script>
 var modal = document.getElementById("myModal");
 
