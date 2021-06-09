@@ -19,36 +19,39 @@ class surveySeeder extends Seeder
             'SurveyName' => 'Sus Score',
             'CourseId' => '1'
         ]);
-
+        DB::table('question_type')->insert([
+            'name'=>'matrix'
+        ]);
+        DB::table('question_type')->insert([
+            'name'=>'rating'
+        ]);
+        DB::table('question_type')->insert([
+            'name'=>'text'
+        ]);
         DB::table('question')->insert([
-                    'QuestionText' => 'Please answer these multiple choice questions',
+                    'QuestionText' => 'foo',
                     'IsRequired' => '1',
+                    'TypeId'=>'1',
                     'SurveyId' =>'1'
                 ]);
-        DB::table('question_type')->insert([
-            'QuestionId' => '1',
-            'choiceText' =>'Agile is the best method ever'
-        ]);
 
-        DB::table('question_type')->insert([
-            'QuestionId' => '1',
-            'choiceText' =>'lemme see what u agree on'
-        ]);
 
-        DB::table('question_type')->insert([
-            'QuestionId' => '1',
-            'choiceText' =>'foo'
-        ]);
+        DB::table('question')->insert([
+                    'QuestionText' => 'bar',
+                    'IsRequired' => '1',
+                    'TypeId'=>'1',
+                    'SurveyId' =>'1'
+                ]);
 
-        DB::table('question_type')->insert([
-            'QuestionId' => '1',
-            'choiceText' =>'Bar'
-        ]);
+        DB::table('question')->insert([
+                    'QuestionText' => 'baz',
+                    'IsRequired' => '1',
+                    'TypeId'=>'1',
+                    'SurveyId' =>'1'
+                ]);
+        
 
-        DB::table('question_type')->insert([
-            'QuestionId' => '1',
-            'choiceText' =>'Baz'
-        ]);
+        
 
         
     }

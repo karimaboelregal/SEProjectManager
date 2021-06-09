@@ -73,7 +73,8 @@ var json = {
             ],
             rows: [
                 @foreach($surveyObj as $survey)
-                {value: "{{$survey->choiceText}}",text: "{{$survey->choiceText}}"},
+                {value: "{{$survey->QuestionText}}",text: "{{$survey->QuestionText}}"},
+
                 @endforeach
 
 

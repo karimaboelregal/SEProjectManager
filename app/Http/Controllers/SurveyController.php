@@ -19,8 +19,8 @@ class SurveyController extends Controller
 
         $surveyObj = DB::table('survey')
         ->join("question","survey.id","=","question.SurveyId")
-        ->join("question_type","question_type.QuestionId","=","question.id")
-        ->select("survey.id","survey.SurveyName","question.QuestionText","question_type.choiceText")
+        ->join("question_type","question_type.id","=","question.TypeId")
+        ->select("survey.id","survey.SurveyName","question.QuestionText","question_type.name")
         ->where('survey.id',$id)->get();
 
         //dd(DB::getQueryLog()); // Show results of log
