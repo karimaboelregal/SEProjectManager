@@ -21,19 +21,14 @@
         <a href="#">News from the cloude</a>
         <br>
         <a href="#">The Agile manifesto</a>
-    @endforeach
-    <h4 Style="margin-top:5%;">Surveys</h4>
-    @foreach($courseInfo['surveysObj'] as $surveys)
     
-
-        
-            <a href="#">{{$surveys->SurveyName}}</a>
-
-            <br>
-            
-        
-
+    <h4 Style="margin-top:5%;">Surveys</h4>
+        @foreach($courseInfo['surveysObj'] as $surveys)
+                <a href="{{route('ViewSurvey',['id'=>$surveys->id])}}">{{$surveys->SurveyName}}</a>
+                <br>
+        @endforeach
     @endforeach
+
 
     
     

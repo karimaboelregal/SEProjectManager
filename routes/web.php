@@ -32,6 +32,7 @@ Route::get('/projectstate', function () {
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
+Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
 
 Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm') ;
 

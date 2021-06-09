@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/bootstrap-material-design.min.css')}}" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous" />
 
-
+<h2 Style="margin-top:5%;"></h2>
 
 
 <style>
@@ -31,6 +31,12 @@
 
 </style>
 
+<script>
+    survey =  @json($surveyObj) ;
+    console.log(survey);
+
+</script>
+
 
 <script>
     var element = document.getElementById("home");
@@ -41,6 +47,7 @@
 <div id="surveyResult"></div>
 
 
+
 <script>
 Survey.defaultBootstrapMaterialCss.navigationButton = "btn btn-red";
 Survey.defaultBootstrapMaterialCss.rating.item = "btn btn-default my-rating";
@@ -49,77 +56,57 @@ Survey.defaultBootstrapMaterialCss.rating.item = "btn btn-default my-rating";
 
 Survey.StylesManager.applyTheme("bootstrapmaterial");
 
+
 var json = {
-pages: [
-    {
-    questions: [
-    {
-    type: "matrix",
-    name: "Quality",
-    title: "Please indicate if you agree or disagree with the following statements",
-    columns: [
-    {
-        value: 1,
-        text: "Strongly Disagree"
-    }, 
-    {
-        value: 2,
-        text: "Disagree"
-    }, 
-    {
-        value: 3,
-        text: "Neutral"
-    }, 
-    {
-        value: 4,
-        text: "Agree"
-    }, 
-    {
-        value: 5,
-        text: "Strongly Agree"
-    }
-    ],
-    rows: [
-    {
-        value: "affordable",
-        text: "Lecture was fully understandable"
-    },
-    {
-        value: "does what it claims",
-        text: "Scrum is the best agile method there is"
-    },
-    {
-        value: "better then others",
-        text: "The waterfall method is for large scale projects"
-    },
-    {
-        value: "easy to use",
-        text: "I will work with agile from now on"
-    }
-    ]
-    }, 
-    {
-        type: "rating",
-        name: "satisfaction",
-        title: "How satisfied are you with the Product?",
-        mininumRateDescription: "Not Satisfied",
-        maximumRateDescription: "Completely satisfied"
-    }, 
-    {
-        type: "rating",
-        name: "recommend friends",
-        title: "How likely are you to recomend agile later on",
-        mininumRateDescription: "Will not recommend",
-        maximumRateDescription: "I will recommend"
-    }, 
-    {
-        type: "comment",
-        name: "suggestions",
-        title: "What would make you more satisfied with this lecture?"
-    }
-    ]
-    }
-]
+    pages: [
+        {
+        questions: [{
+            type: "matrix",
+            name: "Quality",
+            title: "Please indicate if you agree or disagree with the following statements",
+            columns: [
+                {value: 1,text: "Strongly Disagree"}, 
+                {value: 2,text: "Disagree"}, 
+                {value: 3,text: "Neutral"},
+                {value: 4,text: "Agree"}, 
+                { value: 5,text: "Strongly Agree"}
+            ],
+            rows: [
+                @foreach($surveyObj as $survey)
+                {value: "{{$survey->choiceText}}",text: "{{$survey->choiceText}}"},
+                @endforeach
+
+
+
+                // {value: "affordable",text: "Lecture was fully understandable"},
+                //{value: "does what it claims",text: "Scrum is the best agile method there is"},
+                //{value: "better then others",text: "The waterfall method is for large scale projects"},
+                //{value: "easy to use",text: "I will work with agile from now on"}
+            ]
+            }, //first question end
+            {
+                type: "rating",
+                name: "satisfaction",
+                title: "How satisfied are you with the Product?",
+                mininumRateDescription: "Not Satisfied",
+                maximumRateDescription: "Completely satisfied"
+            }, //second question end
+            {
+                type: "rating",
+                name: "recommend friends",
+                title: "How likely are you to recomend agile later on",
+                mininumRateDescription: "Will not recommend",
+                maximumRateDescription: "I will recommend"
+            }, //third question end
+            {
+                type: "comment",
+                name: "suggestions",
+                title: "What would make you more satisfied with this lecture?"
+            }//last question
+        ]//questions end
+
+        }//questions end
+    ]//pages end
 };
 
 window.survey = new Survey.Model(json);
