@@ -108,7 +108,6 @@ pages: [
     {
         type: "rating",
         name: "recommend friends",
-        visibleIf: "{satisfaction} > 3",
         title: "How likely are you to recomend agile later on",
         mininumRateDescription: "Will not recommend",
         maximumRateDescription: "I will recommend"
