@@ -7,26 +7,36 @@
 
 <body>
     <div class= "container">
-    @foreach($course as $c)
-        <h2 Style="margin-top:5%;" >Welcome to {{$c->Name}}</h2>
+
+        
+    @foreach($courseInfo['courseObj'] as $course)
+        <h2 Style="margin-top:5%;" >Welcome to {{$course->Name}}</h2>
 
         <h4 Style="margin-top:5%;">Course Description</h4>
 
-        <p>{{$c->Description}}.</p>
+        <p>{{$course->Description}}</p>
 
         <h4 Style="margin-top:5%;">Reading material</h4>
 
         <a href="#">News from the cloude</a>
         <br>
         <a href="#">The Agile manifesto</a>
+    @endforeach
+    <h4 Style="margin-top:5%;">Surveys</h4>
+    @foreach($courseInfo['surveysObj'] as $surveys)
+    
 
-        <h4 Style="margin-top:5%;">Lecture Survey</h4>
+        
+            <a href="#">{{$surveys->SurveyName}}</a>
 
-        <a href="#">Lecture 1 intro</a>
-        <br>
-        <a href="#">Lecture 2 The process</a>
+            <br>
+            
+        
 
     @endforeach
+
+    
+    
     <div class = "row">
 
     <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark" onclick="location.href = 'student_project'">Project</button>
