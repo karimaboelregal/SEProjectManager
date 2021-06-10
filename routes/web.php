@@ -22,18 +22,12 @@ use App\Http\Controllers\loginControl;
 |
 */
 
-<<<<<<< HEAD
 Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
 
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 
 
-=======
-Route::get('/', function () {
-    return redirect(route('login'));
-});
->>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6
 Route::get('/home', function () {
     return view('home');
 });
@@ -121,13 +115,5 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
-<<<<<<< HEAD
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
-Auth::routes();
-
-
-Auth::routes();
-
->>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6
