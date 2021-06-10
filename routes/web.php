@@ -22,20 +22,25 @@ use App\Http\Controllers\loginControl;
 |
 */
 
-<<<<<<< HEAD
+
 Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
 
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 
 
-=======
+
 Route::get('/', function () {
     return redirect(route('login'));
 });
->>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6
+
 Route::get('/home', function () {
     return view('home');
+});
+
+
+Route::get('/users', function () {
+    return view('users');
 });
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
@@ -48,9 +53,7 @@ Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('cr
 
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
 
-Route::get('/users', function () {
-    return view('users');
-});
+
 
 Route::get('/projectstate', function () {
     return view('projectstate');
@@ -125,13 +128,12 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
-<<<<<<< HEAD
+
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
-Auth::routes();
+
+//Auth::routes();
 
 
-Auth::routes();
+//Auth::routes();
 
->>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6
