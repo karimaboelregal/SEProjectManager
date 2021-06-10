@@ -155,6 +155,15 @@ background-color:#C63E47 !important;
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+@php
+$state = Session::get("loggedIn");
+$user = Session::get("userData");
+if ($state != 1 && Request::path() != "login") {
+    echo "<script>window.location.href='login'</script>";
+} elseif ($state == 1 && $user->Name == "Student" && !Str::contains(Request::path(), 'student_')) {
+    echo "<script>window.location.href='student_home'</script>";
+}
+@endphp
 
 <body style="background-color:#ffffff;width:100%;">
 
