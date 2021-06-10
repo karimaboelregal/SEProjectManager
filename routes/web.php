@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
+
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyController;
 
@@ -21,6 +23,13 @@ use App\Http\Controllers\SurveyController;
 Route::get('/', function () {
     return redirect(route('login'));
 });
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
+
 
 Route::get('/home', [HomeController::class,'index'])->name('home');
 
@@ -69,10 +78,6 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
-
-Route::get('/edituser', function () {
-    return view('edituser');
-});
 
 Route::get('/student_home', function () {
     return view('student_home');
