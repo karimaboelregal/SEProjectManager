@@ -1,5 +1,20 @@
+
+<style>
+
+footer {
+padding-top: 20px;
+display: block;
+margin-top: 20px; /* space between content and footer */
+box-sizing: border-box;
+position: relative;
+width: 100%;
+}
+
+
+</style>
+
 <!-- Footer -->
-<footer class="bg-dark text-center text-white">
+<footer class="bg-dark text-center text-white" class = "footer">
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
