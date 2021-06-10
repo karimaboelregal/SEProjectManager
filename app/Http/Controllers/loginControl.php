@@ -28,4 +28,9 @@ class loginControl extends Controller {
     public function showLogin() {
         return view ('login');
     }
+    public function logout() {
+        \Session::put('loggedIn', 0);
+        \Session::put('userData', NULL);
+        return redirect('login');
+    }
 }

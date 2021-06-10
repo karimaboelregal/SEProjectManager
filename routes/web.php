@@ -26,6 +26,8 @@ Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
 
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
+Route::get('/logout', [loginControl::class,'logout'])->name('logout');
+
 
 
 Route::get('/home', function () {
@@ -46,7 +48,6 @@ Route::get('/home', [HomeController::class,'index'])->name('home');
 Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('createNewTask');
 
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
-
 
 
 Route::get('/projectstate', function () {
@@ -122,17 +123,5 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
-<<<<<<< HEAD
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
-
-//showing errors uncommenting for now
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Auth::routes();
-
-
-//Auth::routes();
-
->>>>>>> 2f1c9999f1df5933dbfc8f018cd70c5a221dc584
