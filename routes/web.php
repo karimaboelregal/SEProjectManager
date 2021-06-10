@@ -42,9 +42,6 @@ Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('cr
 
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
 
-Route::get('/users', function () {
-    return view('users');
-});
 
 Route::get('/projectstate', function () {
     return view('projectstate');
