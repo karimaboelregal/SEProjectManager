@@ -32,6 +32,11 @@ Route::get('/home', function () {
     return view('home');
 });
 
+
+Route::get('/users', function () {
+    return view('users');
+});
+
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
@@ -43,10 +48,15 @@ Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('cr
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
 
 
+
 Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+
+Route::get('/surveybuild', function () {
+    return view('surveybuild');
+});
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
@@ -112,5 +122,17 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
+<<<<<<< HEAD
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+
+//showing errors uncommenting for now
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Auth::routes();
+
+
+//Auth::routes();
+
+>>>>>>> 2f1c9999f1df5933dbfc8f018cd70c5a221dc584
