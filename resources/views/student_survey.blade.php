@@ -7,6 +7,9 @@
 
 <h2 Style="margin-top:5%;"></h2>
 
+{{getType(array_search("matrix",array_column($surveyObj,'typeName'),true))}}
+
+
 
 <style>
 
@@ -60,50 +63,75 @@ Survey.StylesManager.applyTheme("bootstrapmaterial");
 var json = {
     pages: [
         {
-        questions: [{
-            type: "matrix",
-            name: "Quality",
-            title: "Please indicate if you agree or disagree with the following statements",
-            columns: [
-                {value: 1,text: "Strongly Disagree"}, 
-                {value: 2,text: "Disagree"}, 
-                {value: 3,text: "Neutral"},
-                {value: 4,text: "Agree"}, 
-                { value: 5,text: "Strongly Agree"}
-            ],
-            rows: [
+        questions: [
+            @if(getType(array_search("matrix",array_column($surveyObj,'typeName'),true)) != 'boolean' )
+                {
+                type: "matrix",
+                name: "Quality",
+                title: "Please indicate if you agree or disagree with the following statements",
+                columns: [
+                    {value: 1,text: "Strongly Disagree"}, 
+                    {value: 2,text: "Disagree"}, 
+                    {value: 3,text: "Neutral"},
+                    {value: 4,text: "Agree"}, 
+                    { value: 5,text: "Strongly Agree"}
+                ],
+                rows: [
+                    @foreach($surveyObj as $survey)
+                        @if($survey['typeName'] == 'matrix')
+                            {value: "{{$survey['questionId']}}",text: "{{$survey['QuestionText']}}"},
+
+                        @endif
+
+                    @endforeach
+
+
+
+                    // {value: "affordable",text: "Lecture was fully understandable"},
+                    //{value: "does what it claims",text: "Scrum is the best agile method there is"},
+                    //{value: "better then others",text: "The waterfall method is for large scale projects"},
+                    //{value: "easy to use",text: "I will work with agile from now on"}
+                ]
+                },
+            @endif//first question end
+            @if(getType(array_search("rating",array_column($surveyObj,'typeName'),true)) != 'boolean' )
+            
+
                 @foreach($surveyObj as $survey)
-                {value: "{{$survey->QuestionText}}",text: "{{$survey->QuestionText}}"},
+                @if($survey['typeName'] == 'rating')
+                {
 
+                    type: "rating",
+                    name: "{{$survey['questionId']}}",
+
+                    title: "{{$survey['QuestionText']}}",
+                }, //second question end
+                @endif
                 @endforeach
+                
+            
 
+            @endif
+            
+        
+      
+            @if(getType(array_search("text",array_column($surveyObj,'typeName'),true)) != 'boolean' )
 
+                    @foreach($surveyObj as $survey)
+                    @if($survey['typeName'] == 'text')
+                    {
+                        type: "comment",
+                        name: "{{$survey['questionId']}}",
+                        title: "{{$survey['QuestionText']}}"
+                    },
 
-                // {value: "affordable",text: "Lecture was fully understandable"},
-                //{value: "does what it claims",text: "Scrum is the best agile method there is"},
-                //{value: "better then others",text: "The waterfall method is for large scale projects"},
-                //{value: "easy to use",text: "I will work with agile from now on"}
-            ]
-            }, //first question end
-            {
-                type: "rating",
-                name: "satisfaction",
-                title: "How satisfied are you with the Product?",
-                mininumRateDescription: "Not Satisfied",
-                maximumRateDescription: "Completely satisfied"
-            }, //second question end
-            {
-                type: "rating",
-                name: "recommend friends",
-                title: "How likely are you to recomend agile later on",
-                mininumRateDescription: "Will not recommend",
-                maximumRateDescription: "I will recommend"
-            }, //third question end
-            {
-                type: "comment",
-                name: "suggestions",
-                title: "What would make you more satisfied with this lecture?"
-            }//last question
+                    @endif
+                    @endforeach
+                
+
+            @endif
+        
+
         ]//questions end
 
         }//questions end

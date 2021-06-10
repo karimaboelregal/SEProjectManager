@@ -49,6 +49,34 @@ class surveySeeder extends Seeder
                     'TypeId'=>'1',
                     'SurveyId' =>'1'
                 ]);
+
+        DB::table('question')->insert([
+                    'QuestionText' => 'Rating question',
+                    'IsRequired' => '1',
+                    'TypeId'=>'2',
+                    'SurveyId' =>'1'
+                ]);
+
+         DB::table('question')->insert([
+                    'QuestionText' => 'Rating question2',
+                    'IsRequired' => '1',
+                    'TypeId'=>'2',
+                    'SurveyId' =>'1'
+                ]);
+
+        DB::table('question')->insert([
+                    'QuestionText' => 'text based question',
+                    'IsRequired' => '1',
+                    'TypeId'=>'3',
+                    'SurveyId' =>'1'
+                ]);
+
+        DB::table('question')->insert([
+                    'QuestionText' => 'another',
+                    'IsRequired' => '1',
+                    'TypeId'=>'3',
+                    'SurveyId' =>'1'
+                ]);
         
 
         
