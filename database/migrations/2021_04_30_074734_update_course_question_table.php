@@ -17,7 +17,7 @@ class UpdateCourseQuestionTable extends Migration
             $table->unsignedBigInteger('SurveyId');
             $table->unsignedBigInteger('TypeId');
             $table->foreign('SurveyId')->references('id')->on('survey');
-            $table->foreign('TypeId')->references('id')->on('survey_type');    
+            $table->foreign('TypeId')->references('id')->on('question_type');    
         });
     }
 

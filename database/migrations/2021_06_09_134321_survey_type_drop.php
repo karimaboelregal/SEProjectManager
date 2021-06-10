@@ -14,11 +14,11 @@ class SurveyTypeDrop extends Migration
     public function up()
     {
         //
-        Schema::table('question', function (Blueprint $table) {
+        /*Schema::table('question', function (Blueprint $table) {
             $table->dropForeign(['TypeId']);
             $table->dropColumn('TypeId');
         });
-        Schema::dropIfExists('survey_type');
+        Schema::dropIfExists('survey_type');*/
     }
 
     /**

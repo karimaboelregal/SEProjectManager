@@ -13,7 +13,7 @@ class CreateSurveyTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('survey_type', function (Blueprint $table) {
+        Schema::create('question_type', function (Blueprint $table) {
             $table->id();
             $table->string('name','100');
             $table->timestamps();
