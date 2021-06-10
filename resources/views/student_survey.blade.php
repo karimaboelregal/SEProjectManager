@@ -7,7 +7,9 @@
 
 <link rel="stylesheet" href="{{ asset('css/bootstrap-material-design.min.css')}}" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous" />
 
-<h2 Style="margin-top:5%;"></h2>
+<h2 Style="margin-top:5%;">{{$surveyObj[0]['SurveyName']}}</h2>
+
+
 
 
 
@@ -48,8 +50,8 @@
 </style>
 
 <script>
-    survey =  @json($surveyObj) ;
-    console.log(survey);
+    surveyId = {{$surveyObj[0]['id']}}
+
 
 </script>
 
@@ -82,6 +84,8 @@ var json = {
                 type: "matrix",
                 name: "Quality",
                 title: "Please indicate if you agree or disagree with the following statements",
+                isRequired:true,
+
                 columns: [
                     {value: 1,text: "Strongly Disagree"}, 
                     {value: 2,text: "Disagree"}, 
@@ -93,6 +97,7 @@ var json = {
                     @foreach($surveyObj as $survey)
                         @if($survey['typeName'] == 'matrix')
                             {value: "{{$survey['questionId']}}",text: "{{$survey['QuestionText']}}"},
+
 
                         @endif
 
@@ -116,7 +121,7 @@ var json = {
 
                     type: "rating",
                     name: "{{$survey['questionId']}}",
-
+                    isRequired:true,
                     title: "{{$survey['QuestionText']}}",
                 }, //second question end
                 @endif
@@ -135,7 +140,9 @@ var json = {
                     {
                         type: "comment",
                         name: "{{$survey['questionId']}}",
-                        title: "{{$survey['QuestionText']}}"
+                        title: "{{$survey['QuestionText']}}",
+                        isRequired:true
+
                     },
 
                     @endif
@@ -154,9 +161,22 @@ var json = {
 window.survey = new Survey.Model(json);
 
 survey.onComplete.add(function (result) {
+
+ref = document.createElement("a");
+var linkText = document.createTextNode("Back to Course");
+ref.appendChild(linkText);
+ref.href =document.referrer;
+ref.title = "Back to course";
+
 document
     .querySelector('#surveyResult')
-    .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+    .appendChild(ref);
+
+
+
+
+
+
 
     $.ajaxSetup({
     headers: {
@@ -168,9 +188,11 @@ document
     jQuery.ajax({
         url: "{{ route('InsertAnswer') }}",
         method: 'post',
-        data: {data:result.data},
+        data: {data:result.data,surveyId:surveyId},
+
     success: function(result2){
-         console.log(result2);
+        console.log(result2);
+
     },
     error:function(){
         alert("error");

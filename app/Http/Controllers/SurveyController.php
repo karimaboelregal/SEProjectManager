@@ -12,8 +12,45 @@ class SurveyController extends Controller
 
 
     public function InsertAnswer(Request $request){
-        return response()->json(['success'=>'Data is successfully added']);
+        
+        $data = $request->data;
+        $quality = array();
+        $surveyId = $request->surveyId;
+        if(isset($data['Quality']))
+            $quality = $data['Quality'];
 
+        $result = "";
+       
+        
+    //key is question id value is the answer 
+        foreach($data as $key => $value)
+        {
+            if(!is_array($value))
+            {
+                
+                DB::table('survey_answer')->insert([
+                    'Answer'=>$value,
+                    'SurveyId' =>$surveyId,
+                    'StudentId'=>1,
+                    'QuestionId'=>$key
+                    
+                ]);
+            }
+        }
+
+        foreach($quality as $key => $value)
+        {
+            DB::table('survey_answer')->insert([
+                    'Answer'=>$value,
+                    'SurveyId' =>$surveyId,
+                    'StudentId'=>1,
+                    'QuestionId'=>$key
+                    
+                ]);
+        }
+    
+        
+        return response()->json($result);
     }
     public function ViewSurvey(Request $request,$id=1){
 
