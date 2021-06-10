@@ -86,7 +86,6 @@ element.classList.add("show");
 </table>
 </div>
 </div>
-
 <script>
 $.noConflict();
 jQuery( document ).ready(function( $ ) {

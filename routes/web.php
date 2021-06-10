@@ -5,6 +5,8 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\loginControl;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +19,12 @@ use App\Http\Controllers\SurveyController;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
+
+
 Route::get('/home', function () {
     return view('home');
 });
@@ -99,9 +100,5 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
-Auth::routes();
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//showing errors uncommenting for now
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
