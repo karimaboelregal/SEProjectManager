@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
+
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\loginControl;
+
 
 
 /*
@@ -19,12 +22,18 @@ use App\Http\Controllers\loginControl;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
 
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 
 
+=======
+Route::get('/', function () {
+    return redirect(route('login'));
+});
+>>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6
 Route::get('/home', function () {
     return view('home');
 });
@@ -32,9 +41,21 @@ Route::get('/home', function () {
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
+
+Route::get('/home', [HomeController::class,'index'])->name('home');
+
+Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('createNewTask');
+
+Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
+
+Route::get('/users', function () {
+    return view('users');
+});
+
 Route::get('/projectstate', function () {
     return view('projectstate');
 });
+
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
@@ -100,5 +121,13 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
+<<<<<<< HEAD
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
+Auth::routes();
+
+
+Auth::routes();
+
+>>>>>>> 2b0b93c956745a759a9b65f8982ebe10d0f719e6

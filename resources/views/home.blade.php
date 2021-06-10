@@ -67,7 +67,7 @@ element.classList.add("show");
                   <div class="card card-red-shade1">
                     <div class="card-body">
                       <p class="mb-4">Number of Students</p>
-                      <p class="fs-30 mb-2">4006</p>
+                      <p class="fs-30 mb-2">{{$TotalStudents}}</p>
                     </div>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ element.classList.add("show");
                   <div class="card card-red-shade2">
                     <div class="card-body">
                       <p class="mb-4">Number of projects</p>
-                      <p class="fs-30 mb-2">61344</p>
+                      <p class="fs-30 mb-2">{{$TotalProjects}}</p>
                     </div>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ element.classList.add("show");
                   <div class="card card-red-shade3">
                     <div class="card-body">
                       <p class="mb-4">Number of courses</p>
-                      <p class="fs-30 mb-2">34040</p>
+                      <p class="fs-30 mb-2">{{$TotalCourses}}</p>
                     </div>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ element.classList.add("show");
                   <div class="card card-red-shade4">
                     <div class="card-body">
                       <p class="mb-4">Number of professors</p>
-                      <p class="fs-30 mb-2">47033</p>
+                      <p class="fs-30 mb-2">{{$TotalProffesors}}</p>
                     </div>
                   </div>
                 </div>
@@ -130,55 +130,33 @@ element.classList.add("show");
 									<h4 class="card-title">To Do Lists</h4>
 									<div class="list-wrapper pt-2">
 										<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-											<li>
+                    <form action="{{route('UpdateTask')}}" method="post" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                    @foreach ($TODO_List as $Todo)
+											<li class="complete">
 												<div class="form-check form-check-flat">
 													<label class="form-check-label">
-														<input class="checkbox" type="checkbox">
-														Meeting with Team 4
+                            <input type="hidden" name="id" value="{{$Todo->id}}">
+														<input class="checkbox" value="{{$Todo->id}}" name="Todo[]" type="checkbox">
+														{{$Todo->TODO_Description}}
 													</label>
 												</div>
 												<i class="remove ti-close"></i>
 											</li>
-											<li class="completed">
-												<div class="form-check form-check-flat">
-													<label class="form-check-label">
-														<input class="checkbox" type="checkbox" checked>
-														send documents to students
-													</label>
-												</div>
-												<i class="remove ti-close"></i>
-											</li>
-											<li>
-												<div class="form-check form-check-flat">
-													<label class="form-check-label">
-														<input class="checkbox" type="checkbox">
-														Upload forms
-													</label>
-												</div>
-												<i class="remove ti-close"></i>
-											</li>
-											<li class="completed">
-												<div class="form-check form-check-flat">
-													<label class="form-check-label">
-														<input class="checkbox" type="checkbox" checked>
-														Check with team leaders
-													</label>
-												</div>
-												<i class="remove ti-close"></i>
-											</li>
-											<li>
-												<div class="form-check form-check-flat">
-													<label class="form-check-label">
-														<input class="checkbox" type="checkbox">
-														Upload lectures
-													</label>
-												</div>
-												<i class="remove ti-close"></i>
-											</li>
+                      @endforeach
 										</ul>
                   </div>
                   <div class="add-items d-flex mb-0 mt-2">
-										<button class="btn btn-danger"></i>Add new task</button>
+                  <div class="col-md-4">
+                    <input type="submit" class="btn btn-success" value="Update List">
+                  </form>
+                  </div>
+                  <div class="col-md-5">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#HistoryModal"></i>Weekly history</button>
+                  </div>
+                  <div class="col-md-6">
+                  <button class="btn btn-danger" data-toggle="modal" data-target="#TaskModal"></i>Add new task</button>
+                  </div>
 									</div>
 								</div>
 							</div>
@@ -193,13 +171,103 @@ element.classList.add("show");
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="TaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add new task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{route('createNewTask')}}" method="post">
+          <div class="modal-body">
+                  {{csrf_field()}}
+                  <div class="form-group"><label for="name" class=" form-control-label">Task Description</label>
+                      <input type="text" id="Taskname" name="TaskName" placeholder="Enter Task" class="form-control">
+                  </div>
+           </div>
+          <div class="modal-footer">
+            <div class="form-group">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+                <button class="btn btn-outline" type="submit" value="submit">submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal update-->
+<div class="modal fade" id="TaskModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Update tasks</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+              Are You sure you want to remove done tasks ?
+           </div>
+          <div class="modal-footer">
+            <div class="form-group">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+                <button class="btn btn-outline" type="submit" value="submit">submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="HistoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Weekly done tasks</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="card-body">
+									<h4 class="card-title">Done To Do Lists</h4>
+									<div class="list-wrapper pt-2">
+										<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                    @foreach ($Done_List as $Done)
+											<li class="complete">
+												<div class="form-check form-check-flat">
+													<label class="form-check-label">
+														{{$Done->TODO_Description}}
+													</label>
+												</div>
+												<i class="remove ti-close"></i>
+											</li>
+                      @endforeach
+										</ul>
+                  </div>
+           </div>
+          <div class="modal-footer">
+            <div class="form-group">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
 </body>
 
 <?php
   $months = array();
   $sales = array();
   for( $m = 1; $m <= 12; $m++ ) {
-    array_push($sales, round(100, 2));
+    array_push($sales, round(10, 1));
     $num = str_pad( $m, 2, 0, STR_PAD_LEFT );
     $month =  date('M', mktime(0, 0, 0, $m, 1));
     array_push($months, $month);
@@ -209,61 +277,62 @@ element.classList.add("show");
   $sales = json_encode($sales);
 
 ?>
-<!-- End Chart Data -->
+<!-- End Chart Data and checkbox-->
 <script>
-$(function(){
-  var barChartCanvas = $('#barChart').get(0).getContext('2d')
-  var barChart = new Chart(barChartCanvas)
-  var barChartData = {
-    labels  : <?php echo $months; ?>,
-    datasets: [
-      {
-        label               : 'Students',
-        fillColor           : 'rgba(193,12,12,0.9)',
-        strokeColor : 'rgba(193,12,12,0.9)',
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : <?php echo $sales; ?>
-      }
-    ]
-  }
-  //barChartData.datasets[1].fillColor   = '#00a65a'
-  //barChartData.datasets[1].strokeColor = '#00a65a'
-  //barChartData.datasets[1].pointColor  = '#00a65a'
-  var barChartOptions                  = {
-    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero        : true,
-    //Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines      : true,
-    //String - Colour of the grid lines
-    scaleGridLineColor      : 'rgba(0,0,0,.05)',
-    //Number - Width of the grid lines
-    scaleGridLineWidth      : 1,
-    //Boolean - Whether to show horizontal lines (except X axis)
-    scaleShowHorizontalLines: true,
-    //Boolean - Whether to show vertical lines (except Y axis)
-    scaleShowVerticalLines  : true,
-    //Boolean - If there is a stroke on each bar
-    barShowStroke           : true,
-    //Number - Pixel width of the bar stroke
-    barStrokeWidth          : 2,
-    //Number - Spacing between each of the X value sets
-    barValueSpacing         : 5,
-    //Number - Spacing between data sets within X values
-    barDatasetSpacing       : 1,
-    //String - A legend template
-    legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-    //Boolean - whether to make the chart responsive
-    responsive              : true,
-    maintainAspectRatio     : true
-  }
+  $(function(){
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChart = new Chart(barChartCanvas)
+    var barChartData = {
+      labels  : <?php echo $months; ?>,
+      datasets: [
+        {
+          label               : 'Students',
+          fillColor           : 'rgba(193,12,12,0.9)',
+          strokeColor         : 'rgba(193,12,12,0.9)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : <?php echo $sales; ?>
+        }
+      ]
+    }
+    //barChartData.datasets[1].fillColor   = '#00a65a'
+    //barChartData.datasets[1].strokeColor = '#00a65a'
+    //barChartData.datasets[1].pointColor  = '#00a65a'
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
 
-  barChartOptions.datasetFill = false
-  var myChart = barChart.Bar(barChartData, barChartOptions)
-  document.getElementById('legend').innerHTML = myChart.generateLegend();
-});
+    barChartOptions.datasetFill = false
+    var myChart = barChart.Bar(barChartData, barChartOptions)
+    document.getElementById('legend').innerHTML = myChart.generateLegend();
+  });
+
 </script>
 
 @endsection
