@@ -13,13 +13,13 @@ class CreateQuestionTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_type', function (Blueprint $table) {
+        /*Schema::create('question_type', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('QuestionId');
             $table->string('choiceText','100');
             $table->foreign('QuestionId')->references('id')->on('question');
             $table->timestamps();
-        });
+        });*/
 
     }
 
