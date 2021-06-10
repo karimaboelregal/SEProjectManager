@@ -16,6 +16,7 @@
     <script src="{{ asset('js/Chart.js') }}"></script>
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/verticalstyle.css') }}" rel="stylesheet">     
+
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css">
     
 
@@ -81,6 +82,7 @@ div.dataTables_filter input {
 }
 div.dataTables_filter input:focus {
     outline: none !important;
+    box-shadow:none;
     background:linear-gradient(#C63E47,#C63E47) bottom no-repeat;
     background-size:100% 1px;
 }
@@ -127,6 +129,19 @@ background-color:#C63E47 !important;
 .dataTable > thead > tr > th[class*="sort"]:before,
 .dataTable > thead > tr > th[class*="sort"]:after {
     content: "" !important;
+}
+.page-item .page-link{
+    color: black !important;
+}
+.page-item.active .page-link {
+    background:#C63E47 !important;
+    border:none;
+    outline: none !important;
+}
+.page-item:active .page-link {
+    background:#C63E47 !important;
+    border:none;
+    outline: none !important;
 }
 
 </style>

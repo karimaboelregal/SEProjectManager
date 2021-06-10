@@ -67,20 +67,21 @@ element.classList.add("show");
     <tbody class="text-center">
         <tr>
             @foreach ($users as $user)
-            @echo $user->Email;
-            @endforeach
+            
             <th height=150 width=150 scope="row">
                 <div class="custom-control form-control-lg custom-checkbox">  
                     <input type="checkbox" class="custom-control-input" id="customCheck2">  
                     <label  class="custom-control-label" for="customCheck2" style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
                 </div>  
             </th>
-            <td class="align-middle">Jacob</td>
-            <td class="align-middle">Thornton</td>
-            <td class="align-middle">@fat</td>
-            <td class="align-middle">Professor</td>
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
+            <input name="userid" value={{$user->id}} type="hidden">
+            <td class="align-middle">{{$user->Surname}}</td>
+            <td class="align-middle">{{$user->Email}};</td>
+            <td class="align-middle">w/e</td>
+            <td class="align-middle">{{$user->Name}}</td>
+            <td class="align-middle"> <button class="btn btn-outline" onclick="window.location.href='edituser/{{$user->id}}'">edit</button></td>
         </tr>
+        @endforeach
 </tbody>
 </table>
 </div>

@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
 Route::get('/projectstate', function () {
     return view('projectstate');
@@ -57,10 +58,6 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
-
-Route::get('/edituser', function () {
-    return view('edituser');
-});
 
 Route::get('/student_home', function () {
     return view('student_home');

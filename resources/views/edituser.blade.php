@@ -10,18 +10,22 @@ element.classList.add("show");
                         <div class="card w-50">
                             <div class="card-header" style="background-color:#C63E47;color:White"><strong>Edit user</strong><small> Form</small></div>
                             <div class="card-body card-block">
-                            <form action="{{route('createNewProject')}}" method="post">
+                            <form action="" method="post">
                                         {{csrf_field()}}
                                         <div class="form-group"><label for="name" class=" form-control-label">Name</label>
-                                            <input type="text" id="project_title" name="project_title" placeholder="karim mohamed" class="form-control"></div>
+                                            <input type="text" id="project_title" name="project_title" placeholder={{$users[0]->Surname}} class="form-control"></div>
                                         <div class="form-group"><label for="description" class=" form-control-label">Email</label>
-                                            <input type="text" id="desc" name="description" placeholder="karim@gmail.com" class="form-control"></div>
+                                            <input type="text" id="desc" name="description" placeholder={{$users[0]->Email}} class="form-control"></div>
                                         <div class="form-group">
                                         <label for="code" class=" form-control-label">Select Role</label>
                                             <select class="form-control" name="team_id">
-                                                <option>Admin</option>
-                                                <option>Professor</option>
-                                                <option>Student</option>
+                                            @foreach ($roles as $role)
+                                                @if ($role->id ==  $users[0]->id) 
+                                                    <option selected>{{$role->Name}}</option>
+                                                @else
+                                                    <option>{{$role->Name}}</option>
+                                                @endif
+                                            @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
