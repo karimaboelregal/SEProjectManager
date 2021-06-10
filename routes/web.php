@@ -29,6 +29,10 @@ Route::get('/users', function () {
 Route::get('/projectstate', function () {
     return view('projectstate');
 });
+
+Route::get('/surveybuild', function () {
+    return view('surveybuild');
+});
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
