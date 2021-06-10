@@ -2,23 +2,36 @@
 @section('content')
 
     
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 
 <link rel="stylesheet" href="{{ asset('css/bootstrap-material-design.min.css')}}" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous" />
 
 <h2 Style="margin-top:5%;"></h2>
 
-{{getType(array_search("matrix",array_column($surveyObj,'typeName'),true))}}
 
 
 
 <style>
 
-    .radio label input[type=radio]:checked~.bmd-radio:before,
-    label.radio-inline input[type=radio]:checked~.bmd-radio:before {
-    background-color: #C63E47;
-
-    transform: scale3d(.5,.5,1);
+    input[type=radio] {
+        background-color: #C63E47 !important;
+        color:#C63E47 !important;
+    
+        transform: scale3d(.5,.5,1);
     }
+    
+    .sv_qstn label.sv_q_m_label {
+    position: absolute;
+    margin: 0px;
+    display: block;
+    width: 50%;
+    }
+
+
+   
+ 
+
 
     .sv_main.sv_main.sv_bootstrapmaterial_css .btn-default.active {
     background-color: #C63E47;
@@ -140,12 +153,33 @@ var json = {
 
 window.survey = new Survey.Model(json);
 
-survey
-.onComplete
-.add(function (result) {
+survey.onComplete.add(function (result) {
 document
-.querySelector('#surveyResult')
-.textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+    .querySelector('#surveyResult')
+    .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+
+    jQuery.ajax({
+        url: "{{ route('InsertAnswer') }}",
+        method: 'post',
+        data: {data:result.data},
+    success: function(result2){
+         console.log(result2);
+    },
+    error:function(){
+        alert("error");
+    }
+    
+    
+    });
+
+
 });
 
 $("#surveyElement").Survey({model: survey});

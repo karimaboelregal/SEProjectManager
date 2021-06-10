@@ -10,13 +10,14 @@ class SurveyController extends Controller
 {
     //
 
+
+    public function InsertAnswer(Request $request){
+        return response()->json(['success'=>'Data is successfully added']);
+
+    }
     public function ViewSurvey(Request $request,$id=1){
 
         DB::enableQueryLog(); // Enable query log
-
-        
-
-
         $surveyObj = DB::select("select s.id,s.SurveyName,q.QuestionText,q.id as questionId,qt.name as typeName
         FROM survey s
         JOIN question q
