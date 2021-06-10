@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
+
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +20,8 @@ use App\Http\Controllers\SurveyController;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/', function () {
-    return view('home');
+    return redirect(route('login'));
 });
 Route::get('/home', function () {
     return view('home');
@@ -31,9 +30,21 @@ Route::get('/home', function () {
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
+
+Route::get('/home', [HomeController::class,'index'])->name('home');
+
+Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('createNewTask');
+
+Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
+
+Route::get('/users', function () {
+    return view('users');
+});
+
 Route::get('/projectstate', function () {
     return view('projectstate');
 });
+
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
@@ -104,4 +115,3 @@ Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
