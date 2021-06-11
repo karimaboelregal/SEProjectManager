@@ -10,7 +10,7 @@ class loginControl extends Controller {
     public function doLogin(Request $request){
         $email = $request->input('Email');
         $password = $request->input('password');
-        $user = DB::table('users')->where('Email',$email)->join('role', 'role.id', '=', 'users.RoleId')->where('Password', $password)->get();
+        $user = DB::table('users')->select('users.id as userid','role.Name','users.Surname','Email','Password','RoleId')->where('Email',$email)->join('role', 'role.id', '=', 'users.RoleId')->where('Password', $password)->get();
         if ($user->isEmpty()) {
             return view('login', [
                 'errorMessage' => 'error too long']);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTeamTable extends Migration
+class CreateInvitationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class UpdateTeamTable extends Migration
      */
     public function up()
     {
-        Schema::table('team', function (Blueprint $table) {
-            $table->string('Name');
-            $table->unsignedBigInteger('LeaderId');
-            $table->unsignedBigInteger('CourseId');
-            $table->foreign('LeaderId')->references('id')->on('users');  
+        Schema::create('invitations', function (Blueprint $table) {
+            $table->id();
+            $table->boolean('Status');
+            $table->integer('Invitor');
+            $table->integer('Invited');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class UpdateTeamTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('invitations');
     }
 }

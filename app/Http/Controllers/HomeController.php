@@ -29,9 +29,9 @@ class HomeController extends Controller
         $projects = DB::table('project')->get();
         $professors = DB::table('users')->where('RoleId',1)->get();
         $students = DB::table('users')->where('RoleId',3)->get();
-        $TODO_List = DB::table('user_todo')->where('Active',1)->get();
-        $TODO_List = DB::table('user_todo')->get();
-        $Done_List = DB::table('user_todo')->where('Active',0)->get();
+        $userid = \Session::get('userData')->userid;
+        $TODO_List = DB::table('user_todo')->where('Active',1)->where('UserId',$userid)->get();
+        $Done_List = DB::table('user_todo')->where('Active',0)->where('UserId',$userid)->get();
         $TotalCourses = $courses->count();
         $TotalProjects = $projects->count();
         $TotalProffesors = $professors->count();
@@ -43,7 +43,7 @@ class HomeController extends Controller
 
         $task = $request->input('TaskName');
         $active = 1;
-        $userid = 1;
+        $userid = \Session::get('userData')->userid;
 
         DB::table('user_todo')->insert([
             'UserId' =>$userid,

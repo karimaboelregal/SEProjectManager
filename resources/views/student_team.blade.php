@@ -25,35 +25,25 @@
                 <tr class="text-center" style="background-color: #C63E47; color:white;">
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Courses</th>
+                    <th scope="col">Course</th>
                     <th scope="col"><i class="fa fa-mouse-pointer"></i></i></th>
                 </tr>
             </thead>
             <tbody class="text-center">
+            @foreach ($teams as $team)
                 <tr>
-                    <td class="align-middle">1</td>
-                    <td class="align-middle" ><a href="student_project">School system</a></td>
-                    <td class="align-middle">SE,HCI</td>
+                    <td class="align-middle">{{$team->id}}</td>
+                    <td class="align-middle" ><a href="student_project">{{$team->teamName}}</a></td>
+                    <td class="align-middle">{{$team->Name}}</td>
                     <td class="align-middle"> 
-                        <button type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>
-
-
-
-
-
-                    
+                        <button type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
                     </td>
                 </tr>
-               
+                @endforeach
             </tbody>
         </table>
     </div>
     <div style="margin-top:30px; margin-left: 60px;" class="row text-center">
-
-        <button class="btn btn-outline"><
-            </button>
-                <h6 style="margin-top:10px;" class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
-                <button class="btn btn-outline">></button>
 
     </div>
 </div>
