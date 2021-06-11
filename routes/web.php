@@ -8,6 +8,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\loginControl;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\InvitationController;
 
 
 
@@ -42,6 +44,7 @@ Route::get('/users', function () {
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
+Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
 
 Route::get('/home', [HomeController::class,'index'])->name('home');
 
@@ -105,10 +108,6 @@ Route::get('/course', function () {
 
 Route::get('/student_profile', function () {
     return view('student_profile');
-});
-
-Route::get('/student_team', function () {
-    return view('student_team');
 });
 
 Route::get('/student_course', function () {

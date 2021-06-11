@@ -19,7 +19,7 @@ class UpdateCoursesTable extends Migration
             $table->unsignedBigInteger('TaskId')->nullable();
             $table->foreign('SurveyId')->references('id')->on('survey');
             $table->foreign('InstructorId')->references('id')->on('users');
-            $table->foreign('TaskId')->references('id')->on('submission');    
+            $table->foreign('TaskId')->references('id')->on('submission');
         });
     }
 
