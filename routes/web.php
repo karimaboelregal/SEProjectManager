@@ -54,10 +54,15 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+Route::get('/surveys', function () {
+    return view('surveys');
+});
+Route::get('/surveys', [SurveyController::class,'index'])->name('index');
 
 Route::get('/surveybuild', function () {
     return view('surveybuild');
 });
+
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');

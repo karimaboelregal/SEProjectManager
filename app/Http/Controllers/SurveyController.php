@@ -11,7 +11,10 @@ class SurveyController extends Controller
 {
     //
 
-
+    public function index(){     
+        $surveys = Survey::all();
+        return view ('surveys',['surveys'=>$surveys]);
+    }
     public function InsertAnswer(Request $request){
         
         $data = $request->data;
