@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Survey;
+use App\Models\Question;
 class SurveyController extends Controller
 {
     //
@@ -26,8 +27,7 @@ class SurveyController extends Controller
         foreach($data as $key => $value)
         {
             if(!is_array($value))
-            {
-                
+            {                
                 DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
@@ -51,6 +51,33 @@ class SurveyController extends Controller
     
         
         return response()->json($result);
+    }
+
+    public function InsertSurvey(Request $request)
+    {
+        $survey = $request->input();
+        //dd($survey);
+        $surveyModel = new Survey();
+        
+        $surveyModel->SurveyName = $survey['title'];
+        $surveyModel->CourseId = 1;
+        $surveyModel->save();
+        $lastId = $surveyModel->id;
+        //dd($surveyModel->id);
+        
+
+        
+        for($i = 0; $i < count($survey['type']); $i++)
+        {
+            $question = new Question();
+            $question->IsRequired = 1;
+            $question->SurveyId = $lastId;
+            $question->TypeId = $survey['type'][$i];
+            $question->QuestionText = $survey['questiontitle'][$i];
+            $question->save();
+        }
+        return \redirect('/home');; 
+        
     }
     public function ViewSurvey(Request $request,$id=1){
 

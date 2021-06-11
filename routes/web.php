@@ -92,6 +92,8 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
+Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
+
 Route::get('/student_home', function () {
     return view('student_home');
 });
