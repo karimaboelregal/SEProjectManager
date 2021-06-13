@@ -59,7 +59,7 @@ Route::get('/projectstate', function () {
 Route::get('/surveys', function () {
     return view('surveys');
 });
-Route::get('/surveys', [SurveyController::class,'index'])->name('index');
+Route::get('/surveys/{id}', [SurveyController::class,'SurveyFromCourse'])->name('SurveyFromCourse');
 
 Route::get('/surveybuild', function () {
     return view('surveybuild');

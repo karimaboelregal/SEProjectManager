@@ -11,14 +11,58 @@ class SurveyController extends Controller
 {
     //
 
-    public function index(){     
-        $surveys = Survey::all();
+    public function SurveyFromCourse($id){  
+          
+        $surveys = Survey::where('CourseId',$id)->get();
         return view ('surveys',['surveys'=>$surveys]);
     }
 
-    public function ViewSurveyInsights()
+    public function ViewSurveyInsights($id)
     {
-        dd('test');
+
+        
+        DB::enableQueryLog(); // Enable query log
+        /*$surveyObj = DB::select("SELECT s.SurveyName ,q.QuestionText,
+        q.IsRequired,q.id as questionId,
+        GROUP_CONCAT(sa.Answer SEPARATOR ',') as answers,
+       GROUP_CONCAT(u.Surname SEPARATOR ',') as names,
+        GROUP_CONCAT(u.id SEPARATOR ',') as studentId
+            FROM question q
+            JOIN survey s
+            ON s.id = q.SurveyId
+            JOIN survey_answer sa
+            ON sa.QuestionId = q.id
+            JOIN users u
+            ON u.Id = sa.StudentId
+            WHERE s.id= {$id}
+            GROUP BY q.id,s.SurveyName,q.QuestionText,q.IsRequired");*/
+
+        $surveyObj = DB::select("SELECT s.SurveyName ,q.QuestionText,
+        q.IsRequired,q.id as questionId,qt.name as typename
+            FROM question q
+            JOIN survey s
+            ON s.id = q.SurveyId
+            JOIN question_type qt
+            ON qt.id = q.TypeId
+            WHERE s.id= {$id}");
+        
+        $surveys = json_decode(json_encode($surveyObj), true);
+        
+        for($i= 0;$i<count($surveys);$i++)
+        {
+            $surveyans = DB::select("SELECT sa.Answer,u.Surname,u.id as userid
+            FROM survey_answer sa
+            JOIN users u
+            ON u.id = sa.StudentId
+            WHERE sa.QuestionId= {$surveys[$i]['questionId']}");
+            $answers = json_decode(json_encode($surveyans), true);
+            $surveys[$i]['answer'] = $answers;
+            
+        }
+        //dd(\Session::get('userData')->userid);
+        return view('surveyinsights',['surveys'=>$surveys]);
+
+        
     }
     public function InsertAnswer(Request $request){
         
@@ -39,7 +83,7 @@ class SurveyController extends Controller
                 DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
-                    'StudentId'=>1,
+                    'StudentId'=>\Session::get('userData')->userid,
                     'QuestionId'=>$key
                     
                 ]);
@@ -51,7 +95,7 @@ class SurveyController extends Controller
             DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
-                    'StudentId'=>1,
+                    'StudentId'=>\Session::get('userData')->userid,
                     'QuestionId'=>$key
                     
                 ]);
@@ -63,6 +107,7 @@ class SurveyController extends Controller
 
     public function InsertSurvey(Request $request)
     {
+        //model here
         $survey = $request->input();
         //dd($survey);
         $surveyModel = new Survey();
@@ -100,15 +145,6 @@ class SurveyController extends Controller
         ");
 
         $surveys = json_decode(json_encode($surveyObj), true);
-
-        
-        /*DB::table('survey')
-        ->join("question","survey.id","=","question.SurveyId")
-        ->join("question_type","question_type.id","=","question.TypeId")
-        ->select("survey.id","survey.SurveyName","question.QuestionText","question_type.name")
-        ->where('survey.id',$id)->get();*/
-
-        //dd(DB::getQueryLog()); // Show results of log
         
         return view('student_survey',['surveyObj'=>$surveys]);
 
