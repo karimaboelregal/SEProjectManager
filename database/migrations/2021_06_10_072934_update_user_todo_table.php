@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCourseQuestionTable extends Migration
+class UpdateUserTodoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class UpdateCourseQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::table('question', function (Blueprint $table) {
-            $table->unsignedBigInteger('SurveyId');
-            $table->unsignedBigInteger('TypeId');
-            $table->foreign('SurveyId')->references('id')->on('survey');
-            $table->foreign('TypeId')->references('id')->on('question_type');    
+        Schema::table('user_todo', function (Blueprint $table) {
+            $table->unsignedBigInteger('UserId')->nullable();
+            $table->foreign('UserId')->references('id')->on('users'); 
         });
     }
 

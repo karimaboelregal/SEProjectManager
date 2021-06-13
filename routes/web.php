@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
 
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\loginControl;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\InvitationController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,22 +24,56 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 
-Route::get('/', function () {
+
+Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
+Route::get('/logout', [loginControl::class,'logout'])->name('logout');
+
+
+
+Route::get('/home', function () {
     return view('home');
 });
+
+
 Route::get('/users', function () {
     return view('users');
 });
+
+Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
+
+Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
+
+Route::get('/home', [HomeController::class,'index'])->name('home');
+
+Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('createNewTask');
+
+Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
+
+
 Route::get('/projectstate', function () {
     return view('projectstate');
 });
+
+Route::get('/surveys', function () {
+    return view('surveys');
+});
+Route::get('/surveys', [SurveyController::class,'index'])->name('index');
+
+Route::get('/surveybuild', function () {
+    return view('surveybuild');
+});
+
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
+Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
+
+//Route::view('/InsertAnswer', 'InsertAnswer');
+Route::get('InsertAnswer',[SurveyController::class,'InsertAnswer']);
+Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('InsertAnswer');
 
 Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm') ;
 
@@ -57,9 +100,7 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
-Route::get('/edituser', function () {
-    return view('edituser');
-});
+Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
 Route::get('/student_home', function () {
     return view('student_home');
@@ -76,10 +117,6 @@ Route::get('/student_profile', function () {
     return view('student_profile');
 });
 
-Route::get('/student_team', function () {
-    return view('student_team');
-});
-
 Route::get('/student_course', function () {
     return view('student_course');
 });
@@ -92,9 +129,5 @@ Route::get('/student_survey', function () {
     return view('student_survey');
 });
 
-Auth::routes();
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//showing errors uncommenting for now
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

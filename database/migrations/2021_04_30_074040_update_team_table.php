@@ -14,8 +14,10 @@ class UpdateTeamTable extends Migration
     public function up()
     {
         Schema::table('team', function (Blueprint $table) {
+            $table->string('Name');
             $table->unsignedBigInteger('LeaderId');
-            $table->foreign('LeaderId')->references('id')->on('users');    
+            $table->unsignedBigInteger('CourseId');
+            $table->foreign('LeaderId')->references('id')->on('users');  
         });
     }
 

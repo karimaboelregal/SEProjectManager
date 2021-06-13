@@ -16,10 +16,16 @@ class CoursesController extends Controller
         return view ('courses',['courses'=>$courses]);
     }
 
-    public function ViewCourse(Request $request,$id){
+    public function ViewCourse(Request $request,$id=1){
 
-        $course = DB::table('courses')->where('id',$id)->get();
-        return view('course',['course'=>$course]);
+        $courseObj = DB::table('courses')->where('courses.id',$id)->get();
+        $surveysObj = DB::table('survey')
+        ->join('courses','courses.id','=','survey.CourseId')
+        ->select('survey.id','survey.SurveyName')
+        ->get();
+
+        $courseInfo = array("courseObj"=>$courseObj,"surveysObj"=> $surveysObj);
+        return view('course',['courseInfo'=>$courseInfo]);
  
  
      }

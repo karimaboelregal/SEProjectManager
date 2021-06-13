@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TeamSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,11 +14,12 @@ class TeamSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('team')->insert([
-            'Name' => 'School System',
-            'MembersId' => '1,2,3,4',
-            'LeaderId' => '3',
-            'CourseId' => '1'
+        //
+        DB::table('courses')->insert([
+            'Name' => 'SE',
+            'Description' => 'test test',
+            'Code' => '1',
+            'InstructorId' => '1'
         ]);
     }
 }

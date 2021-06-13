@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCourseQuestionTable extends Migration
+class SurveyAnswerDropResponseID extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class UpdateCourseQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::table('question', function (Blueprint $table) {
-            $table->unsignedBigInteger('SurveyId');
-            $table->unsignedBigInteger('TypeId');
-            $table->foreign('SurveyId')->references('id')->on('survey');
-            $table->foreign('TypeId')->references('id')->on('question_type');    
+        //
+        Schema::table('survey_answer', function (Blueprint $table) {
+            $table->dropForeign(['ResponseId']);
+            $table->dropColumn('ResponseId');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateCourseQuestionTable extends Migration
+class UpdateUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class UpdateCourseQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::table('question', function (Blueprint $table) {
-            $table->unsignedBigInteger('SurveyId');
-            $table->unsignedBigInteger('TypeId');
-            $table->foreign('SurveyId')->references('id')->on('survey');
-            $table->foreign('TypeId')->references('id')->on('question_type');    
+        //
+        Schema::table('users', function (Blueprint $table) {
+            
+            $table->string('GPA','10')->nullable();
+            $table->string('Skills','100')->nullable();
+            $table->string('Image','100')->nullable();
+            $table->string('Phone','100')->nullable();
+            
         });
     }
 
