@@ -84,4 +84,13 @@ class CoursesController extends Controller
  
  
      }
+     public function viewStudentCourses(){
+        $courses = DB::table('course_taken')
+        ->join('courses', 'courses.id', '=', 'course_taken.CourseId')
+        ->join('users', 'users.id', '=', 'courses.InstructorId')
+        ->select('courses.*', 'users.Surname as InstructorName')
+        ->where('course_taken.StudentId', '=', \Session::get("userData")->userid)
+        ->get();
+        return view ('student_home', ['courses'=>$courses]);
+    }
 }
