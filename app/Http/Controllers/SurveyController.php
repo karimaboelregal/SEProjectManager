@@ -52,11 +52,13 @@ class SurveyController extends Controller
             JOIN users u
             ON u.id = sa.StudentId
             WHERE sa.QuestionId= {$surveys[$i]['questionId']}");
-            $surveys[$i]['answer'] = $surveyans;
+            $answers = json_decode(json_encode($surveyans), true);
+
+            $surveys[$i]['answer'] = $answers;
             
         }
-        
-        return view('surveyinsights',['surveyObj'=>$surveys]);
+        //dd($surveys);
+        return view('surveyinsights',['surveys'=>$surveys]);
 
         
     }
