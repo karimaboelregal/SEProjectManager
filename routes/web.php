@@ -54,6 +54,10 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+Route::get('/', function () {
+    return view('login');
+});
+
 
 //surveys
 Route::get('/surveys', function () {
