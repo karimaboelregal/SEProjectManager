@@ -12,6 +12,10 @@ class ProjectController extends Controller
         $projects = DB::table('project')->get();
         return view ('projects',['projects'=>$projects]);
     }
+    public function showStudent(){
+        $projects = DB::table('project')->get();
+        return view ('student_projects',['projects'=>$projects]);
+    }
 
     public function ViewProject(Request $request,$id){
         $project = DB::table('project')->where('id',$id)->get();

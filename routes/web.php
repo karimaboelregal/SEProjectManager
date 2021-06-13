@@ -31,20 +31,17 @@ Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
 
-
-Route::get('/home', function () {
-    return view('home');
-});
-
-
 Route::get('/users', function () {
     return view('users');
 });
+
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
 Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
+
+Route::post('/AcceptInvitation', [TeamController::class,'AcceptInvitation'])->name('AcceptInvitation');
 
 Route::get('/home', [HomeController::class,'index'])->name('home');
 
@@ -57,25 +54,45 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+Route::get('/', function () {
+    return view('login');
+});
+
+
+//surveys
 Route::get('/surveys', function () {
     return view('surveys');
 });
-Route::get('/surveys', [SurveyController::class,'index'])->name('index');
+Route::get('/surveys/{id}', [SurveyController::class,'SurveyFromCourse'])->name('SurveyFromCourse');
 
 Route::get('/surveybuild', function () {
     return view('surveybuild');
 });
 
+Route::get('/student_survey', function () {
+    return view('student_survey');
+});
+
+
+Route::get('/surveyinsights', function () {
+    return view('surveyinsights');
+});
+
+Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
+Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
+Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
+
+
+
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
-Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
 
-//Route::view('/InsertAnswer', 'InsertAnswer');
+
 Route::get('InsertAnswer',[SurveyController::class,'InsertAnswer']);
 Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('InsertAnswer');
 
-Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm') ;
+Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
 
 Route::post('/createNewCourse', [CoursesController::class,'createNewCourse'])->name('createNewCourse');
 
@@ -86,6 +103,8 @@ Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])-
 Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
 
 Route::get('/projects', [ProjectController::class,'index'])->name('index');
+Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+
 
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
 
@@ -100,14 +119,9 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
-Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
-Route::get('/student_home', function () {
-    return view('student_home');
-});
-Route::get('/student_projects', function () {
-    return view('student_projects');
-});
+Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');
+
 
 Route::get('/course', function () {
     return view('course');
@@ -125,9 +139,7 @@ Route::get('/student_project', function () {
     return view('student_project');
 });
 
-Route::get('/student_survey', function () {
-    return view('student_survey');
-});
+
 
 //showing errors uncommenting for now
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

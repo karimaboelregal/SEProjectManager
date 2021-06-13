@@ -13,6 +13,7 @@ element.classList.add("show");
             <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>
     <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
+            <button onclick="location.href = '{{route('createProjectForm')}}'" style="width: 200px;"class="btn btn-outline">Create a new project</button>
             <div class="dropdown" style="margin-left: 5px;"">
   <button class="btn btn-secondary dropdown-toggle" id="yearText" style="background-color:#fff;color:black;"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     2021
@@ -38,73 +39,22 @@ element.classList.add("show");
     </div>
 
     <div style="margin-top:30px;max-width:100%;" class="row d-flex justify-content-center ">
+        @foreach ($projects as $project)
         <div class="turningButtonContainer" style="width:300px;height:220px;">
             <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">School system</span></div>
+                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">{{$project->ProjectTitle}}</span></div>
                 <div class="turnedButton" style="padding:0px;">
-                <p><p class="text-center" style="margin-top:-5px;">Project idea(brief)</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Its a system to manage school students to make it easier and faster</p><br>
-                <p class="text-center" style="margin-top:-25px;">Team members</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
-                <button style="padding:5px;margin-left:20px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
-                <button style="margin-left:175px;padding:5px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="view course contet"><i class="fas fa-eye" onclick="location.href = 'student_project'"></i></button>
+                <p><p class="text-center" style="margin-top:-5px;"><b>Project idea :</b></p>
+                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;height:40px;">{{$project->ProjectDesc}}</p><br>
+                <p class="text-center" style="margin-top:-25px;"><b>Team members:</b></p>
+                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; height:40px;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
+                <div class='row justify-content-center' style="margin-top:-20px;margin-left:-30px;">
+                <button onclick="location.href = '{{route('ViewProject',['id'=>$project->id])}}'" style="padding:5px;margin-left:20px;width:40px;height:35px;"class="btn btn-light norms" data-toggle="tooltip" title="view project content"><i class="fas fa-eye"></i></button>
+                </div>
                 </div>
             </div>
         </div>
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">School system</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                <p><p class="text-center" style="margin-top:-5px;">Project idea(brief)</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Its a system to manage school students to make it easier and faster</p><br>
-                <p class="text-center" style="margin-top:-25px;">Team members</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
-                <button style="padding:5px;margin-left:20px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
-                <button style="margin-left:175px;padding:5px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="view course contet"><i class="fas fa-eye" onclick="location.href = 'student_project'"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">School system</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                <p><p class="text-center" style="margin-top:-5px;">Project idea(brief)</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Its a system to manage school students to make it easier and faster</p><br>
-                <p class="text-center" style="margin-top:-25px;">Team members</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
-                <button style="padding:5px;margin-left:20px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
-                <button style="margin-left:175px;padding:5px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="view course contet"><i class="fas fa-eye" onclick="location.href = 'student_project'"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">School system</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                <p><p class="text-center" style="margin-top:-5px;">Project idea(brief)</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Its a system to manage school students to make it easier and faster</p><br>
-                <p class="text-center" style="margin-top:-25px;">Team members</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
-                <button style="padding:5px;margin-left:20px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
-                <button style="margin-left:175px;padding:5px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="view course contet"><i class="fas fa-eye" onclick="location.href = 'student_project'"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">School system</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                <p><p class="text-center" style="margin-top:-5px;">Project idea(brief)</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Its a system to manage school students to make it easier and faster</p><br>
-                <p class="text-center" style="margin-top:-25px;">Team members</p>
-                <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
-                <button style="padding:5px;margin-left:20px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
-                <button style="margin-left:175px;padding:5px;width:40px;margin-top:-60px;"class="btn btn-light norms" data-toggle="tooltip" title="view course contet"><i class="fas fa-eye" onclick="location.href = 'student_project'"></i></button>
-                </div>
-            </div>
-        </div>
-
-
+        @endforeach
     </div>
 </div>
 </body>

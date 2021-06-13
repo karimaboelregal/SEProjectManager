@@ -161,12 +161,12 @@ $user = Session::get("userData");
 if ($state != 1 && Request::path() != "login") {
     echo "<script>window.location.href='login'</script>";
 } elseif ($state == 1 && $user->Name == "Student" && !Str::contains(Request::path(), 'student_')) {
-    echo "<script>window.location.href='student_home'</script>";
+    echo "<script>window.location.href='/student_home'</script>";
 }
 @endphp
 
 <body style="background-color:#ffffff;width:100%;">
-
+@if (\Session::get('loggedIn')) 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#525252;height:60px;">
     <div class="d-flex flex-grow-1">
         <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
@@ -207,6 +207,16 @@ if ($state != 1 && Request::path() != "login") {
       </li>           </ul>
     </div>
 </nav>
+@else 
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:#525252;height:60px;">
+    <div class="d-flex flex-grow-1">
+        <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+        <a class="navbar-brand d-none d-lg-inline-block" href="#">
+            Welcome
+        </a>
+        </div>
+</nav>
+@endif
 <main class="py-10">
     @yield('content')
     @yield('content2')

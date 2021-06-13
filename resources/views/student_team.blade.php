@@ -13,10 +13,6 @@
     <div class="col-12 col-md-auto">
     <div style="margin-top:30px;" class="row">
         <button style="padding:5px; width: 150px;" type="button" class="btn btn-outline-dark invitation" data-toggle="modal" data-target="#createTeamModal">invitations</button>
-
-
- 
-
     </div>
     </div>
 
@@ -84,23 +80,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <form action="{{route('AcceptInvitation')}}" method="post">
+                                {{csrf_field()}}
+                                @foreach ($team_invitations as $team_invitation)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>2018/01447</td>
-                                        <td>c++, embedded systems</td>
-                                        <td><button type="button" class="btn btn-danger">Accept</button></td>
-
-
+                                    <input name="invitorid" value="{{$team_invitation->InvitorId}}" type="hidden">
+                                        <th scope="row">{{$team_invitation->id}}</th>
+                                        <td>{{$team_invitation->InvitorName}}</td>
+                                        <td>{{$team_invitation->UniversityId}}</td>
+                                        <td>{{$team_invitation->Preference}}</td>
+                                        <td><button class="btn btn-outline" type="submit" value="submit">Accept</button>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>2018/05666</td>
-                                        <td>python , ML</td>
-                                        <td><button type="button" class="btn btn-danger">Accept</button></td>
-
-                                    </tr>
+                                @endforeach
+                                </form>
                                 </tbody>
                             </table>
                         </table>
@@ -154,47 +147,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @foreach ($team_acceptance as $team_accept)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>2018/01447</td>
-                                        <td>c++, embedded systems</td>
+                                        <th scope="row">{{$team_accept->id}}</th>
+                                        <td>{{$team_accept->InvitorName}}</td>
+                                        <td>{{$team_accept->UniversityId}}</td>
+                                        <td>{{$team_accept->Preference}}</td>
                                         
-
-
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>2018/05666</td>
-                                        <td>python , ML</td>
-                                        
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>2018/05666</td>
-                                        <td>python , ML</td>
-
-
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>2018/05666</td>
-                                        <td>python , ML</td>
-
-
-                                    </tr>
-
-
-
-
-
-
-
+                                    @endforeach
                                 </tbody>
                             </table>
 

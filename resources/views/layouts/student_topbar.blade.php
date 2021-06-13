@@ -143,8 +143,8 @@ $state = Session::get("loggedIn");
 $user = Session::get("userData");
 if ($state != 1 && Request::path() != "login") {
     echo "<script>window.location.href='login'</script>";
-} elseif ($state == 1 && $user->Name == "Student" && !Str::contains(Request::path(), 'student_')) {
-    echo "<script>window.location.href='student_home'</script>";
+} elseif ($state == 1 && $user->Name == "Student" && (!Str::contains(Request::path(), 'student_') || !Str::contains(Request::path(), 'ViewProject'))) {
+    echo "<script>window.location.href='/student_home'</script>";
 }
 @endphp
 
@@ -190,7 +190,7 @@ if ($state != 1 && Request::path() != "login") {
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -80px !important;">
                         <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = 'student_profile'">my profile</a>
-                        <a class="dropdown-item" href="#" style="color: black!important;">logout</a>
+                        <a class="dropdown-item" href="#" style="color: black!important;" onclick="location.href ='/logout'">logout</a>
                     </div>
                 </li>
             </ul>
