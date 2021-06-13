@@ -25,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!\Session::get('loggedIn')) {
+            return redirect('/login');
+        }
         $courses = DB::table('courses')->get();
         $projects = DB::table('project')->get();
         $professors = DB::table('users')->where('RoleId',1)->get();
