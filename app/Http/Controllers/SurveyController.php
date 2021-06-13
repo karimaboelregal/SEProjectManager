@@ -15,6 +15,11 @@ class SurveyController extends Controller
         $surveys = Survey::all();
         return view ('surveys',['surveys'=>$surveys]);
     }
+
+    public function ViewSurveyInsights()
+    {
+        dd('test');
+    }
     public function InsertAnswer(Request $request){
         
         $data = $request->data;
