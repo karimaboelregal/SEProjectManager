@@ -13,4 +13,6 @@ class InvitationController extends Controller
         $invitations = DB::table('invitations')->get();
         return view('student_team',['invitations'=>$invitations]);
     }
+
+    
 }

@@ -15,6 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('RoleId');
+            $table->integer('UniversityId')->nullable();
             $table->foreign('RoleId')->references('id')->on('role');
         });
     }
