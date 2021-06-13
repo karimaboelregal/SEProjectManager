@@ -37,10 +37,12 @@ class SurveyController extends Controller
             GROUP BY q.id,s.SurveyName,q.QuestionText,q.IsRequired");*/
 
         $surveyObj = DB::select("SELECT s.SurveyName ,q.QuestionText,
-        q.IsRequired,q.id as questionId
+        q.IsRequired,q.id as questionId,qt.name as typename
             FROM question q
             JOIN survey s
             ON s.id = q.SurveyId
+            JOIN question_type qt
+            ON qt.id = q.TypeId
             WHERE s.id= {$id}");
         
         $surveys = json_decode(json_encode($surveyObj), true);
@@ -81,7 +83,7 @@ class SurveyController extends Controller
                 DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
-                    'StudentId'=>1,
+                    'StudentId'=>2,
                     'QuestionId'=>$key
                     
                 ]);
