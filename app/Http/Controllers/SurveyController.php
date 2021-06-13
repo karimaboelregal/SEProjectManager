@@ -11,8 +11,9 @@ class SurveyController extends Controller
 {
     //
 
-    public function index(){     
-        $surveys = Survey::all();
+    public function SurveyFromCourse($id){  
+          
+        $surveys = Survey::where('CourseId',$id)->get();
         return view ('surveys',['surveys'=>$surveys]);
     }
 
@@ -55,11 +56,10 @@ class SurveyController extends Controller
             ON u.id = sa.StudentId
             WHERE sa.QuestionId= {$surveys[$i]['questionId']}");
             $answers = json_decode(json_encode($surveyans), true);
-
             $surveys[$i]['answer'] = $answers;
             
         }
-        //dd($surveys);
+        //dd(\Session::get('userData')->userid);
         return view('surveyinsights',['surveys'=>$surveys]);
 
         
@@ -83,7 +83,7 @@ class SurveyController extends Controller
                 DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
-                    'StudentId'=>2,
+                    'StudentId'=>\Session::get('userData')->userid,
                     'QuestionId'=>$key
                     
                 ]);
@@ -95,7 +95,7 @@ class SurveyController extends Controller
             DB::table('survey_answer')->insert([
                     'Answer'=>$value,
                     'SurveyId' =>$surveyId,
-                    'StudentId'=>1,
+                    'StudentId'=>\Session::get('userData')->userid,
                     'QuestionId'=>$key
                     
                 ]);
@@ -107,6 +107,7 @@ class SurveyController extends Controller
 
     public function InsertSurvey(Request $request)
     {
+        //model here
         $survey = $request->input();
         //dd($survey);
         $surveyModel = new Survey();

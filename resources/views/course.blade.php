@@ -27,17 +27,21 @@
                 <a href="{{route('ViewSurvey',['id'=>$surveys->id])}}">{{$surveys->SurveyName}}</a>
                 <br>
         @endforeach
+        <div class="row">
+
+        <button class="btn btn-outline" onclick="window.location.href='{{route('SurveyFromCourse',['id'=>$course->id])}}'">View Surveys</button>
+        </div>
+
     @endforeach
 
 
     
     
-    <div class = "row">
+    
 
-    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark" onclick="location.href = 'student_project'">Project</button>
+    
 
-    <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark">Create Team</button>
-    </div>
+    
 
 
 
