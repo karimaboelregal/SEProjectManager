@@ -31,12 +31,6 @@ Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
 
-
-Route::get('/home', function () {
-    return view('home');
-});
-
-
 Route::get('/users', function () {
     return view('users');
 });
