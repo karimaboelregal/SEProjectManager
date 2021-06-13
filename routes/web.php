@@ -102,9 +102,8 @@ Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->n
 
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
-Route::get('/student_home', function () {
-    return view('student_home');
-});
+Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');
+
 Route::get('/student_projects', function () {
     return view('student_projects');
 });
