@@ -86,6 +86,8 @@ Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])-
 Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
 
 Route::get('/projects', [ProjectController::class,'index'])->name('index');
+Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+
 
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
 
@@ -104,9 +106,6 @@ Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('In
 
 Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');
 
-Route::get('/student_projects', function () {
-    return view('student_projects');
-});
 
 Route::get('/course', function () {
     return view('course');
