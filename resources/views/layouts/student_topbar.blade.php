@@ -144,7 +144,7 @@ $user = Session::get("userData");
 if ($state != 1 && Request::path() != "login") {
     echo "<script>window.location.href='login'</script>";
 } elseif ($state == 1 && $user->Name == "Student" && (!Str::contains(Request::path(), 'student_') || !Str::contains(Request::path(), 'ViewProject'))) {
-    //echo "<script>window.location.href='/student_home'</script>";
+    echo "<script>window.location.href='/student_home'</script>";
 }
 @endphp
 
