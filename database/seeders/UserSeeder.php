@@ -32,13 +32,17 @@ class UserSeeder extends Seeder
             'Email' => 'ahmed@gmail.com',
             'Surname' => 'ahmed',
             'Password' => '1234',
+            'Leader' => '1',
             'Activated' => '1',
-            'RoleId' => '3'
+            'RoleId' => '3',
+            'UniversityId' => '1809808',
+            'Preference' => 'C++ , AI',
         ]);
         DB::table('users')->insert([
             'Email' => 'mohamed@gmail.com',
             'Surname' => 'mohamed',
             'Password' => '1234',
+            'Leader' => '0',
             'Activated' => '1',
             'RoleId' => '3',
             'UniversityId' => '1810669',
@@ -49,6 +53,7 @@ class UserSeeder extends Seeder
             'Surname' => 'adel',
             'Password' => '1234',
             'Activated' => '1',
+            'Leader' => '0',
             'RoleId' => '3',
             'UniversityId' => '1801928',
             'Preference' => 'C++ , embedded systems',
