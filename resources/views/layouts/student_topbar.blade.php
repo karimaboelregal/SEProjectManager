@@ -202,6 +202,7 @@ if ($state != 1 && Request::path() != "login") {
                         <a class="dropdown-item" href="#" style="color: black!important;" onclick="location.href ='/logout'">logout</a>
                     </div>
                 </li>
+
             </ul>
         </div>
     </nav>
