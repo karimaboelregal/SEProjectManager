@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class courses_taken extends Seeder
+class ProjectsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +14,5 @@ class courses_taken extends Seeder
     public function run()
     {
         //
-        DB::table('course_taken')->insert([
-            'StudentId' => 3,
-            'CourseId' => 1,
-        ]);
     }
 }
