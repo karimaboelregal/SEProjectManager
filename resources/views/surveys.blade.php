@@ -36,7 +36,8 @@
                     <input name="userid" value={{$survey->id}} type="hidden">
                     <td class="align-middle">{{$survey->SurveyName}}</td>
                     
-                    <td class="align-middle"><button class="btn btn-outline" onclick="window.location.href='#'">View Insights</button></td>
+                    <td class="align-middle"><button class="btn btn-outline" onclick="window.location.href='{{route('ViewSurveyInsights',['id'=>$survey->id])}}'">View Insights</button></td>
+
 
 
 
