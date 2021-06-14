@@ -88,51 +88,20 @@ display: block;
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <form action="{{route('InviteStudent')}}" method="post">
+                                        {{csrf_field()}}
+                                        @foreach ($team_invitations as $team_invitation)
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>2018/01447</td>
-                                            <td>c++, embedded systems</td>
-                                            <td><button type="button" class="btn btn-danger">Invite</button></td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>2018/05666</td>
-                                            <td>python , ML</td>
-                                            <td><button type="button" class="btn btn-danger">Invite</button></td>
-
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>2018/05666</td>
-                                            <td>python , ML</td>
-                                            <td><button type="button" class="btn btn-danger">Invite</button></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Jacob</td>
-                                            <td>2018/05666</td>
-                                            <td>python , ML</td>
-                                            <td><button type="button" class="btn btn-danger">Invite</button></td>
-
-
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Jacob</td>
-                                            <td>2018/05666</td>
-                                            <td>python , ML</td>
-                                            <td><button type="button" class="btn btn-danger">Invite</button></td>
-
-                                        </tr>
-
-
-
-                                        
+                                        <input name="invitorid" value="{{$team_invitation->InvitorId}}" type="hidden">
+                                        <th scope="row">{{$team_invitation->id}}</th>
+                                        <td>{{$team_invitation->InvitorName}}</td>
+                                        <td>{{$team_invitation->UniversityId}}</td>
+                                        <td>{{$team_invitation->Preference}}</td>
+                                        <td><button class="btn btn-outline" type="submit" value="submit">Invite</button>
+                                        </td>
+                                        </tr> 
+                                        @endforeach 
+                                    </form>
                                     </tbody>
                                 </table>
 
