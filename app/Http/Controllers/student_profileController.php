@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class student_profile extends Controller
+use Illuminate\Support\Facades\DB;
+class student_profileController extends Controller
 {
     
-    public function viewprofile(Request $request,$id){
-
-        $info = DB::table('users')->where('id',$id)->get();
-        return view('users',['users'=>$info]);
- 
- 
+    public function index(){
+        $userid = \Session::get('userData')->userid;
+        $userinfo = DB::table('users')->where('id',$userid)->get();
+        
+        return view('student_profile',['userinfo'=>$userinfo]);
      }
      public function editprofile(Request $request){
 
@@ -23,7 +22,7 @@ class student_profile extends Controller
         $phone = $request->input('Phone');
         $Gpa = $request->input('skills');
         $skill = $request->input('Gpa');
-        
+        $image = $request ->input('image');
 
         DB::table('users')->where('id',$id)->update([
             'Surname'=>$name,
@@ -35,7 +34,7 @@ class student_profile extends Controller
             
         ]);
 
-        return \redirect('/projects');
+        return \redirect('/student_profile');
     }
 
 }
