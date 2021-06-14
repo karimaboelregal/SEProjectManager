@@ -141,10 +141,19 @@
 @php
 $state = Session::get("loggedIn");
 $user = Session::get("userData");
+$allowedPages = array('ViewProject', 'createProjectForm');
+$redirect = true;
 if ($state != 1 && Request::path() != "login") {
     echo "<script>window.location.href='login'</script>";
-} elseif ($state == 1 && $user->Name == "Student" && (!Str::contains(Request::path(), 'student_') || !Str::contains(Request::path(), 'ViewProject'))) {
-    echo "<script>window.location.href='/student_home'</script>";
+} elseif ($state == 1 && $user->Name == "Student") {
+    for ($i = 0; $i < count($allowedPages); $i++) {
+        if (!Str::contains(Request::path(), 'student_') || !Str::contains(Request::path(), $allowedPages[$i])) {
+            $redirect = false;
+        }
+    }
+    if ($redirect) {
+        echo "<script>window.location.href='/student_home'</script>";
+    }
 }
 @endphp
 
