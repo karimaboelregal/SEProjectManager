@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.student_topbar')
 @section('content')
 
 <div class="content d-flex align-items-center justify-content-center">
