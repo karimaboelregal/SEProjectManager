@@ -25,7 +25,9 @@ class TeamController extends Controller
         ->join('users', 'users.id', '=', 'invitations.InvitorId')
         ->where('InvitedId',$userid)->where('Status',1)->get();
 
-        return view ('student_team',['teams'=>$teams,'team_invitations'=>$team_invitations,'team_acceptance'=>$team_acceptance]);
+        $invite_students = DB::table('users')->where('RoleId',3)->get();
+
+        return view ('student_team',['teams'=>$teams,'invite_students'=>$invite_students,'team_invitations'=>$team_invitations,'team_acceptance'=>$team_acceptance]);
     }
 
     public function AcceptInvitation(Request $request){
