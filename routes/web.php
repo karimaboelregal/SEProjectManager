@@ -39,9 +39,16 @@ Route::get('/users', function () {
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
+
 Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
 
 Route::post('/AcceptInvitation', [TeamController::class,'AcceptInvitation'])->name('AcceptInvitation');
+
+Route::post('/InviteStudent', [TeamController::class,'InviteStudent'])->name('InviteStudent');
+
+Route::post('/CreateTeam', [TeamController::class,'CreateTeam'])->name('CreateTeam');
+
+Route::get('/EnrolledStudents/{id}', [CoursesController::class,'EnrolledStudents'])->name('EnrolledStudents');
 
 Route::get('/home', [HomeController::class,'index'])->name('home');
 
@@ -87,6 +94,8 @@ Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('In
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/ViewCourse/{id}', [CoursesController::class,'ViewCourse'])->name('ViewCourse');
+
+Route::get('/ViewStudentCourse/{id}', [CoursesController::class,'ViewStudentCourse'])->name('ViewStudentCourse');
 
 
 Route::get('InsertAnswer',[SurveyController::class,'InsertAnswer']);
