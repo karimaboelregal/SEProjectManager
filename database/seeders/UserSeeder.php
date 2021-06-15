@@ -48,15 +48,5 @@ class UserSeeder extends Seeder
             'UniversityId' => '1810669',
             'Preference' => 'C++ , Java',
         ]);
-        DB::table('users')->insert([
-            'Email' => 'adel@gmail.com',
-            'Surname' => 'adel',
-            'Password' => '1234',
-            'Activated' => '1',
-            'Leader' => '0',
-            'RoleId' => '3',
-            'UniversityId' => '1801928',
-            'Preference' => 'C++ , embedded systems',
-        ]);
     }
 }

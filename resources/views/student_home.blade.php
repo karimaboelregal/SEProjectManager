@@ -68,7 +68,7 @@
                 <p class="text-center">{{$course->InstructorName}}</p></p>
                 <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>
                 <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info"><i class="fas fa-align-justify"></i></button>
-                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = 'student_course'"><i class="fas fa-eye"></i></button>
+                <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = '{{route('ViewStudentCourse',['id'=>$course->id])}}'"><i class="fas fa-eye"></i></button>
                 </div>
             </div>
         </div>

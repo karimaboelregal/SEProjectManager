@@ -30,6 +30,28 @@ class CoursesController extends Controller
  
      }
 
+     public function ViewStudentCourse(Request $request,$id){
+
+        $courseObj = DB::table('courses')->where('courses.id',$id)->get();
+        $surveysObj = DB::table('survey')
+        ->join('courses','courses.id','=','survey.CourseId')
+        ->select('survey.id','survey.SurveyName')
+        ->get();
+
+        $userid = \Session::get('userData')->userid;
+
+        $invite_students = DB::table('users')
+        ->select('users.id as userId','users.Surname', 'users.UniversityId','users.Preference')
+        ->join('course_taken','course_taken.StudentId','=','users.id')
+        ->where('RoleId',3)
+        ->where('users.id','<>',$userid)
+        ->where('course_taken.CourseId',$id)
+        ->get();
+        $courseInfo = array("courseObj"=>$courseObj,"surveysObj"=> $surveysObj);
+        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students]);
+ 
+     }
+
      public function createCourseForm(){
         $users = DB::table('users')->get();
         return view ('createCourseForm',['users'=>$users]);

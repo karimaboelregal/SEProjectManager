@@ -19,24 +19,24 @@ display: block;
 
 <body>
     <div class= "container">
-
+    @foreach($courseInfo['courseObj'] as $course)
         <h2 Style="margin-top:5%;" >Welcome to SE</h2>
 
         <h4 Style="margin-top:5%;">Course Description</h4>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel iaculis nisi. Praesent in commodo est. Integer ipsum dui, tempus quis velit vitae, congue tincidunt neque. Cras dictum arcu risus, vel ornare turpis sollicitudin scelerisque. Duis euismod ultrices placerat. Nunc laoreet nulla purus, at sollicitudin sapien mollis nec. Pellentesque nec rhoncus massa. Duis ultrices, libero tempus consequat iaculis, ipsum tortor tempus metus, volutpat ultricies nisi libero non magna.</p>
+        <p>{{$course->Description}}</p>
 
         <h4 Style="margin-top:5%;">Reading material</h4>
 
         <a href="#">News from the cloude</a>
         <br>
         <a href="#">The Agile manifesto</a>
-
-        <h4 Style="margin-top:5%;">Lecture Survey</h4>
-
-        <a href="student_survey">Lecture 1 intro</a>
-        <br>
-        <a href="#">Lecture 2 The process</a>
+    
+        <h4 Style="margin-top:5%;">Surveys</h4>
+        @foreach($courseInfo['surveysObj'] as $surveys)
+                <a href="{{route('ViewSurvey',['id'=>$surveys->id])}}">{{$surveys->SurveyName}}</a>
+                <br>
+        @endforeach
 
 
     <div class = "row">
@@ -45,7 +45,7 @@ display: block;
 
     <button style="margin-top: 10px; width:150px;" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#createTeamModal">Create Team</button>
 
-
+    @endforeach
 
     </div>
 
@@ -90,11 +90,11 @@ display: block;
                                     <tbody>
                                     <form action="{{route('InviteStudent')}}" method="post">
                                         {{csrf_field()}}
-                                        @foreach ($team_invitations as $team_invitation)
+                                        @foreach ($invite_students as $team_invitation)
                                         <tr>
-                                        <input name="invitorid" value="{{$team_invitation->InvitorId}}" type="hidden">
-                                        <th scope="row">{{$team_invitation->id}}</th>
-                                        <td>{{$team_invitation->InvitorName}}</td>
+                                        <input type="hidden" name="userId" value="{{$team_invitation->userId}}">
+                                        <th scope="row">{{$team_invitation->userId}}</th>
+                                        <td>{{$team_invitation->Surname}}</td>
                                         <td>{{$team_invitation->UniversityId}}</td>
                                         <td>{{$team_invitation->Preference}}</td>
                                         <td><button class="btn btn-outline" type="submit" value="submit">Invite</button>
@@ -112,37 +112,12 @@ display: block;
                     </div>
                     <div class="projectDetails" style="display:none;">
 
-                        <form>
+                        <form action="{{route('CreateTeam')}}" method="post">
+                        {{csrf_field()}}
                             <div class="form-group">
-                                <label for="title">Project Title</label>
-                                <input type="text" class="form-control" id="title" placeholder="Enter Title">
+                                <label for="title">Team Name</label>
+                                <input type="text" class="form-control" id="title" placeholder="Enter Name">
                             </div>
-                           
-                            
-                            <div class="form-group">
-                                <label for="description">Project Description</label>
-                                <textarea class="form-control" id="description" rows="3"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="clientName"> Client Name</label>
-                                <input type="text" class="form-control" id="clientName" placeholder="Enter Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="clientNumber">Client Number</label>
-                                <input type="text" class="form-control" id="clientNumber" placeholder="Enter Number">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="clientOrganization">Client organization</label>
-                                <input type="text" class="form-control" id="clientOrganization" placeholder="Enter Organization">
-
-                            </div>
-
-
-
-                        </form>
-
                     </div>
                 </div>
 
@@ -152,7 +127,7 @@ display: block;
                     <button type="button" class="btn btn-danger previous" style="display:none;">Previous</button>
                     <button type="button" class="btn btn-danger submit" style="display:none;">Submit</button>
 
-
+                    </form>
                     <button type="button" class="btn btn-danger next">Next</button>
                 </div>
             </div>

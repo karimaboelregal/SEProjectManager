@@ -16,7 +16,7 @@ class courses_taken extends Seeder
     {
         //
         DB::table('course_taken')->insert([
-            'StudentId' => 3,
+          'StudentId' => '3',
             'CourseId' => 1,
         ]);
     }

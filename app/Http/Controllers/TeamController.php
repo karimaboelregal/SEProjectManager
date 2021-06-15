@@ -25,9 +25,7 @@ class TeamController extends Controller
         ->join('users', 'users.id', '=', 'invitations.InvitorId')
         ->where('InvitedId',$userid)->where('Status',1)->get();
 
-        $invite_students = DB::table('users')->where('RoleId',3)->get();
-
-        return view ('student_team',['teams'=>$teams,'invite_students'=>$invite_students,'team_invitations'=>$team_invitations,'team_acceptance'=>$team_acceptance]);
+        return view ('student_team',['teams'=>$teams,'team_invitations'=>$team_invitations,'team_acceptance'=>$team_acceptance]);
     }
 
     public function AcceptInvitation(Request $request){
@@ -42,4 +40,31 @@ class TeamController extends Controller
         return \redirect('/student_team');
     }
 
+    public function InviteStudent(Request $request){
+        // list of students enrolled in course
+        $invitedid = $request->input('userId');
+        $invitorid = \Session::get('userData')->userid;
+
+        DB::table('invitations')->insert([
+            'Status'=>0,
+            'InvitorId' =>$invitorid,
+            'InvitedId'=>$invitedid,
+        ]);
+
+        return \redirect('/student_home');
+    }
+
+    public function CreateTeam(Request $request){
+        // list of students enrolled in course
+        $invitedid = $request->input('userId');
+        $invitorid = \Session::get('userData')->userid;
+
+        DB::table('invitations')->insert([
+            'Status'=>0,
+            'InvitorId' =>$invitorid,
+            'InvitedId'=>$invitedid,
+        ]);
+
+        return \redirect('/student_home');
+    }
 }
