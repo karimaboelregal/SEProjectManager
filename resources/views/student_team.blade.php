@@ -82,9 +82,9 @@
                                 <tbody>
                                 <form action="{{route('AcceptInvitation')}}" method="post">
                                 {{csrf_field()}}
-                                @foreach ($invite_students as $invite_student)
+                                @foreach ($team_invitations as $invite_student)
                                     <tr>
-                                    <input name="invitorid" value="{{$team_invitation->InvitorId}}" type="hidden">
+                                    <input name="invitorid" value="{{$invite_student->InvitorId}}" type="hidden">
                                         <th scope="row">{{$invite_student->id}}</th>
                                         <td>{{$invite_student->InvitorName}}</td>
                                         <td>{{$invite_student->UniversityId}}</td>
