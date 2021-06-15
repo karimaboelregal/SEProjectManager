@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ProjectController;
-
+use App\Http\Controllers\student_profileController; 
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SurveyController;
@@ -128,16 +128,16 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
+Route::get('/editProfile', [student_profileController::class,'editprofile'])->name('editprofile');
+
+Route::get('/student_profile', [student_profileController::class,'index'])->name('index');
+
 
 Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');
 
 
 Route::get('/course', function () {
     return view('course');
-});
-
-Route::get('/student_profile', function () {
-    return view('student_profile');
 });
 
 Route::get('/student_course', function () {
