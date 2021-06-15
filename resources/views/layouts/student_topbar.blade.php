@@ -154,6 +154,12 @@ if ($state != 1 && Request::path() != "login") {
     if ($redirect) {
         echo "<script>window.location.href='/student_home'</script>";
     }
+} elseif ($state == 1 && Request::path() == "login") {
+    if ($user->Name == "Student") {
+        echo "<script>window.location.href='/student_home'</script>";
+    } else {
+        echo "<script>window.location.href='/home'</script>";
+    }   
 }
 @endphp
 

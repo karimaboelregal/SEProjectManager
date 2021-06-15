@@ -9,6 +9,17 @@ body {
 }
 
 </style>
+@php
+$state = Session::get("loggedIn");
+$user = Session::get("userData");
+if ($state == 1) {
+  if ($user->Name == "Student") {
+    echo "<script>window.location.href='/student_home'</script>";
+  } else {
+    echo "<script>window.location.href='/home'</script>";
+  }
+}
+@endphp
 <div class="wrapper">
 @if(isset($errorMessage))
   <div class="alert alert-danger" style="position:absolute;top:15%;">
