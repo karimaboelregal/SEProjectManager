@@ -29,7 +29,7 @@ class surveySeeder extends Seeder
             'name'=>'text'
         ]);
         DB::table('question')->insert([
-                    'QuestionText' => 'foo',
+                    'QuestionText' => 'I think that I would like to use this website frequently',
                     'IsRequired' => '1',
                     'TypeId'=>'1',
                     'SurveyId' =>'1'
@@ -37,46 +37,65 @@ class surveySeeder extends Seeder
 
 
         DB::table('question')->insert([
-                    'QuestionText' => 'bar',
+                    'QuestionText' => 'I found the website unnecessarily complex',
                     'IsRequired' => '1',
                     'TypeId'=>'1',
                     'SurveyId' =>'1'
                 ]);
 
         DB::table('question')->insert([
-                    'QuestionText' => 'baz',
+            'QuestionText' => 'I thought the website was easy to use',
+            'IsRequired' => '1',
+            'TypeId'=>'1',
+            'SurveyId' =>'1'
+        ]);
+
+        DB::table('question')->insert([
+                    'QuestionText' => 'I think that I would need the support of a technical person to be able to use this website',
+                    'IsRequired' => '1',
+                    'TypeId'=>'1',
+                    'SurveyId' =>'1'
+                ]);
+
+       DB::table('question')->insert([
+                    'QuestionText' => 'I found the various functions in this website were well integrated',
                     'IsRequired' => '1',
                     'TypeId'=>'1',
                     'SurveyId' =>'1'
                 ]);
 
         DB::table('question')->insert([
-                    'QuestionText' => 'Rating question',
+                    'QuestionText' => 'I thought there was too much inconsistency in this website',
                     'IsRequired' => '1',
-                    'TypeId'=>'2',
-                    'SurveyId' =>'1'
-                ]);
-
-         DB::table('question')->insert([
-                    'QuestionText' => 'Rating question2',
-                    'IsRequired' => '1',
-                    'TypeId'=>'2',
+                    'TypeId'=>'1',
                     'SurveyId' =>'1'
                 ]);
 
         DB::table('question')->insert([
-                    'QuestionText' => 'text based question',
-                    'IsRequired' => '1',
-                    'TypeId'=>'3',
-                    'SurveyId' =>'1'
-                ]);
-
+            'QuestionText' => 'I would imagine that most people would learn to use this website very quickly.',
+            'IsRequired' => '1',
+            'TypeId'=>'1',
+            'SurveyId' =>'1'
+        ]);
         DB::table('question')->insert([
-                    'QuestionText' => 'another',
-                    'IsRequired' => '1',
-                    'TypeId'=>'3',
-                    'SurveyId' =>'1'
-                ]);
+            'QuestionText' => 'I found the website very cumbersome to use',
+            'IsRequired' => '1',
+            'TypeId'=>'1',
+            'SurveyId' =>'1'
+        ]);
+        DB::table('question')->insert([
+            'QuestionText' => 'I felt very confident using the website',
+            'IsRequired' => '1',
+            'TypeId'=>'1',
+            'SurveyId' =>'1'
+        ]);
+        DB::table('question')->insert([
+            'QuestionText' => 'I needed to learn a lot of things before I could get going with this system',
+            'IsRequired' => '1',
+            'TypeId'=>'1',
+            'SurveyId' =>'1'
+        ]);
+       
         
 
         
