@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class courses_taken extends Seeder
 {
@@ -15,7 +16,7 @@ class courses_taken extends Seeder
     {
         //
         DB::table('course_taken')->insert([
-            'StudentId' => 'ahmed@gmail.com',
+            'StudentId' => '3',
             'CourseId' => 1,
         ]);
     }
