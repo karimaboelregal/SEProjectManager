@@ -16,6 +16,7 @@ class UpdateProjectTable extends Migration
         Schema::table('project', function (Blueprint $table) {
             $table->unsignedBigInteger('TeamId');
             $table->foreign('TeamId')->references('id')->on('team');
+            $table->dropForeign('courseId');
         });
     }
 

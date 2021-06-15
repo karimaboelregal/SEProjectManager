@@ -104,6 +104,7 @@ Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->nam
 
 Route::get('/projects', [ProjectController::class,'index'])->name('index');
 Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->name('projTemp');
 
 
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');

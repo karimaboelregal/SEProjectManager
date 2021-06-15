@@ -53,7 +53,12 @@ class ProjectController extends Controller
             'CourseId' => $course_id
         ]);
 
-        return \redirect('/projects');
+        return \redirect('/student_projects');
+    }
+
+    function projTemp(Request $request,$id=1) {
+        $projectTemplate = DB::table('projectTemplate')->where('id', $id);
+
     }
 
     public function editProject(Request $request){
