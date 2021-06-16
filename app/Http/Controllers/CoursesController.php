@@ -52,7 +52,19 @@ class CoursesController extends Controller
         ->where('course_taken.CourseId',$id)
         ->get();
         $courseInfo = array("courseObj"=>$courseObj,"surveysObj"=> $surveysObj);
-        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students]);
+        //the below query will malfucntion because of using wild cards
+        $temps = DB::table('projecttemplate')
+        ->join('projecttemplatecourses', 'projecttemplatecourses.projectTempID', '=', 'projecttemplate.id')
+        ->join('project','projecttemplate.id','=','project.ProjectTemplateId')
+        ->join('team','team.id','=','project.TeamId')
+        ->join('team_members','team.id','=','team_members.TeamId')
+        ->where('projecttemplatecourses.courseID', '=', $id)
+        ->where('team.LeaderId','=',$userid)
+        ->orWhere('team.id' ,'=',$userid)
+        ->groupby('project.id','projecttemplate.id','projecttemplate.templateName','projecttemplate.description')
+        ->select('projecttemplate.*','project.id as projectid')
+        ->get();
+        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students],['projTemps'=>$temps]);
  
      }
 

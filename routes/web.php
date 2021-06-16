@@ -10,7 +10,7 @@ use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\loginControl;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\InvitationController;
-
+use App\Http\Controllers\DiscussionController;
 
 
 /*
@@ -92,7 +92,7 @@ Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('Vi
 Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
-
+Route::post('/store', [DiscussionController::class,'store'])->name('store');
 
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
@@ -120,6 +120,7 @@ Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->nam
 
 
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
+Route::get('/ViewStudentProject/{id}', [ProjectController::class,'ViewStudentProject'])->name('ViewStudentProject');
 
 Route::get('/createProjectForm', [ProjectController::class,'createProjectForm'])->name('createProjectForm');
 
