@@ -54,7 +54,9 @@
                     <p>
                         <p class="text-center">Submission name</p>
                         <p class="text-center">{{$submission->submissionName}}</p>
-                        <button class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                        <button class="btn btn-light norms" data-toggle="modal" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+
+
 
                     </p>
                     
