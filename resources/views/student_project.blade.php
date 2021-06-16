@@ -88,18 +88,49 @@
                 </div>
             </div>
             <hr />
+
             <div class="row">
+                <div class="col-sm-3">
+                    <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+                    <div class="review-block-name"><a href="#">Dr. Essam</a></div>
+
+                </div>
+                <div class="col-sm-9">
+
+                    <div class="review-block-description">Add More Wire frames</div>
+                </div>
+            </div>
+
+            <hr />
+            <form action="{{route('store')}}" method="post">
+                {{csrf_field()}}
+
+            <div class="row">
+            
                 <div class = "col-10 ">
-                    <div class="col"><textarea id="review" name="review" style="height:70%;width:90%;" placeholder="Whats on your mind" maxlength="150"></textarea></div>
+                    <div class="col"><textarea id="message" name="message" style="height:70%;width:90%;" placeholder="Whats on your mind" maxlength="150"></textarea></div>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                 </div>
                 <div class = "col-2">
-                    <button style="margin-top: 10px; width:100px; " type="button" class="btn btn-outline-dark">Send</button>
+                    <input style="margin-top: 10px; width:100px; " type="submit" class="btn btn-outline-dark" value = "send">
                     
 
+                
 
 
                 </div>
             </div>
+
+            </form>
 
 
 
