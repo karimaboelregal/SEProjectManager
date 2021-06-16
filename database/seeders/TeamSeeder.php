@@ -20,5 +20,23 @@ class TeamSeeder extends Seeder
             'LeaderId' => '3',
             'CourseId' => '1'
         ]);
+
+
+        DB::table('team_members')->insert([
+            'TeamId' =>1,
+            'TeamMemberId' => 1
+        ]);
+        DB::table('team_members')->insert([
+            'TeamId' =>1,
+            'TeamMemberId' => 2
+        ]);
+        DB::table('team_members')->insert([
+            'TeamId' =>1,
+            'TeamMemberId' => 3
+        ]);
+        DB::table('team_members')->insert([
+            'TeamId' =>1,
+            'TeamMemberId' => 4
+        ]);
     }
 }
