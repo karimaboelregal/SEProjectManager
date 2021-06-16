@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateSubmissionTable extends Migration
+class CreateProjecttemplateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class UpdateSubmissionTable extends Migration
      */
     public function up()
     {
-        Schema::table('project', function (Blueprint $table) {
-            $table->unsignedBigInteger('CourseId');
-            $table->foreign('CourseId')->references('id')->on('courses');
+        Schema::create('projecttemplate', function (Blueprint $table) {
+            $table->id();
+            $table->string('templateName');
+            $table->string('description');
         });
     }
 
@@ -26,6 +27,6 @@ class UpdateSubmissionTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('projecttemplate');
     }
 }

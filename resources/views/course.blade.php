@@ -35,74 +35,18 @@
     @endforeach
 
     <h4 Style="margin-top:5%;">Project templates</h4>
-        <button class="btn btn-outline">Create project template</button>
-    
+        <button class="btn btn-outline" onclick="window.location.href='/createTemplate'">Create project template</button>
         <div class="row d-flex justify-content-center" style="width:80%;margin-top:2%;height:60vh;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;">
+            @foreach ($projTemps as $temp)
             <div class="turningButtonContainer" style="width:200px;height:150px;">
                 <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
+                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">{{$temp->templateName}}</span></div>
                     <div class="turnedButton" style="padding:0px;">
                         <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
                     </div>
                 </div>
             </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-            <div class="turningButtonContainer" style="width:200px;height:150px;">
-                <div class="turningButtonContainerInner">
-                    <div class="turningButton"><i style="font-size:25px;margin-top:20%;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:20px;line-height:1.6">SE project</span></div>
-                    <div class="turnedButton" style="padding:0px;">
-                        <button style="padding:5px;margin-left:25%;margin-top:25%;"class="btn btn-light norms" data-toggle="tooltip" title="view project content">Edit template</button>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
     </div>
 
 

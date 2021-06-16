@@ -25,7 +25,11 @@ class CoursesController extends Controller
         ->get();
 
         $courseInfo = array("courseObj"=>$courseObj,"surveysObj"=> $surveysObj);
-        return view('course',['courseInfo'=>$courseInfo]);
+        $temps = DB::table('projecttemplate')
+        ->join('projecttemplatecourses', 'projecttemplatecourses.projectTempID', '=', 'projecttemplate.id')
+        ->where('projecttemplatecourses.courseID', '=', $id)
+        ->get();
+        return view('course',['courseInfo'=>$courseInfo], ['projTemps'=>$temps]);
  
  
      }

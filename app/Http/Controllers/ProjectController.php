@@ -85,6 +85,11 @@ class ProjectController extends Controller
         return \redirect('/projects');
     }
 
+    public function projTempPage() {
+        $course = DB::table('courses')->get();
+        return view('projecttemplate', ['courses'=>$course]);
+    }
+
     public function editProjectForm(Request $request,$id){
 
         $project = DB::table('project')->where('id',$id)->get();

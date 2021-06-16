@@ -85,6 +85,8 @@ Route::get('/surveyinsights', function () {
     return view('surveyinsights');
 });
 
+Route::get('/createTemplate', [ProjectController::class,'projTempPage'])->name('projTempPage');
+
 Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
 Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
