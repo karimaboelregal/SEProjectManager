@@ -6,66 +6,70 @@
     element.classList.add("show");
 
 </script>
+@php
+    $project = $projectAndDiscussion[1];
+    $discussions = $projectAndDiscussion[0];
 
+@endphp
 
 
 <div class ="container">
+<h2 Style="margin-top:5%;">Welcome to {{$project[0]->ProjectTitle}}</h2>
+
+<h4 Style="margin-top:5%;">Project Description</h4>
+
+<p>{{$project[0]->ProjectDesc}}.</p>
+
+<h4 Style="margin-top:5%;">Client info:</h4>
+
+<p><b>Client Name : </b>{{$project[0]->ClientName}}.</p>
+
+<p><b>Client number : </b>{{$project[0]->ClientNumber}}.</p>
+
+<p><b>Client Email : </b>{{$project[0]->ClientEmail}}.</p>
+
+<h4 Style="margin-top:5%;">Team info:</h4>
+
+<p><b>Team members : </b>{{$project[0]->ClientName}}.</p>
+
+<p><b>Team number : </b>{{$project[0]->ClientName}}.</p>
+
+
     <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+
+   
+
+
 
 <h1>Deliverables</h1>
 </div>
-    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
-    <div class="col d-flex justify-content-center">
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
+    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;" class="row d-flex justify-content-center ">
+
+        @foreach ($submissions as $submission)
+        <!-- had to add a margin right becuase they were so close to each other? -->
+        <div class="turningButtonContainer" style="margin-right:30px;">
             <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">Proposal</span></div>
-                <div class="turnedButton" style="padding:0px;">
+                <div class="turningButton"><i style="font-size:35px;margin-top:55px;" class="icons far fa-dot-circle"></i><span>{{$submission->submissionName}}</span></div>
+                <div class="turnedButton">
                     <p>
-                        <p class="text-center" style="margin-top:-5px;">Details</p>
-                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">The software requirment specification is a document a super detailed document of how your software will be </p><br>
+                        <p class="text-center">{{$submission->submissionName}}</p>
+                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+
+                    </p>
                     
-                    <button type="submit" class="btn btn-light norms" style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#myModalHorizontal">Add submission</button>
-
-
-
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SRS</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                    <p>
-                        <p class="text-center" style="margin-top:-5px;">Details</p>
-                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">The software requirment specification is a document a super detailed document of how your software will be </p><br>
-                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col d-flex justify-content-center">
-        <div class="turningButtonContainer" style="width:300px;height:220px;">
-            <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419" class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">SDD</span></div>
-                <div class="turnedButton" style="padding:0px;">
-                    <p>
-                        <p class="text-center" style="margin-top:-5px;">Details</p>
-                        <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">One of the most technical material you would ever use</p><br>
-                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
 
-</div>
 
-<div class="row d-flex justify-content-center">
-        <button style="margin-top: 10px; margin-left:5px;width:150px; " type="button" class="btn btn-outline-dark">Suggestions</button>
-        <button style="margin-top: 10px; margin-left:5px;width:150px;" type="button" class="btn btn-outline-dark">view details</button>
-</div>
+
+
+
+
+
 
 <!-- discussion section -->
 <div class = "row d-flex justify-content-center" style="padding-left:20px;padding-top:20px;">
@@ -74,8 +78,11 @@
 <div class="row d-flex justify-content-center">
     <div class="col-sm-7">
         
-        <hr />
+        
         <div class="review-block">
+        
+        @foreach($discussions as $discussion)
+            <hr />
             <div class="row">
                 <div class="col-sm-3">
                     <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
@@ -84,24 +91,12 @@
                 </div>
                 <div class="col-sm-9">
                     
-                    <div class="review-block-description">Add More Wire frames</div>
+                    <div class="review-block-description">{{$discussion->Message}}</div>
                 </div>
             </div>
             <hr />
-
-            <div class="row">
-                <div class="col-sm-3">
-                    <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                    <div class="review-block-name"><a href="#">Dr. Essam</a></div>
-
-                </div>
-                <div class="col-sm-9">
-
-                    <div class="review-block-description">Add More Wire frames</div>
-                </div>
-            </div>
-
-            <hr />
+        @endforeach
+            
             <form action="{{route('store')}}" method="post">
                 {{csrf_field()}}
 
@@ -181,6 +176,6 @@
 
    
 </style>
-
+                      
 @endsection
 

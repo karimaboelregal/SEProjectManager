@@ -22,6 +22,32 @@ class ProjectController extends Controller
         return view('project',['project'=>$project]);
     }
 
+    public function ViewStudentProject(Request $request,$id){
+        $project = DB::select("SELECT p.*,pt.*
+        FROM project p
+        JOIN projecttemplate pt
+        ON pt.id = p.ProjectTemplateID
+        WHERE p.id = {$id}
+        ");
+        
+        $submissions = DB::select("SELECT pts.*
+                FROM projecttemplate pt
+                JOIN projecttemplatesubmissions pts
+                ON pt.id = pts.projectTempID
+                WHERE pt.id = {$project[0]->ProjectTemplateId}
+                ");
+
+        $discussions = DB::select("SELECT *
+                FROM discussion d
+                WHERE d.ProjectId = {$id}
+                ");
+        //dd($discussions);
+        $projectAndDiscussion = array();
+        array_push($projectAndDiscussion, $discussions);
+        array_push($projectAndDiscussion, $project);
+        return view('student_project',['projectAndDiscussion'=>$projectAndDiscussion],['submissions'=>$submissions]);
+    }
+
     public function createProjectForm(){
         $teams = DB::table('team')->get();
         $courses = DB::table('courses')->get();
@@ -42,7 +68,7 @@ class ProjectController extends Controller
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
         $course_id = $request->input('course_id');
-
+        //wala i put a project template id in the projects table so care
         DB::table('Project')->insert([
             'ProjectTitle'=>$title,
             'ProjectDesc' =>$description,

@@ -16,9 +16,9 @@ class DiscussionController extends Controller
         $discussion = new Discussion();
         $message = $request->input();
         $discussion->Message = $message['message'];
-        $discussion->ProjectId = 3;
+        $discussion->ProjectId = 1;
         $discussion->save();
-        return \redirect('student_project');
+        return redirect()->back();
     }
 
 

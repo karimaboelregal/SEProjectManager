@@ -120,6 +120,7 @@ Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->nam
 
 
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
+Route::get('/ViewStudentProject/{id}', [ProjectController::class,'ViewStudentProject'])->name('ViewStudentProject');
 
 Route::get('/createProjectForm', [ProjectController::class,'createProjectForm'])->name('createProjectForm');
 
