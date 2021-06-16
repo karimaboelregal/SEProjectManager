@@ -52,7 +52,11 @@ class CoursesController extends Controller
         ->where('course_taken.CourseId',$id)
         ->get();
         $courseInfo = array("courseObj"=>$courseObj,"surveysObj"=> $surveysObj);
-        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students]);
+        $temps = DB::table('projecttemplate')
+        ->join('projecttemplatecourses', 'projecttemplatecourses.projectTempID', '=', 'projecttemplate.id')
+        ->where('projecttemplatecourses.courseID', '=', $id)
+        ->get();
+        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students],['projTemps'=>$temps]);
  
      }
 
