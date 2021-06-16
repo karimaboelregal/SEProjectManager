@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\SubmissionValue;
+use Illuminate\Support\Facades\DB;
 
 
 class SubmissionsController extends Controller
@@ -28,5 +29,30 @@ class SubmissionsController extends Controller
         $submission_value->save();
 
         return redirect()->back();
+    }
+
+    public function editSubmissionValue(Request $request)
+    {
+
+    }
+
+    public static function has_submited($projectId)
+    {
+        //query to check if a submission has been placed or not
+
+        $has_submitted = DB::select("SELECT ptsv.id
+            FROM project_template_submission_value ptsv
+            JOIN project p
+            ON p.id = ptsv.ProjectId
+            WHERE p.id = {$projectId}
+        ");
+
+        return $has_submitted;
+    }
+
+    //i think this takes a request not sure tho
+    public function download_submission()
+    {
+
     }
 }

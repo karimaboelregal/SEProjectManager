@@ -6,11 +6,7 @@
     element.classList.add("show");
 
 </script>
-@php
-    $project = $projectAndDiscussion[1];
-    $discussions = $projectAndDiscussion[0];
 
-@endphp
 
 
 <div class ="container">
@@ -44,6 +40,10 @@
 <h1>Deliverables</h1>
 </div>
     <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;padding:15px;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
+    @php
+        $i = 0
+
+    @endphp
         @foreach ($submissions as $submission)
         <!-- had to add a margin right becuase they were so close to each other? -->
         <div class="turningButtonContainer" style="margin-right:30px;width:200px;height:250px;margin-top:2%">
@@ -53,10 +53,19 @@
                     <p>
                         <p class="text-center">Submission name</p>
                         <p class="text-center">{{$submission->submissionName}}</p>
-                        <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                        <!--this means that the value the student has submitted matches the submissions in general -->
+                        @if($submissionValues[$i]->SubmissionId == $submission->id)
+                            <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Edit Submission</button>
 
+                            
+                        @else
+                            <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
 
+                        @endif
 
+                        @php
+                            $i++;
+                        @endphp
                     </p>
                     
                 </div>

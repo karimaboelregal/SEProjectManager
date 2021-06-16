@@ -49,7 +49,17 @@ class ProjectController extends Controller
                 JOIN projecttemplatesubmissions pts
                 ON pt.id = pts.projectTempID
                 WHERE pt.id = {$project[0]->ProjectTemplateId}
+                ORDER BY pts.id
                 ");
+
+        $has_submitted = DB::select("SELECT ptsv.SubmissionId
+            FROM project_template_submission_value ptsv
+            JOIN project p
+            ON p.id = ptsv.ProjectId
+            WHERE p.id = {$id}
+            ORDER BY ptsv.SubmissionId
+        ");
+        
 
         $discussions = DB::select("SELECT d.*,u.Surname
                 FROM discussion d
@@ -62,7 +72,8 @@ class ProjectController extends Controller
         array_push($projectAndDiscussion, $discussions);
         array_push($projectAndDiscussion, $project);
         //wierdly i can only pass two varialbles to the view so i pushed all into an array
-        return view('student_project',['projectAndDiscussion'=>$projectAndDiscussion],['submissions'=>$submissions]);
+        
+        return view('student_project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions]);
     }
 
     public function createProjectForm(){
