@@ -14,7 +14,7 @@ class SubmissionsController extends Controller
     {
 
         //cosntruct the path
-        $path = $request->file('file')->store('course/project_template/project_submission/submissionname');
+        $path = $request->file('file')->store('submissions');
         //save the file
         
         //get the data
