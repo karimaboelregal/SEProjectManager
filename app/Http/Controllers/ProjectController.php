@@ -92,7 +92,6 @@ class ProjectController extends Controller
     }
 
     public function insertProjTemp(request $request) {
-        print_r($request->all());
         $course = DB::table('courses')->get();
         $ID = DB::table('projecttemplate')->insertGetId([
             'templateName'=>$request->project_title,
@@ -113,7 +112,7 @@ class ProjectController extends Controller
                 'submissionName' =>$request[$v]
             ]);        
         }
-        return view('projecttemplate', ['courses'=>$course]);
+        return redirect()->back();
     }
 
     public function editProjectForm(Request $request,$id){
