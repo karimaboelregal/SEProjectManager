@@ -15,7 +15,8 @@ class CreateTeamTable extends Migration
     {
         Schema::create('team', function (Blueprint $table) {
             $table->id();
-            $table->string('MembersId','100');
+            //changed to nullable
+            $table->string('MembersId','100')->nullable();
             $table->timestamps();
         });
     }
