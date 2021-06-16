@@ -43,17 +43,18 @@
 
 <h1>Deliverables</h1>
 </div>
-    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
 
         @foreach ($submissions as $submission)
         <!-- had to add a margin right becuase they were so close to each other? -->
-        <div class="turningButtonContainer" style="margin-right:30px;">
+        <div class="turningButtonContainer" style="margin-right:30px;width:200px;height:250px;margin-top:2%">
             <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;" class="icons far fa-dot-circle"></i><span>{{$submission->submissionName}}</span></div>
+                <div class="turningButton"><i style="font-size:25px;margin-top:55px;" class="icons far fa-dot-circle"></i><span style="font-size:35px;">{{$submission->submissionName}}</span></div>
                 <div class="turnedButton">
                     <p>
+                        <p class="text-center">Submission name</p>
                         <p class="text-center">{{$submission->submissionName}}</p>
-                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                        <button class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
 
                     </p>
                     

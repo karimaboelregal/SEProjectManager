@@ -49,7 +49,7 @@ element.classList.add("show");
                 <p class="text-center" style="margin-top:-25px;"><b>Team members:</b></p>
                 <p class="text-center" style="margin-top:-10px;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; height:40px;">Mohamed moatz, philip, joo assem, karim ehab</p><br>
                 <div class='row justify-content-center' style="margin-top:-20px;margin-left:-30px;">
-                <button onclick="location.href = '{{route('ViewProject',['id'=>$project->id])}}'" style="padding:5px;margin-left:20px;width:40px;height:35px;"class="btn btn-light norms" data-toggle="tooltip" title="view project content"><i class="fas fa-eye"></i></button>
+                <button onclick="location.href = '{{route('ViewStudentProject',['id'=>$project->id])}}'" style="padding:5px;margin-left:20px;width:40px;height:35px;"class="btn btn-light norms" data-toggle="tooltip" title="view project content"><i class="fas fa-eye"></i></button>
                 </div>
                 </div>
             </div>
