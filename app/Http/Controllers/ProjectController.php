@@ -87,6 +87,32 @@ class ProjectController extends Controller
 
     public function projTempPage() {
         $course = DB::table('courses')->get();
+
+        return view('projecttemplate', ['courses'=>$course]);
+    }
+
+    public function insertProjTemp(request $request) {
+        print_r($request->all());
+        $course = DB::table('courses')->get();
+        $ID = DB::table('projecttemplate')->insertGetId([
+            'templateName'=>$request->project_title,
+            'description' =>$request->description
+        ]);
+        foreach ($course as $c) {
+            if ($request[$c->Name] != null) {
+                DB::table('projecttemplatecourses')->insertGetId([
+                    'projectTempID'=>$ID,
+                    'courseID' =>$c->id
+                ]);
+            }
+        }
+        $values = preg_split("/\,/", $request->vals);
+        foreach ($values as $v) {
+            DB::table('projecttemplatesubmissions')->insertGetId([
+                'projectTempID'=>$ID,
+                'submissionName' =>$request[$v]
+            ]);        
+        }
         return view('projecttemplate', ['courses'=>$course]);
     }
 

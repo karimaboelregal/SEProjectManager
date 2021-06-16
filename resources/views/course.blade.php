@@ -1,4 +1,4 @@
-@extends('layouts.student_topbar')
+@extends('layouts.app')
 @section('content')
 <script>
     var element = document.getElementById("courses");
