@@ -43,7 +43,7 @@
 
 <h1>Deliverables</h1>
 </div>
-    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
+    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;padding:15px;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
 
         @foreach ($submissions as $submission)
         <!-- had to add a margin right becuase they were so close to each other? -->

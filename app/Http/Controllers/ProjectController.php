@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
 
@@ -12,9 +13,14 @@ class ProjectController extends Controller
         $projects = DB::table('project')->get();
         return view ('projects',['projects'=>$projects]);
     }
-    public function showStudent(){
+    public function showStudent(Request $request, $id='eyJpdiI6Ik1RNHNIbEZDQm1JRGFabDNzNmNDQWc9PSIsInZhbHVlIjoiMG9RSnF1VDY4RnQ2blV1eThNbXZ3QT09IiwibWFjIjoiYWExYmNlNjBkOTg1YzM5NTBmZGI4Nzk2NjBjMWIwNmM3YjU2YTk0MGRkZDgwMzAyYzEyNDE0YzE0MzBiMDQ4YSJ9'){
         $projects = DB::table('project')->get();
-        return view ('student_projects',['projects'=>$projects]);
+        $projTemps = DB::table("projecttemplate")->get();
+        if ($id == 0) {
+            $id = \Crypt::decrypt($id);
+        }
+        $selected = $projTemps[$id];
+        return view ('student_projects',['projects'=>$projects, 'projTemps'=>$projTemps, 'selected'=>$selected]);
     }
 
     public function ViewProject(Request $request,$id){
