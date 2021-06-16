@@ -37,14 +37,17 @@ class ProjectController extends Controller
                 WHERE pt.id = {$project[0]->ProjectTemplateId}
                 ");
 
-        $discussions = DB::select("SELECT *
+        $discussions = DB::select("SELECT d.*,u.Surname
                 FROM discussion d
+                JOIN users u
+                ON u.id = d.UserId
                 WHERE d.ProjectId = {$id}
                 ");
         //dd($discussions);
         $projectAndDiscussion = array();
         array_push($projectAndDiscussion, $discussions);
         array_push($projectAndDiscussion, $project);
+        //wierdly i can only pass two varialbles to the view so i pushed all into an array
         return view('student_project',['projectAndDiscussion'=>$projectAndDiscussion],['submissions'=>$submissions]);
     }
 

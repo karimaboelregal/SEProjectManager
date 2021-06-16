@@ -86,7 +86,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                    <div class="review-block-name"><a href="#">Dr. Essam</a></div>
+                    <div class="review-block-name"><a href="#">{{$discussion->Surname}}</a></div>
                     
                 </div>
                 <div class="col-sm-9">
@@ -104,6 +104,7 @@
             
                 <div class = "col-10 ">
                     <div class="col"><textarea id="message" name="message" style="height:70%;width:90%;" placeholder="Whats on your mind" maxlength="150"></textarea></div>
+                    <input type="hidden" id = "projectId" name="projectId" value="{{$project[0]->id}}">
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
