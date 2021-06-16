@@ -27,10 +27,10 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="code" class=" form-control-label">Select course</label>
-                                            <select class="form-control" name="course_id">
-                                                @foreach($courses as $course)
-                                                <option value="{{$course->id}}">{{$course->Name}}</option>
+                                        <label for="code" class=" form-control-label">Select project template</label>
+                                            <select class="form-control" name="tempID">
+                                                @foreach($projTemps as $temp)
+                                                <option value="{{$temp->id}}">{{$temp->templateName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
