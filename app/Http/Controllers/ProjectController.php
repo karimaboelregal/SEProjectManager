@@ -16,10 +16,18 @@ class ProjectController extends Controller
     public function showStudent(Request $request, $id='eyJpdiI6Ik1RNHNIbEZDQm1JRGFabDNzNmNDQWc9PSIsInZhbHVlIjoiMG9RSnF1VDY4RnQ2blV1eThNbXZ3QT09IiwibWFjIjoiYWExYmNlNjBkOTg1YzM5NTBmZGI4Nzk2NjBjMWIwNmM3YjU2YTk0MGRkZDgwMzAyYzEyNDE0YzE0MzBiMDQ4YSJ9'){
         $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id == 0) {
+        if ($id == 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
-        $selected = $projTemps[$id];
+        foreach ($projTemps as $proj) {
+            if ($proj->id == $id) {
+                $selected = $projTemps[$id];
+                break;
+            } else {
+                $selected = $projTemps[0];
+            }
+        }
+        
         return view ('student_projects',['projects'=>$projects, 'projTemps'=>$projTemps, 'selected'=>$selected]);
     }
 
