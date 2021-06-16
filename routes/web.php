@@ -11,6 +11,7 @@ use App\Http\Controllers\loginControl;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\SubmissionsController;
 
 
 /*
@@ -92,7 +93,9 @@ Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('Vi
 Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
-Route::post('/store', [DiscussionController::class,'store'])->name('store');
+Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])->name('storeDiscussion');
+
+Route::post('/storeSubmissionValue', [SubmissionsController::class,'storeSubmissionValue'])->name('storeSubmissionValue');
 
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 

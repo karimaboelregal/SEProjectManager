@@ -9,7 +9,7 @@ class DiscussionController extends Controller
 {
     //
 
-    public function store(Request $request)
+    public function storeDiscussion(Request $request)
     {
         $validated = $request->validate(['message' => 'required|max:250',]);
         $discussion = new Discussion();

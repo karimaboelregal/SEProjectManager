@@ -19,7 +19,8 @@ class ProjectTemplateSubmissionValue extends Migration
             $table->unsignedBigInteger('ProjectId');
             $table->unsignedBigInteger('TemplateId')->nullable();
             $table->unsignedBigInteger('SubmissionId');
-            $table->unsignedBigInteger('SubmissionValue');
+            $table->string('OriginalName','200');
+            $table->longText('LaravelName');
             $table->timestamps();
         });
     }

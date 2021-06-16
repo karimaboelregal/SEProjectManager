@@ -44,7 +44,6 @@
 <h1>Deliverables</h1>
 </div>
     <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;padding:15px;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
-
         @foreach ($submissions as $submission)
         <!-- had to add a margin right becuase they were so close to each other? -->
         <div class="turningButtonContainer" style="margin-right:30px;width:200px;height:250px;margin-top:2%">
@@ -54,7 +53,7 @@
                     <p>
                         <p class="text-center">Submission name</p>
                         <p class="text-center">{{$submission->submissionName}}</p>
-                        <button class="btn btn-light norms" data-toggle="modal" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                        <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
 
 
 
@@ -99,8 +98,13 @@
             </div>
             <hr />
         @endforeach
-            
-            <form action="{{route('store')}}" method="post">
+
+
+
+
+            <form action="{{route('storeDiscussion')}}" method="post">
+
+
                 {{csrf_field()}}
 
             <div class="row">
@@ -143,14 +147,27 @@
 <div id="myModalHorizontal" class="modal modal-file" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Modal content -->
     <div class="modal-content modal-file-content">
-        <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
-            <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
-        </div>
-        <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
-        <div class="row">
-            <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-            <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
-        </div>
+        <form action="{{route('storeSubmissionValue')}}" method="post" enctype="multipart/form-data">
+
+            {{csrf_field()}}
+
+            <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
+                <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
+            </div>
+            
+            <input style="margin-left: 90px;margin-top:50px;" type="file" id = "file" name= "file" style="width:200px">
+            <input type="hidden" name = "SubmissionId" id = "SubmissionId">
+            <input type="hidden" name="TemplateId" id="TemplateId" value = "{{$project[0]->ProjectTemplateId}}">
+            <input type="hidden" name="ProjectId" id="ProjectId" value = "{{$project[0]->id}}">
+
+
+            <div class="row">
+                <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+                <input type = 'submit' style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+
+                <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -180,6 +197,15 @@
 
    
 </style>
+
+<script>
+
+function setSubmissionModal(id)
+{
+    $("#SubmissionId").val(id);
+}
+
+</script>
                       
 @endsection
 
