@@ -97,7 +97,7 @@ Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])-
 
 Route::post('/storeSubmissionValue', [SubmissionsController::class,'storeSubmissionValue'])->name('storeSubmissionValue');
 Route::post('/editSubmissionValue', [SubmissionsController::class,'editSubmissionValue'])->name('editSubmissionValue');
-
+Route::post('/donwload_submission', [SubmissionsController::class,'download_submission'])->name('download_submission');
 
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 

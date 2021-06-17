@@ -55,8 +55,12 @@ class SubmissionsController extends Controller
     }
 
     //i think this takes a request not sure tho
-    public function download_submission()
+    public function download_submission(Request $request)
     {
-
+        $submission = $request->all();
+        //dd($submission["filepath"]);
+        return Storage::download($submission["filepath"], $submission['originalName']);
+        return redirect()->back();
+        //return Storage::download('file.jpg', $name, $headers);
     }
 }
