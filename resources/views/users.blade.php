@@ -4,7 +4,9 @@
 var element = document.getElementById("users");
 element.classList.add("show");
 </script>
-    <div class="modal modal-createTeam fade" id="viewde7k">
+<form action="{{route('storeUserSub')}}" method="post" enctype="multipart/form-data">
+{{csrf_field()}}
+    <div class="modal modal-createTeam fade" id="viewImport">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#d9534f;">
@@ -18,14 +20,14 @@ element.classList.add("show");
                 </div>
                 <div class="modal-body my-custom-scrollbar">
 
-    <div class="row d-flex justify-content-center"><input style="d-flex justify-content-center" type="file" style="width:200px"></div>
+    <div class="row d-flex justify-content-center"><input style="d-flex justify-content-center" type="file" id = "file" name= "file"  style="width:200px"></div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger closeModal" id="close" data-dismiss="modal">Close</button>
 
 
-                        <button type="button" class="btn btn-danger closeModal">Submit</button>
+                        <button type="submit" class="btn btn-danger closeModal">Submit</button>
 
 
 
@@ -34,9 +36,10 @@ element.classList.add("show");
             </div>
         </div>
     </div>
+    </form>
     <div style="margin-top:80px;width:100%;" class="row d-flex justify-content-center ">
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewde7k">Import data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewImport">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
@@ -103,6 +106,7 @@ jQuery( document ).ready(function( $ ) {
 
 })
 
+
 </script>
 <script>
 var modal = document.getElementById("myModal");
@@ -126,6 +130,40 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+function SetEditModal()
+{
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+
+    jQuery.ajax({
+        url: "{{ route('fetchSubmission') }}",
+        method: 'post',
+
+        success: function(result){
+            console.log(result);
+            
+            $("#filepath").val(result[0]['LaravelName']);
+
+            //result[0]['OriginalName']
+            //result[0]['LaravelName']
+            //result[0]['created_at']
+
+
+        },
+        error:function(){
+        alert("error");
+        }
+
+
+    });
+
+
+}
+
 </script>
     </div>
 </div>

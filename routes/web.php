@@ -97,6 +97,7 @@ Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsig
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
 Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])->name('storeDiscussion');
+Route::post('/storeUserSub', [UsersController::class,'storeUserSub'])->name('storeUserSub');
 
 Route::post('/storeSubmissionValue', [SubmissionsController::class,'storeSubmissionValue'])->name('storeSubmissionValue');
 Route::post('/editSubmissionValue', [SubmissionsController::class,'editSubmissionValue'])->name('editSubmissionValue');
@@ -116,7 +117,8 @@ Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('Ins
 Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
 Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
 
-
+Route::post('file-import', [UsersController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [UsersController::class, 'fileExport'])->name('file-export');
 
 Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
 
@@ -170,20 +172,6 @@ Route::get('/student_project', function () {
 
 Route::get('/testMail', function () {
     return view('testMail');
-});
-
-Route::get('send-mail', function () {
-   
-    $details = [
-        'title' => 'Mail from ItSolutionStuff.com',
-        'body' => 'This is for testing email using smtp'
-    ];
-    $mail = new testMail($details);
-    //dd($mail);
-    \Mail::to('karim1809252@miuegypt.edu.eg')->send($mail);
-    //\Mail::to('ahmed1801447@miuegypt.edu.eg')->send(new testMail($details));
-   
-    dd("Email is Sent.");
 });
 
 
