@@ -180,7 +180,7 @@ Route::get('send-mail', function () {
     ];
     $mail = new testMail($details);
     //dd($mail);
-    \Mail::to('ahmed1801447@miuegypt.edu.eg')->send($mail);
+    \Mail::to('karim1809252@miuegypt.edu.eg')->send($mail);
     //\Mail::to('ahmed1801447@miuegypt.edu.eg')->send(new testMail($details));
    
     dd("Email is Sent.");
