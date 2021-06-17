@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\SubmissionValue;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class SubmissionsController extends Controller
@@ -33,21 +35,23 @@ class SubmissionsController extends Controller
 
     public function editSubmissionValue(Request $request)
     {
-
+        $path = $request->file('Editfile')->store('submissions');
+        
+        $submission_value = new SubmissionValue();
+        $submission_value = $submission_value->find($request->SubmissionValueId);
+        $submission_value ->OriginalName = $request->file('Editfile')->getClientOriginalName();
+        Storage::delete($submission_value -> LaravelName);
+        $submission_value -> LaravelName = $path;
+        $submission_value ->save();
+        return redirect()->back();
     }
 
-    public static function has_submited($projectId)
+    public function fetchSubmission(Request $request)
     {
-        //query to check if a submission has been placed or not
-
-        $has_submitted = DB::select("SELECT ptsv.id
-            FROM project_template_submission_value ptsv
-            JOIN project p
-            ON p.id = ptsv.ProjectId
-            WHERE p.id = {$projectId}
-        ");
-
-        return $has_submitted;
+        $data = $request->data;
+        $SubmissionValueId = $data[0];
+        $submissionValues = SubmissionValue::where('id',$SubmissionValueId)->get();
+        return $submissionValues;
     }
 
     //i think this takes a request not sure tho

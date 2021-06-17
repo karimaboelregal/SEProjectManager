@@ -52,7 +52,7 @@ class ProjectController extends Controller
                 ORDER BY pts.id
                 ");
 
-        $has_submitted = DB::select("SELECT ptsv.SubmissionId
+        $has_submitted = DB::select("SELECT ptsv.SubmissionId,ptsv.id
             FROM project_template_submission_value ptsv
             JOIN project p
             ON p.id = ptsv.ProjectId

@@ -96,6 +96,8 @@ Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('In
 Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])->name('storeDiscussion');
 
 Route::post('/storeSubmissionValue', [SubmissionsController::class,'storeSubmissionValue'])->name('storeSubmissionValue');
+Route::post('/editSubmissionValue', [SubmissionsController::class,'editSubmissionValue'])->name('editSubmissionValue');
+
 
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
@@ -106,6 +108,12 @@ Route::get('/ViewStudentCourse/{id}', [CoursesController::class,'ViewStudentCour
 
 Route::get('InsertAnswer',[SurveyController::class,'InsertAnswer']);
 Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('InsertAnswer');
+
+
+Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
+Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
+
+
 
 Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
 
