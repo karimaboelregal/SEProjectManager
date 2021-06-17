@@ -62,6 +62,10 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+Route::get('/testmail', function () {
+    return view('testmail');
+});
+
 Route::get('/', function () {
     return view('login');
 });
