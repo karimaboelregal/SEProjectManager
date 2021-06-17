@@ -34,6 +34,6 @@ class testMail extends Mailable
         
 
          return $this->subject('Mail from ItSolutionStuff.com')
-                    ->view('testmail');
+                    ->view('testmail',["details"=>$this->details]);
     }
 }

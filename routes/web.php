@@ -12,6 +12,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\SubmissionsController;
+use App\Mail\testMail;
 
 
 /*
@@ -62,9 +63,7 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
-Route::get('/testmail', function () {
-    return view('testmail');
-});
+
 
 Route::get('/', function () {
     return view('login');
@@ -169,14 +168,20 @@ Route::get('/student_project', function () {
     return view('student_project');
 });
 
+Route::get('/testMail', function () {
+    return view('testMail');
+});
+
 Route::get('send-mail', function () {
    
     $details = [
         'title' => 'Mail from ItSolutionStuff.com',
         'body' => 'This is for testing email using smtp'
     ];
-   
-    \Mail::to('ahmed1801447@miuegypt.edu.eg')->send(new \App\Mail\testMail($details));
+    $mail = new testMail($details);
+    //dd($mail);
+    \Mail::to('ahmed1801447@miuegypt.edu.eg')->send($mail);
+    //\Mail::to('ahmed1801447@miuegypt.edu.eg')->send(new testMail($details));
    
     dd("Email is Sent.");
 });
