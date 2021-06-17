@@ -165,6 +165,18 @@ Route::get('/student_project', function () {
     return view('student_project');
 });
 
+Route::get('send-mail', function () {
+   
+    $details = [
+        'title' => 'Mail from ItSolutionStuff.com',
+        'body' => 'This is for testing email using smtp'
+    ];
+   
+    \Mail::to('ahmed1801447@miuegypt.edu.eg')->send(new \App\Mail\testMail($details));
+   
+    dd("Email is Sent.");
+});
+
 
 
 //showing errors uncommenting for now
