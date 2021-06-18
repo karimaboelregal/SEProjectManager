@@ -28,8 +28,11 @@ class UsersImport implements ToModel
             'name' => $row[1],
             'password' => $password
         ];
-        $mail = new testMail($details);
-        \Mail::to($row[2])->send($mail);    
+       // $mail = new testMail($details);
+        //\Mail::to($row[2])->send($mail);  
+        if (User::where('Email', $row[2])->first()) {
+            return;
+        }
         return new User([
             'Surname'     => $row[1],
             'Email'    => $row[2],
