@@ -8,8 +8,17 @@
 
 </div>
 
+
 <div style="margin-top:30px;width:100% !important;margin-bottom:50px;" class="row d-flex justify-content-center ">
     <div class="datatable-wide">
+    
+<button class="btn btn-outline" onclick="window.location.href='{{route('SurveyBuildIndex',['id'=>$surveys[0]->CourseId])}}'">Add Survey</button>
+
+
+
+
+
+
 
         <table id="userTable" class="table table-striped dt-responsive nowrap " style="width:100%">
             <thead>
@@ -37,9 +46,6 @@
                     <td class="align-middle">{{$survey->SurveyName}}</td>
                     
                     <td class="align-middle"><button class="btn btn-outline" onclick="window.location.href='{{route('ViewSurveyInsights',['id'=>$survey->id])}}'">View Insights</button></td>
-
-
-
 
 
                 </tr>

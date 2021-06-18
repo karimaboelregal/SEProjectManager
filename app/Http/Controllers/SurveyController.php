@@ -17,6 +17,12 @@ class SurveyController extends Controller
         return view ('surveys',['surveys'=>$surveys]);
     }
 
+    public function SurveyBuildIndex($id)
+    {
+        
+        return view ('surveybuild',['courseId'=>$id]);
+    }
+
     public function ViewSurveyInsights($id)
     {
 
@@ -108,12 +114,15 @@ class SurveyController extends Controller
     public function InsertSurvey(Request $request)
     {
         //model here
+        //input type="text" name="questiontitle[]"
+        $validated = $request->validate(['title' => 'required|max:100','questiontitle'=>'required',]);
         $survey = $request->input();
+        //dd($survey['courseId']);
         //dd($survey);
         $surveyModel = new Survey();
         
         $surveyModel->SurveyName = $survey['title'];
-        $surveyModel->CourseId = 1;
+        $surveyModel->CourseId = $survey['courseId'];
         $surveyModel->save();
         $lastId = $surveyModel->id;
         //dd($surveyModel->id);
@@ -129,7 +138,9 @@ class SurveyController extends Controller
             $question->QuestionText = $survey['questiontitle'][$i];
             $question->save();
         }
-        return \redirect('/home');; 
+        
+        return redirect()->route('SurveyFromCourse', ['id'=>$survey['courseId']]);
+ 
         
     }
     public function ViewSurvey(Request $request,$id=1){

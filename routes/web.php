@@ -75,7 +75,7 @@ Route::get('/surveys', function () {
     return view('surveys');
 });
 Route::get('/surveys/{id}', [SurveyController::class,'SurveyFromCourse'])->name('SurveyFromCourse');
-
+Route::get('/surveybuild/{id}', [SurveyController::class,'SurveyBuildIndex'])->name('SurveyBuildIndex');
 Route::get('/surveybuild', function () {
     return view('surveybuild');
 });
@@ -95,6 +95,8 @@ Route::post('/createTemplate', [ProjectController::class,'insertProjTemp'])->nam
 Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('ViewSurvey');
 Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
+
+
 
 Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])->name('storeDiscussion');
 
