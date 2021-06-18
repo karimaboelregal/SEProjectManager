@@ -14,16 +14,6 @@ element.classList.add("show");
     </div>
     <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
             <button onclick="location.href = '{{route('createProjectForm')}}'" style="width: 200px;"class="btn btn-outline">Create a new project</button>
-<div class="dropdown" style="margin-left: 5px;"">
-  <button class="btn btn-secondary dropdown-toggle" id="yearText" style="background-color:#fff;color:black;style=border:none;"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    2021
-  </button>
-  <div class="dropdown-menu" id="year" aria-labelledby="yearText">
-    <a class="dropdown-item" href="#">2021</a>
-    <a class="dropdown-item" href="#">2020</a>
-    <a class="dropdown-item" href="#">2019</a>
-  </div>
-  </div>
 
 <div class="dropdown" style="margin-left: 5px;"">
   <button class="btn btn-secondary dropdown-toggle" style="background-color:#fff;color:black;style=border:none;"type="button" id="tempText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
