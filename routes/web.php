@@ -62,9 +62,6 @@ Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('cr
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
 
 
-Route::get('/projectstate', function () {
-    return view('projectstate');
-});
 
 
 
@@ -143,7 +140,11 @@ Route::get('/projects/{id}', [ProjectController::class,'index'])->name('index');
 Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->name('projTemp');
 
 
+Route::get('/projectstate/{id}', [ProjectController::class,'projectstate'])->name('projectstate');
+Route::post('/projectstate/{id}', [ProjectController::class,'projectstate'])->name('projectstate');
+
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
+
 Route::get('/ViewStudentProject/{id}', [ProjectController::class,'ViewStudentProject'])->name('ViewStudentProject');
 
 Route::get('/createProjectForm', [ProjectController::class,'createProjectForm'])->name('createProjectForm');

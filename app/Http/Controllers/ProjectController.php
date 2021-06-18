@@ -164,6 +164,21 @@ class ProjectController extends Controller
 
     }
 
+    public function projectstate(Request $request,$id){
+        if ($request->state == 2) {
+            DB::table('project')->where('id',$id)->update(['state'=>1]);
+            return \redirect('/projects');
+        } elseif ($request->state == 1) {
+            DB::table('project')->where('id',$id)->delete();
+            return \redirect('/projects');
+        }
+        $project = DB::table("project")
+        ->join('team_members', 'team_members.TeamId', '=', 'project.TeamId')
+        ->join('users', 'users.id', '=', 'team_members.TeamMemberId')
+        ->where('project.id',$id)->get();
+        return view('projectstate', ["project"=>$project, 'projID'=>$id]);
+    }
+
     public function editProject(Request $request){
 
         $id = $request->input('id');
