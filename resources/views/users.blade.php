@@ -45,7 +45,11 @@ element.classList.add("show");
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
         </div>
         <div class="col-12 col-md-auto">
+        <form action="{{url('users')}}" method="post">
+        {{csrf_field()}}
+
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
+        </form>
         </div>
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 180px;"class="btn btn-outline" form="deleteForm">Delete selected users</button>

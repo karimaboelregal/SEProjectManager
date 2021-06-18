@@ -22,7 +22,10 @@ class UsersController extends Controller {
         //User::find($request->input('deleteThis'))->delete();
         #Session::get
     }
-
+    public function deleteAll() {
+        User::whereNotNull('id')->delete();
+        return \redirect('/users');
+    }
     public function storeUserSub(Request $request) {
         $path = $request->file('file')->store('temp');
         Excel::import(new UsersImport, $path);
