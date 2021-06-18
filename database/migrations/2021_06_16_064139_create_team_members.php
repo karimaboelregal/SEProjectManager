@@ -17,7 +17,7 @@ class CreateTeamMembers extends Migration
             $table->id();
             $table->unsignedBigInteger('TeamId');
             $table->unsignedBigInteger('TeamMemberId');
-            $table->foreign('TeamMemberId')->references('id')->on('users');
+            $table->foreign('TeamMemberId')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('TeamId')->references('id')->on('team');
             $table->timestamps();
         });

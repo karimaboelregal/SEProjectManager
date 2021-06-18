@@ -39,6 +39,7 @@ Route::get('/users', function () {
 
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::post('/deleteusers', [UsersController::class,'deleteusers'])->name('deleteusers');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
 

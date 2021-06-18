@@ -48,7 +48,7 @@ element.classList.add("show");
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 180px;"class="btn btn-outline">Delete selected users</button>
+            <button style="padding:5px; width: 180px;"class="btn btn-outline" form="deleteForm">Delete selected users</button>
 
         </div>
 
@@ -73,8 +73,11 @@ element.classList.add("show");
             
             <th height=150 width=150 scope="row">
                 <div class="custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck2">  
-                    <label  class="custom-control-label" for="customCheck2" style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
+                <form action="{{route('deleteusers')}}" id="deleteForm" method="post">
+                    {{csrf_field()}}
+                    <input type="checkbox" class="custom-control-input" name='delete{{$user->id}}' value='{{$user->id}}' id={{$user->id}}>  
+                    <label  class="custom-control-label" for={{$user->id}} style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
+                </form>
                 </div>  
             </th>
             <input name="userid" value={{$user->id}} type="hidden">

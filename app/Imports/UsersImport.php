@@ -23,7 +23,6 @@ class UsersImport implements ToModel
             return;
         }
         $this->numb;
-        echo "hs";
         $password = Str::random(15);
         $details = [
             'name' => $row[1],

@@ -18,7 +18,7 @@ class UpdateCoursesTable extends Migration
             $table->unsignedBigInteger('InstructorId')->nullable();
             $table->unsignedBigInteger('TaskId')->nullable();
             $table->foreign('SurveyId')->references('id')->on('survey');
-            $table->foreign('InstructorId')->references('id')->on('users');
+            $table->foreign('InstructorId')->references('id')->on('users')->onDelete('set null');
             $table->foreign('TaskId')->references('id')->on('submission');
         });
     }
