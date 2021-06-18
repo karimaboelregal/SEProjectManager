@@ -23,10 +23,7 @@
         <a href="#">The Agile manifesto</a>
     
     <h4 Style="margin-top:5%;">Surveys</h4>
-        @foreach($courseInfo['surveysObj'] as $surveys)
-                <a href="{{route('ViewSurvey',['id'=>$surveys->id])}}">{{$surveys->SurveyName}}</a>
-                <br>
-        @endforeach
+        
         <div class="row">
 
         <button class="btn btn-outline" onclick="window.location.href='{{route('SurveyFromCourse',['id'=>$course->id])}}'">View Surveys</button>
