@@ -9,9 +9,21 @@ use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function index(){
+    public function index(Request $request, $id='0'){
         $projects = DB::table('project')->get();
-        return view ('projects',['projects'=>$projects]);
+        $projTemps = DB::table("projecttemplate")->get();
+        if ($id == 0 && strlen($id) == 188) {
+            $id = \Crypt::decrypt($id);
+        }
+        foreach ($projTemps as $proj) {
+            if ($proj->id == $id) {
+                $selected = $projTemps[$id];
+                break;
+            } else {
+                $selected = $projTemps[0];
+            }
+        }
+        return view ('projects',['projects'=>$projects, 'projTemps'=>$projTemps, 'selected'=>$selected]);
     }
     public function showStudent(Request $request, $id='0'){
         $projects = DB::table('project')->get();
@@ -161,7 +173,7 @@ class ProjectController extends Controller
         $client_name = $request->input('client_name');
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
-        $course_id = $request->input('course_id');
+        $tempID = $request->input('tempID');
 
         DB::table('project')->where('id',$id)->update([
             'ProjectTitle'=>$title,
@@ -170,7 +182,7 @@ class ProjectController extends Controller
             'ClientName' => $client_name,
             'ClientEmail' =>$client_email,
             'TeamId'=>$team_id,
-            'CourseId' => $course_id
+            'ProjectTemplateId' => $tempID
         ]);
 
         return \redirect('/projects');
@@ -210,8 +222,8 @@ class ProjectController extends Controller
 
         $project = DB::table('project')->where('id',$id)->get();
         $teams = DB::table('team')->get();
-        $courses = DB::table('courses')->get();
-        return view('editProjectForm',['project'=>$project,'courses'=>$courses,'teams'=>$teams]);
+        $projTemps = DB::table("projecttemplate")->get();
+        return view('editProjectForm',['project'=>$project,'projTemps'=>$projTemps,'teams'=>$teams]);
 
     }
 }
