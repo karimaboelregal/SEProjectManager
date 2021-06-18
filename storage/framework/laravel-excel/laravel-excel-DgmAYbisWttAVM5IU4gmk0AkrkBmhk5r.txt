@@ -1,0 +1,2 @@
+IAM User Name,Smtp Username,Smtp Password
+"ses-smtp-user.20210617-012914",AKIA5KCVNX3YHQ4HJNHV,BFHVKQd1mpCTUhTVuK6qGFpT2JsilgDIiIum0PvgEIz2
