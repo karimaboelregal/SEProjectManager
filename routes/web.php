@@ -11,6 +11,8 @@ use App\Http\Controllers\loginControl;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\SubmissionsController;
+use App\Mail\testMail;
 
 
 /*
@@ -37,6 +39,9 @@ Route::get('/users', function () {
 
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
+Route::post('/users', [UsersController::class,'deleteAll'])->name('deleteAll');
+
+Route::post('/deleteusers', [UsersController::class,'deleteusers'])->name('deleteusers');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
 
 
@@ -62,6 +67,8 @@ Route::get('/projectstate', function () {
     return view('projectstate');
 });
 
+
+
 Route::get('/', function () {
     return view('login');
 });
@@ -72,7 +79,7 @@ Route::get('/surveys', function () {
     return view('surveys');
 });
 Route::get('/surveys/{id}', [SurveyController::class,'SurveyFromCourse'])->name('SurveyFromCourse');
-
+Route::get('/surveybuild/{id}', [SurveyController::class,'SurveyBuildIndex'])->name('SurveyBuildIndex');
 Route::get('/surveybuild', function () {
     return view('surveybuild');
 });
@@ -93,7 +100,14 @@ Route::get('/ViewSurvey/{id}', [SurveyController::class,'ViewSurvey'])->name('Vi
 Route::get('/ViewSurveyInsights/{id}', [SurveyController::class,'ViewSurveyInsights'])->name('ViewSurveyInsights');
 Route::post('/InsertSurvey', [SurveyController::class,'InsertSurvey'])->name('InsertSurvey');
 
-Route::post('/store', [DiscussionController::class,'store'])->name('store');
+
+
+Route::post('storeDiscussion', [DiscussionController::class,'storeDiscussion'])->name('storeDiscussion');
+Route::post('/storeUserSub', [UsersController::class,'storeUserSub'])->name('storeUserSub');
+
+Route::post('/storeSubmissionValue', [SubmissionsController::class,'storeSubmissionValue'])->name('storeSubmissionValue');
+Route::post('/editSubmissionValue', [SubmissionsController::class,'editSubmissionValue'])->name('editSubmissionValue');
+Route::post('/donwload_submission', [SubmissionsController::class,'download_submission'])->name('download_submission');
 
 Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
@@ -104,6 +118,13 @@ Route::get('/ViewStudentCourse/{id}', [CoursesController::class,'ViewStudentCour
 
 Route::get('InsertAnswer',[SurveyController::class,'InsertAnswer']);
 Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('InsertAnswer');
+
+
+Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
+Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
+
+Route::post('file-import', [UsersController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [UsersController::class, 'fileExport'])->name('file-export');
 
 Route::get('/createCourseForm', [CoursesController::class,'createCourseForm'])->name('createCourseForm');
 
@@ -117,6 +138,9 @@ Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->nam
 
 Route::get('/projects', [ProjectController::class,'index'])->name('index');
 Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+Route::get('/student_projects/{id}', [ProjectController::class,'showStudent'])->name('showStudent');
+Route::get('/projects/{id}', [ProjectController::class,'index'])->name('index');
+
 Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->name('projTemp');
 
 
@@ -152,6 +176,10 @@ Route::get('/student_course', function () {
 
 Route::get('/student_project', function () {
     return view('student_project');
+});
+
+Route::get('/testMail', function () {
+    return view('testMail');
 });
 
 

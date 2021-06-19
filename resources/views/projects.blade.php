@@ -13,15 +13,17 @@ element.classList.add("show");
             <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>
     <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
-            <div class="dropdown" style="margin-left: 5px;"">
-  <button class="btn btn-secondary dropdown-toggle" id="yearText" style="background-color:#fff;color:black;"type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    2021
+
+<div class="dropdown" style="margin-left: 5px;"">
+  <button class="btn btn-secondary dropdown-toggle" style="background-color:#fff;color:black;style=border:none;"type="button" id="tempText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{$selected->templateName}}
   </button>
-  <div class="dropdown-menu" id="year"aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">2021</a>
-    <a class="dropdown-item" href="#">2020</a>
-    <a class="dropdown-item" href="#">2019</a>
+  <div class="dropdown-menu" id="temp"aria-labelledby="tempText">
+  @foreach ($projTemps as $proj)
+    <a class="dropdown-item" href="{{url("projects/".Crypt::encrypt(($proj->id-1)))}}" >{{$proj->templateName}}</a>
+  @endforeach
   </div>
+
 </div>
 <script>
  $(function(){
@@ -32,6 +34,12 @@ element.classList.add("show");
       $("#yearText").val($(this).text());
 
    });
+    $("#temp a").click(function(){
+
+      $("#tempText").text($(this).text());
+      $("#tempText").val($(this).text());
+
+   });
 
 });
 </script>
@@ -39,6 +47,7 @@ element.classList.add("show");
 
     <div style="margin-top:30px;max-width:100%;" class="row d-flex justify-content-center ">
         @foreach ($projects as $project)
+        @if ($project->ProjectTemplateId == $selected->id)
         <div class="turningButtonContainer" style="width:300px;height:220px;">
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;color:#197419"class="icons far fa-dot-circle"></i><span style="font-size:30px;line-height:1.6">{{$project->ProjectTitle}}</span></div>
@@ -55,6 +64,7 @@ element.classList.add("show");
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>

@@ -15,9 +15,9 @@ class UpdateTeamTable extends Migration
     {
         Schema::table('team', function (Blueprint $table) {
             $table->string('Name');
-            $table->unsignedBigInteger('LeaderId');
-            $table->unsignedBigInteger('CourseId');
-            $table->foreign('LeaderId')->references('id')->on('users');  
+            $table->unsignedBigInteger('LeaderId')->nullable();
+            $table->unsignedBigInteger('CourseId')->nullable();
+            $table->foreign('LeaderId')->references('id')->on('users')->onDelete('set null');  
         });
     }
 

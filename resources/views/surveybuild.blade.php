@@ -10,11 +10,13 @@
             <h2 Style="margin:2%;">Survey Information</h2>
             <form action="{{route('InsertSurvey')}}" method="post">
                 {{csrf_field()}}
+                <input type = "hidden" id = "courseId" name = "courseId"value = "{{$courseId}}"">
+
             <div class="row" style="margin-left:30px">
 
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" id="title" required>
+                    <input type="text" name="title" id="title" >
                 </div>
             </div>
 
@@ -46,6 +48,16 @@
             </form>
 
             
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            
+            <li>Please type in the survey title and questions first</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
 
     </div>

@@ -6,11 +6,7 @@
     element.classList.add("show");
 
 </script>
-@php
-    $project = $projectAndDiscussion[1];
-    $discussions = $projectAndDiscussion[0];
 
-@endphp
 
 
 <div class ="container">
@@ -43,18 +39,42 @@
 
 <h1>Deliverables</h1>
 </div>
-    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;" class="row d-flex justify-content-center ">
+    <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;padding:15px;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
+    @php
+        $i = 0
 
+    @endphp
         @foreach ($submissions as $submission)
         <!-- had to add a margin right becuase they were so close to each other? -->
-        <div class="turningButtonContainer" style="margin-right:30px;">
+        <div class="turningButtonContainer" style="margin-right:30px;width:200px;height:250px;margin-top:2%">
             <div class="turningButtonContainerInner">
-                <div class="turningButton"><i style="font-size:35px;margin-top:55px;" class="icons far fa-dot-circle"></i><span>{{$submission->submissionName}}</span></div>
+                <div class="turningButton"><i style="font-size:25px;margin-top:55px;" class="icons far fa-dot-circle"></i><span style="font-size:35px;">{{$submission->submissionName}}</span></div>
                 <div class="turnedButton">
                     <p>
+                        <p class="text-center">Submission name</p>
                         <p class="text-center">{{$submission->submissionName}}</p>
-                        <button style="margin-left:55px;padding:5px;width:100px;margin-top:0px;" class="btn btn-light norms" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+                        <!--this means that the value the student has submitted matches the submissions in general -->
 
+                        @if(isset($submissionValues[$i]->SubmissionId))
+                            @if($submissionValues[$i]->SubmissionId == $submission->id)
+                                <button class="btn btn-light norms" data-toggle="modal" onClick="SetEditModal({{$submissionValues[$i]->id}})" data-target="#EditModal" data-toggle="tooltip" title="Add Submission">Edit Submission</button>
+                                @php
+                                $i++;
+                                @endphp
+
+
+                            @else
+                                <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+
+                            @endif
+
+                            
+                        @else
+                            
+                            <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Add Submission</button>
+
+                        @endif
+                        
                     </p>
                     
                 </div>
@@ -96,8 +116,13 @@
             </div>
             <hr />
         @endforeach
-            
-            <form action="{{route('store')}}" method="post">
+
+
+
+
+            <form action="{{route('storeDiscussion')}}" method="post">
+
+
                 {{csrf_field()}}
 
             <div class="row">
@@ -140,14 +165,62 @@
 <div id="myModalHorizontal" class="modal modal-file" tabindex="-1" role="dialog" aria-hidden="true">
     <!-- Modal content -->
     <div class="modal-content modal-file-content">
-        <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
-            <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
-        </div>
-        <input style="margin-left: 90px;margin-top:50px;" type="file" style="width:200px">
-        <div class="row">
-            <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-            <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
-        </div>
+        <form action="{{route('storeSubmissionValue')}}" method="post" enctype="multipart/form-data">
+
+            {{csrf_field()}}
+
+            <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
+                <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
+            </div>
+            
+            <input style="margin-left: 90px;margin-top:50px;" type="file" id = "file" name= "file" style="width:200px" required>
+            <input type="hidden" name = "SubmissionId" id = "SubmissionId">
+            <input type="hidden" name="TemplateId" id="TemplateId" value = "{{$project[0]->ProjectTemplateId}}">
+            <input type="hidden" name="ProjectId" id="ProjectId" value = "{{$project[0]->id}}">
+
+
+            <div class="row">
+                <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+                <input type = 'submit' style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
+
+                <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<!-- EditModal -->
+<div id="EditModal" class="modal modal-file" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Modal content -->
+    <div class="modal-content modal-file-content">
+        <form action="{{route('editSubmissionValue')}}" method="post" enctype="multipart/form-data">
+
+            {{csrf_field()}}
+
+            <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
+                <p class="text-center" style="color:#fff;font-size:25px;">Select a file</p>
+            </div>
+
+            <input style="margin-left: 90px;margin-top:50px;" type="file" id="Editfile" name="Editfile" style="width:200px" required>
+            <input type="hidden" name="SubmissionId" id="SubmissionId">
+            <input type="hidden" name="TemplateId" id="TemplateId" value="{{$project[0]->ProjectTemplateId}}">
+            <input type="hidden" name="ProjectId" id="ProjectId" value="{{$project[0]->id}}">
+            <input type = "hidden" name = "SubmissionValueId" id = "SubmissionValueId">
+            <input type = "hidden" name = "filepath" id = "filepath">
+            
+            <div class="row">
+                
+                <input type='submit' style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">change submission</button>
+
+                <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline" class="close" data-dismiss="modal" aria-label="Close">close</button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -177,6 +250,56 @@
 
    
 </style>
+
+<script>
+
+function setSubmissionModal(id)
+{
+    $("#SubmissionId").val(id);
+}
+
+function SetEditModal(SubmissionValueId)
+{
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+
+    jQuery.ajax({
+        url: "{{ route('fetchSubmission') }}",
+        method: 'post',
+        data: {data:SubmissionValueId},
+
+        success: function(result){
+            console.log(result);
+            
+            $("#SubmissionValueId").val(result[0]['id']);
+            $("#filepath").val(result[0]['LaravelName']);
+
+            //result[0]['OriginalName']
+            //result[0]['LaravelName']
+            //result[0]['created_at']
+
+
+        },
+        error:function(){
+        alert("error");
+        }
+
+
+    });
+
+
+}
+
+
+
+
+
+
+</script>
                       
 @endsection
 

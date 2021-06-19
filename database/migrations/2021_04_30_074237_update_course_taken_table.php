@@ -16,7 +16,7 @@ class UpdateCourseTakenTable extends Migration
         Schema::table('course_taken', function (Blueprint $table) {
             $table->unsignedBigInteger('StudentId');
             $table->unsignedBigInteger('CourseId');
-            $table->foreign('StudentId')->references('id')->on('users');
+            $table->foreign('StudentId')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('CourseId')->references('id')->on('courses');    
         });
     }
