@@ -12,6 +12,7 @@ class UsersExport implements FromCollection
     */
     public function collection()
     {
-        return User::all();
+        $obj = User::all();
+        return $obj->makeHidden(["Password"]);
     }
 }

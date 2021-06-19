@@ -26,13 +26,17 @@ class UsersController extends Controller {
         User::whereNotNull('id')->delete();
         return \redirect('/users');
     }
+    public function download() {
+        return Excel::download(new UsersExport, 'user data.csv');
+        #return \redirect('/users');
+    }
+    
     public function storeUserSub(Request $request) {
         $path = $request->file('file')->store('temp');
         Excel::import(new UsersImport, $path);
         //echo $path;
         //print_r($request);
-        $users = User::select('users.id', 'Email','Surname','RoleId','role.Name')->join('role', 'role.id', '=', 'users.RoleId')->get();
-        return view ('users',['users'=>$users]);
+        return redirect ('/users');
 
     }
 

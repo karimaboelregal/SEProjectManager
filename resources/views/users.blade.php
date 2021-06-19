@@ -42,7 +42,7 @@ element.classList.add("show");
             <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewImport">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline"><a href="{{route('download')}}">Export data</a></button>
         </div>
         <div class="col-12 col-md-auto">
         <form action="{{url('users')}}" method="post">

@@ -33,13 +33,11 @@ Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
 
-Route::get('/users', function () {
-    return view('users');
-});
 
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::post('/users', [UsersController::class,'deleteAll'])->name('deleteAll');
+Route::get('/users/download', [UsersController::class,'download'])->name('download');
 
 Route::post('/deleteusers', [UsersController::class,'deleteusers'])->name('deleteusers');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
