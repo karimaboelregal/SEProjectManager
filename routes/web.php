@@ -51,6 +51,7 @@ Route::post('/InviteStudent', [TeamController::class,'InviteStudent'])->name('In
 
 Route::post('/CreateTeam', [TeamController::class,'CreateTeam'])->name('CreateTeam');
 
+
 Route::get('/EnrolledStudents/{id}', [CoursesController::class,'EnrolledStudents'])->name('EnrolledStudents');
 
 Route::get('/home', [HomeController::class,'index'])->name('home');

@@ -127,8 +127,10 @@ class ProjectController extends Controller
 
     public function createProjectForm(){
         $teams = DB::table('team')->get();
-        $projTemps = DB::table('projecttemplate')->get();
-        return view ('createProjectForm',['teams'=>$teams,'projTemps'=>$projTemps]);
+        $courses = DB::table('courses')->get();
+        $project_templates = DB::table('projecttemplate')->get();
+        return view ('createProjectForm',['teams'=>$teams,'project_templates'=>$project_templates]);
+
     }
 
     public function deleteProject(Request $request,$id){
@@ -144,7 +146,11 @@ class ProjectController extends Controller
         $client_name = $request->input('client_name');
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
+<<<<<<< HEAD
+        $project_template_id = $request->input('project_template_id');
+=======
         $tempID = $request->input('tempID');
+>>>>>>> 28cb268f72f58efcb62b5c8ed481ba721c5b71e5
         //wala i put a project template id in the projects table so care
         DB::table('Project')->insert([
             'ProjectTitle'=>$title,
@@ -153,7 +159,11 @@ class ProjectController extends Controller
             'ClientName' => $client_name,
             'ClientEmail' =>$client_email,
             'TeamId'=>$team_id,
+<<<<<<< HEAD
+            'ProjectTemplateId' => $project_template_id
+=======
             'ProjectTemplateId' => $tempID
+>>>>>>> 28cb268f72f58efcb62b5c8ed481ba721c5b71e5
         ]);
 
         return \redirect('/student_projects');

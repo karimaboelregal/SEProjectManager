@@ -20,6 +20,7 @@ display: block;
 <body>
     <div class= "container">
     @foreach($courseInfo['courseObj'] as $course)
+    <input type="hidden" id="courseid" name="courseid" value="{{$course->id}}">
         <h2 Style="margin-top:5%;" >Welcome to SE</h2>
 
         <h4 Style="margin-top:5%;">Course Description</h4>
@@ -115,8 +116,9 @@ display: block;
                         <form action="{{route('CreateTeam')}}" method="post">
                         {{csrf_field()}}
                             <div class="form-group">
+                            <input type="hidden" name="courseid2" id="courseid2" value="">
                                 <label for="title">Team Name</label>
-                                <input type="text" class="form-control" id="title" placeholder="Enter Name">
+                                <input type="text" name="TeamName" class="form-control" id="TeamName" placeholder="Enter Name">
                             </div>
                     </div>
                 </div>
@@ -125,7 +127,7 @@ display: block;
                     <button type="button" class="btn btn-danger closeModal" data-dismiss="modal">Close</button>
 
                     <button type="button" class="btn btn-danger previous" style="display:none;">Previous</button>
-                    <button type="button" class="btn btn-danger submit" style="display:none;">Submit</button>
+                    <button class="btn btn-danger submit" type="submit" style="display:none;" value="submit">Submit</button>
 
                     </form>
                     <button type="button" class="btn btn-danger next">Next</button>
@@ -161,6 +163,9 @@ display: block;
 
     });
 
+    $(document).ready(function() {
+        $("#courseid2").val($("#courseid").val());
+    });
 
 </script>
 

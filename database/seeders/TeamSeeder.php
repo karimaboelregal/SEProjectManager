@@ -16,7 +16,7 @@ class TeamSeeder extends Seeder
     {
         DB::table('team')->insert([
             'Name' => 'School System',
-            'MembersId' => '1,2,3,4',
+            'MembersId' => '1',
             'LeaderId' => '3',
             'CourseId' => '1'
         ]);
@@ -24,19 +24,7 @@ class TeamSeeder extends Seeder
 
         DB::table('team_members')->insert([
             'TeamId' =>1,
-            'TeamMemberId' => 1
-        ]);
-        DB::table('team_members')->insert([
-            'TeamId' =>1,
-            'TeamMemberId' => 2
-        ]);
-        DB::table('team_members')->insert([
-            'TeamId' =>1,
             'TeamMemberId' => 3
-        ]);
-        DB::table('team_members')->insert([
-            'TeamId' =>1,
-            'TeamMemberId' => 4
         ]);
     }
 }

@@ -22,11 +22,12 @@
                                         <label for="code" class=" form-control-label">Select team</label>
                                             <select class="form-control" name="team_id">
                                                 @foreach($teams as $team)
-                                                <option value="{{$team->id}}">{{$team->id}}</option>
+                                                <option value="{{$team->id}}">{{$team->Name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
+
                                         <label for="code" class=" form-control-label">Select project template</label>
                                             <select class="form-control" name="tempID">
                                                 @foreach($projTemps as $temp)
