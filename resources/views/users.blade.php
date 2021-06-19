@@ -11,7 +11,7 @@ element.classList.add("show");
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#d9534f;">
 
-                    <h5 class="modal-title" id="viewTeamModalLabel">View Team</h5>
+                    <h5 class="modal-title" id="viewTeamModalLabel">Import data</h5>
 
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -52,7 +52,7 @@ element.classList.add("show");
         </form>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 180px;"class="btn btn-outline" form="deleteForm">Delete selected users</button>
+            <button style="padding:5px; width: 180px;"class="btn btn-outline" >Delete selected users</button>
 
         </div>
 

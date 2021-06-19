@@ -31,9 +31,9 @@ if ($state == 1) {
   <div class="login row d-flex justify-content-center">
 
     {{csrf_field()}}
-     <img style="height:130px; width:130px;margin-top:3%;" src="{{ URL::to('logonobg.png') }}">
-     <input style="height:30px;" type="text" class="inputDesign text-center" id="Email" name="Email" placeholder="Email">
-      <input style="height:30px;margin-top:20px;" type="password" class="inputDesign text-center" id="password" name="password" placeholder="password">
+     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
+     <input style="height:30px;" type="text" class="inputDesign" id="Email" name="Email" placeholder="Email">
+      <input style="height:30px;margin-top:20px;" type="password" class="inputDesign" id="password" name="password" placeholder="password">
       <div class="custom-control form-control-lg custom-checkbox row d-flex justify-content-center text-center w-100" style="margin-top: 15px; height:35px;">  
           <input type="checkbox" class="custom-control-input" id="customCheck1">  
           <label class="custom-control-label" for="customCheck1" style="font-size:15px">Remember me</label>  
@@ -41,7 +41,7 @@ if ($state == 1) {
       <div class="row text-center d-flex justify-content-center text-center w-100">
         <a href="#">Forgot password</a><br>
       </div>
-        <button style="margin-top: 10px; width:150px;padding:0px;margin-bottom:10px;" type="submit" class="btn btn-outline-dark">Login</button>
+        <button style="margin-top: 10px; width:150px;padding:5px;margin-bottom:40px;" type="submit" class="btn btn-outline-dark">Login</button>
 
       </div>
     </form>
