@@ -30,7 +30,9 @@
 
                                         <label for="code" class=" form-control-label">Select project template</label>
                                             <select class="form-control" name="tempID">
-                                                @foreach($projTemps as $temp)
+                                            
+                                                @foreach($project_templates as $temp)
+
                                                 <option value="{{$temp->id}}">{{$temp->templateName}}</option>
                                                 @endforeach
                                             </select>
