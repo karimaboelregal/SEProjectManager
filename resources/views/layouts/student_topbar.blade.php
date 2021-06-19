@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Admin') }}</title>
     <script src="https://kit.fontawesome.com/df4285e61f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="icon" href="{{ asset('logo.jpg') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('logonobg.png') }}" type="image/x-icon"/>
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet">
 

@@ -16,7 +16,7 @@
     <script src="{{ asset('js/Chart.js') }}"></script>
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/verticalstyle.css') }}" rel="stylesheet">     
-    <link rel="icon" href="{{ asset('logo.jpg') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('logonobg.png') }}" type="image/x-icon"/>
 
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css">
     
@@ -24,15 +24,10 @@
     <style>
     .login {
         margin-top: 100px;
-        width: 400px;
-        height:350px;
+        width: 300px;
+        height:400px;
         background: #FFFFFF;
         box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.30);
-    }
-    .loginHead {
-        width:100%;
-        height:40px;
-        background: #C63E47;
     }
         .wrapper {
     display: flex;
