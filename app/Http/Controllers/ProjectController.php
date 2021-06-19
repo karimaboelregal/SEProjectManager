@@ -127,14 +127,10 @@ class ProjectController extends Controller
 
     public function createProjectForm(){
         $teams = DB::table('team')->get();
-<<<<<<< HEAD
         $courses = DB::table('courses')->get();
         $project_templates = DB::table('projecttemplate')->get();
         return view ('createProjectForm',['teams'=>$teams,'project_templates'=>$project_templates]);
-=======
-        $projTemps = DB::table('projecttemplate')->get();
-        return view ('createProjectForm',['teams'=>$teams,'projTemps'=>$projTemps]);
->>>>>>> 28cb268f72f58efcb62b5c8ed481ba721c5b71e5
+
     }
 
     public function deleteProject(Request $request,$id){
