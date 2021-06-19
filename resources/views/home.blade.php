@@ -51,7 +51,6 @@ element.classList.add("show");
                 <div class="col-12 col-xl-4">
                  <div class="justify-content-end d-flex">
                   <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
-                    <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
                   </div>
                  </div>
                 </div>

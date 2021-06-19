@@ -38,11 +38,12 @@ element.classList.add("show");
     </div>
     </form>
     <div style="margin-top:80px;width:100%;" class="row d-flex justify-content-center ">
+    
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewImport">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline"><a href="{{route('download')}}">Export data</a></button>
+            <a href="{{route('download')}}" style="padding:5px; width: 150px;"class="btn btn-outline">Export data</a>
         </div>
         <div class="col-12 col-md-auto">
         <form action="{{url('users')}}" method="post">

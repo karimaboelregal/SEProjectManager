@@ -212,6 +212,10 @@ if ($state != 1 && Request::path() != "login") {
             </ul>
         </div>
     </nav>
+      <div class="row d-flex justify-content-center">
+     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
+     </div>
+
     <main class="py-10">
         @yield('content')
     </main>
