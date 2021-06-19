@@ -64,7 +64,7 @@ class CoursesController extends Controller
         ->groupby('project.id','projecttemplate.id','projecttemplate.templateName','projecttemplate.description')
         ->select('projecttemplate.*','project.id as projectid')
         ->get();
-        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students],['projTemps'=>$temps]);
+        return view('student_course',['courseInfo'=>$courseInfo,'invite_students'=>$invite_students,'projTemps'=>$temps]);
  
      }
 

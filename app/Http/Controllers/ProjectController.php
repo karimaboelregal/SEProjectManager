@@ -54,7 +54,8 @@ class ProjectController extends Controller
     public function createProjectForm(){
         $teams = DB::table('team')->get();
         $courses = DB::table('courses')->get();
-        return view ('createProjectForm',['teams'=>$teams,'courses'=>$courses]);
+        $project_templates = DB::table('projecttemplate')->get();
+        return view ('createProjectForm',['teams'=>$teams,'project_templates'=>$project_templates]);
     }
 
     public function deleteProject(Request $request,$id){
@@ -70,7 +71,7 @@ class ProjectController extends Controller
         $client_name = $request->input('client_name');
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
-        $course_id = $request->input('course_id');
+        $project_template_id = $request->input('project_template_id');
         //wala i put a project template id in the projects table so care
         DB::table('Project')->insert([
             'ProjectTitle'=>$title,
@@ -79,7 +80,7 @@ class ProjectController extends Controller
             'ClientName' => $client_name,
             'ClientEmail' =>$client_email,
             'TeamId'=>$team_id,
-            'CourseId' => $course_id
+            'ProjectTemplateId' => $project_template_id
         ]);
 
         return \redirect('/student_projects');

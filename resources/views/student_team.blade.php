@@ -75,6 +75,7 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Id</th>
                                         <th scope="col">prefrences</th>
+                                        <th scope="col">Team</th>
                                         <th scope="col">Invite</th>
 
                                     </tr>
@@ -89,6 +90,11 @@
                                         <td>{{$invite_student->InvitorName}}</td>
                                         <td>{{$invite_student->UniversityId}}</td>
                                         <td>{{$invite_student->Preference}}</td>
+                                        <td><select class="form-control" name="teamid">
+                                            @foreach($teams as $team)
+                                                <option value="{{$team->id}}">{{$team->teamName}}</option>
+                                            @endforeach
+                                        </select></td>
                                         <td><button class="btn btn-outline" type="submit" value="submit">Accept</button>
                                         </td>
                                     </tr>
@@ -150,7 +156,7 @@
                                 @foreach ($team_acceptance as $team_accept)
                                     <tr>
                                         <th scope="row">{{$team_accept->id}}</th>
-                                        <td>{{$team_accept->InvitorName}}</td>
+                                        <td>{{$team_accept->Surname}}</td>
                                         <td>{{$team_accept->UniversityId}}</td>
                                         <td>{{$team_accept->Preference}}</td>
                                         

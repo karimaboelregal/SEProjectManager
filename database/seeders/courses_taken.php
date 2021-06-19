@@ -14,10 +14,13 @@ class courses_taken extends Seeder
      */
     public function run()
     {
-        //
         DB::table('course_taken')->insert([
           'StudentId' => '3',
             'CourseId' => 1,
         ]);
+        DB::table('course_taken')->insert([
+            'StudentId' => '4',
+              'CourseId' => 1,
+          ]);
     }
 }

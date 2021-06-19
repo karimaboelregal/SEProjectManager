@@ -22,15 +22,15 @@
                                         <label for="code" class=" form-control-label">Select team</label>
                                             <select class="form-control" name="team_id">
                                                 @foreach($teams as $team)
-                                                <option value="{{$team->id}}">{{$team->id}}</option>
+                                                <option value="{{$team->id}}">{{$team->Name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                        <label for="code" class=" form-control-label">Select course</label>
-                                            <select class="form-control" name="course_id">
-                                                @foreach($courses as $course)
-                                                <option value="{{$course->id}}">{{$course->Name}}</option>
+                                        <label for="code" class=" form-control-label">Select Project Template</label>
+                                            <select class="form-control" name="project_template_id">
+                                                @foreach($project_templates as $project_template)
+                                                <option value="{{$project_template->id}}">{{$project_template->templateName}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
