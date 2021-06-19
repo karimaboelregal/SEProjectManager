@@ -16,6 +16,7 @@
     <script src="{{ asset('js/Chart.js') }}"></script>
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet"> 
     <link href="{{ asset('css/verticalstyle.css') }}" rel="stylesheet">     
+    <link rel="icon" href="{{ asset('logo.jpg') }}" type="image/x-icon"/>
 
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css">
     
