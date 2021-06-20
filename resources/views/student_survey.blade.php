@@ -50,7 +50,6 @@
 </style>
 
 <script>
-    surveyId = {{$surveyObj[0]['id']}}
 
 
 </script>

@@ -1,42 +1,22 @@
-@extends('layouts.student_topbar')
-@section('content')
-<script>
-function changeForm() {
-	var preference = document.getElementById("pref");
-	var hiddenPref = document.getElementById("prefin");
-	var Phone = document.getElementById("phone");
-	var hiddenphone = document.getElementById("phonein");
-	var skills = document.getElementById("sKills");
-	var hiddenskills = document.getElementById("skillsin");
-    var gpa = document.getElementById("gpa");
-	var hiddengpa = document.getElementById("gpain");
-	if (hiddenpref.type == "hidden") {
-		hiddenpref.type = "text";
-        hiddenPhone.type = "text";
-        hiddenskills.type = "text";
-        hiddengpa.type = "text";
-		preference.style.display = "none";
-        phone.style.display = "none";
-        skills.style.display = "none";
-        gpa.style.display = "none";
-		
-		
-		hidden_save.removeAttribute("hidden");
-	}
-	return false;
+@php
+$thisthing;
+if (\Session::get("userData")->Name == "Student") {
+    $thisthing = 1;
+} else {
+    $thisthing = 0;
 }
-</script>
+@endphp
+@extends((($thisthing ? 'layouts.student_topbar' : 'layouts.app' )))
 
-
-
+@section('content')
 
 <body>
     <link href="{{ asset('css/student_profile.css') }}" rel="stylesheet">
 
 
 <div class ="container-fluid" style="padding-top:20px;max-width:50%;">
-@foreach ($userinfo as $information)
-    <form method="">
+<form action="{{route('editedProfile')}}" method="post" >
+{{csrf_field()}}
         <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <div class="profile-img">
@@ -50,10 +30,6 @@ function changeForm() {
             <div class="col-md-12 text-center">
                 <div class="profile-head">
                     
-                    <h6 >
-                    {{$information->Preference}}
-
-                    </h6>
                     
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
@@ -64,11 +40,12 @@ function changeForm() {
                 </div>
             </div>
             <div class="col-md-2">
-            <button onclick='return changeForm()' type="button" class="btn btn-outline" >Edit profile</button>
+            <button onclick='return changeForm()' type="button" id="editProf" class="btn btn-outline" >Edit profile</button>
+            <button type="submit" id='hidden_save' class="btn btn-outline" style="display:none;" >save</button>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            
+
             <div class="col-md-12 text-center">
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -78,7 +55,8 @@ function changeForm() {
                                 <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{$information->Surname}}</p>
+                                <p id="surname">{{\Session::get("userData")->Surname ?? 'none'}}</p>
+                                <input type="hidden" name="surnameInput" id="surnameInput" value="{{\Session::get("userData")->Surname ?? 'none'}}" required>
                             </div>
                         </div>
                         <div class="row">
@@ -86,7 +64,8 @@ function changeForm() {
                                 <label>Email</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{$information->Email}}</p>
+                                <p id="email">{{\Session::get("userData")->Email ?? 'none'}}</p>
+                                <input type="hidden" name="emailInput" id="emailInput" value="{{\Session::get("userData")->Email ?? 'none'}}" required>
                             </div>
                         </div>
                         <div class="row">
@@ -94,8 +73,8 @@ function changeForm() {
                                 <label>Phone</label>
                             </div>
                             <div class="col-md-6">
-                            <input type='text' id='phonein' style="display:none;">
-                                <p>{{$information->Phone}}</p>
+                                <p id="phone">{{\Session::get("userData")->Phone ?? 'none'}}</p>
+                                <input type="hidden" name="phoneInput" id="phoneInput" value="{{\Session::get("userData")->Phone ?? 'none'}}" required>
                             </div>
                         </div>
                         <div class="row">
@@ -104,17 +83,18 @@ function changeForm() {
                             </div>
                             <div class="col-md-6" >
                             <input type='text' id='prefin' style="display:none;">
-                                <p id='pref' >{{$information->Preference}}</p>
+                                <p id='pref' >{{\Session::get("userData")->Preference?? 'none'}}</p>
+                                <input type="hidden" name="prefInput" id="prefInput" value="{{$information->Preference?? 'none'}}" required>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Skills</label>
+                                <label>University ID</label>
                             </div>
                             <div class="col-md-6">
-                            <input type='text' id='skillsin' style="display:none;">
-                                <p>{{$information->Skills}}</p>
+                                <p id="skills">{{\Session::get("userData")->Skills ?? 'none'}}</p>
+                                <input type="hidden" name="UniversityId" id="UniversityId" value="{{\Session::get("userData")->Skills ?? 'none'}}" required>
                             </div>
                         </div>
 
@@ -124,14 +104,13 @@ function changeForm() {
                                 <label>Gpa</label>
                             </div>
                             <div class="col-md-6">
-                            <input type='text' id='gpain' style="display:none;">
-                                <p>{{$information->GPA}}</p>
+                                <p id="gpa">{{\Session::get("userData")->GPA}}</p>
+                                <input type="hidden" name="gpaInput" id="gpaInput" value="{{\Session::get("userData")->GPA}}" required>
                             </div>
                         </div>
                         
                         <div class="row">
-                         <div class='col-md-12'>
-                          <button onclick='changeForm()' type="button" id='hidden_save' class="btn btn-outline" style="display:none;" >save</button>
+                         <div class='col-md-2'>
                          </div>
                         </div>
 
@@ -141,10 +120,42 @@ function changeForm() {
                 </div>
             </div>
         </div>
-        
        
     </form>
-@endforeach
+<script>
+function changeForm() {
+	var preference = document.getElementById("pref");
+	var hiddenPref = document.getElementById("prefInput");
+	var Phone = document.getElementById("phone");
+	var hiddenphone = document.getElementById("phoneInput");
+	var skills = document.getElementById("skills");
+	var hiddenskills = document.getElementById("UniversityId");
+    var gpa = document.getElementById("gpa");
+	var hiddengpa = document.getElementById("gpaInput");
+    var surname = document.getElementById("surname");
+	var surnamehidden = document.getElementById("surnameInput");
+    var email = document.getElementById("email");
+	var emailhidden = document.getElementById("emailInput");
+	if (hiddenPref.type == "hidden") {
+		hiddenPref.type = "text";
+        hiddenphone.type = "text";
+        hiddenskills.type = "text";
+        hiddengpa.type = "text";
+        surnamehidden.type = "text";
+        emailhidden.type = "text";
+		preference.style.display = "none";
+        Phone.style.display = "none";
+        skills.style.display = "none";
+        gpa.style.display = "none";
+        surname.style.display="none";
+        email.style.display="none";		
+		document.getElementById("hidden_save").style.display="block";
+        document.getElementById("editProf").style.display="none";
+        
+	}
+	return false;
+}
+</script>
 
 </div>
 
