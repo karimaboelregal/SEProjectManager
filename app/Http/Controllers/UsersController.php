@@ -30,7 +30,20 @@ class UsersController extends Controller {
         return Excel::download(new UsersExport, 'user data.csv');
         #return \redirect('/users');
     }
-    
+    public function editedProfile(Request $request) {
+        $id = \Session::get("userData")->userid;
+        DB::table('users')->where('id',$id)->update([
+            'Surname'=>$request->input('surnameInput'),
+            'Email' =>$request->input('emailInput'),
+            'Phone'=>$request->input('phoneInput'),
+            'Preference' => $request->input('prefInput'),
+            'UniversityId' =>$request->input('UniversityId'),
+            'GPA'=>$request->input('gpaInput')
+        ]);
+        $user = DB::table('users')->select('users.id as userid','role.Name','users.*')->where('users.id',$id)->join('role', 'role.id', '=', 'users.RoleId')->get();
+        \Session::put("userData", $user[0]);
+        return \redirect('/profile');
+    }
     public function storeUserSub(Request $request) {
         $path = $request->file('file')->store('temp');
         Excel::import(new UsersImport, $path);

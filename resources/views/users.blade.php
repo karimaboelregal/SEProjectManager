@@ -46,7 +46,7 @@ element.classList.add("show");
             <a href="{{route('download')}}" style="padding:5px; width: 150px;"class="btn btn-outline">Export data</a>
         </div>
         <div class="col-12 col-md-auto">
-        <form action="{{url('users')}}" method="post">
+        <form action="{{url('users')}}" method="post" onsubmit="return confirm('do u really want to delete all users?');">
         {{csrf_field()}}
 
             <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
