@@ -117,6 +117,7 @@ Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('Ins
 
 Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
 Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
+Route::post('editedProfile', [UsersController::class,'editedProfile'])->name('editedProfile');
 
 Route::post('file-import', [UsersController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [UsersController::class, 'fileExport'])->name('file-export');
@@ -157,9 +158,8 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
-Route::get('/editProfile', [student_profileController::class,'editprofile'])->name('editprofile');
 
-Route::get('/student_profile', [student_profileController::class,'index'])->name('index');
+Route::get('/profile', function () { return view('profile');});
 
 
 Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');
