@@ -12,7 +12,7 @@
     <div style="margin-top:30px; margin-left: 60px;" class="row">
     <div class="col-12 col-md-auto">
     <div style="margin-top:30px;" class="row">
-        <button style="padding:5px; width: 150px;" type="button" class="btn btn-outline-dark invitation" data-toggle="modal" data-target="#createTeamModal">invitations</button>
+        <button style="color: white !important;background-color: #C63E47 !important;padding:5px; width: 150px;" type="button" class="btn btn-outline-dark invitation" data-toggle="modal" data-target="#createTeamModal">invitations</button>
     </div>
     </div>
 
@@ -32,7 +32,7 @@
                     <td class="align-middle" ><a href="student_project">{{$team->teamName}}</a></td>
                     <td class="align-middle">{{$team->Name}}</td>
                     <td class="align-middle"> 
-                        <button type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
+                        <button style="color: white !important;background-color: #C63E47 !important"type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
                     </td>
                 </tr>
                 @endforeach
@@ -49,10 +49,10 @@
     <!-- Modal -->
     <div class="modal modal-createTeam fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 130% !important">
                 <div class="modal-header" style="background-color:#d9534f;">
 
-                    <h5 class="modal-title" id="createTeamModalLabel">Team Invitations</h5>
+                    <h5 style="color:white !important" class="modal-title" id="createTeamModalLabel">Team Invitations</h5>
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
