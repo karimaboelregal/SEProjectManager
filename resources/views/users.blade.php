@@ -1,91 +1,178 @@
-@extends('layouts.sidebar')
 @extends('layouts.app')
-@section('content2')
+@section('content')
 <script>
 var element = document.getElementById("users");
 element.classList.add("show");
 </script>
-<div class="container">
-    <div style="margin-top:30px;" class="row text-center">
-    <img style="width:100%; height:350px;margin-left:5px;" src="{{ URL::to('/images/users2.png') }}">
+<form action="{{route('storeUserSub')}}" method="post" enctype="multipart/form-data">
+{{csrf_field()}}
+    <div class="modal modal-createTeam fade" id="viewImport">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#d9534f;">
+
+                    <h5 class="modal-title" id="viewTeamModalLabel">Import data</h5>
+
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body my-custom-scrollbar">
+
+    <div class="row d-flex justify-content-center"><input style="d-flex justify-content-center" type="file" id = "file" name= "file"  style="width:200px"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger closeModal" id="close" data-dismiss="modal">Close</button>
+
+
+                        <button type="submit" class="btn btn-danger closeModal">Submit</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="margin-top:30px;" class="row">
+    </form>
+    <div style="margin-top:80px;width:100%;" class="row d-flex justify-content-center ">
+    
         <div class="col-12 col-md-auto">
-            <input  type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
+            <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewImport">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Import data</button>
+            <a href="{{route('download')}}" style="padding:5px; width: 150px;"class="btn btn-outline">Export data</a>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Export data</button>
+        <form action="{{url('users')}}" method="post">
+        {{csrf_field()}}
+
+            <button style="padding:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
+        </form>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 150px;"class="btn btn-outline">Delete all users</button>
-        </div>
-        <div class="col-12 col-md-auto">
-            <button style="margin-left:5px; width: 180px;"class="btn btn-outline">Delete selected users</button>
+            <button style="padding:5px; width: 180px;"class="btn btn-outline" >Delete selected users</button>
+
         </div>
 
     </div>
-    <div style="margin-top:30px; margin-left: 60px;" class="row">
+    <div style="margin-top:30px;width:100% !important;margin-bottom:50px;" class="row d-flex justify-content-center ">
+    <div class="datatable-wide">
 
-    <table class="table">
+    <table id="userTable" class="table table-striped dt-responsive nowrap " style="width:100%">
     <thead>
         <tr class="text-center" style="background-color: #C63E47; color:white;">
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Courses</th>
+            <th scope="col">Role</th>
             <th scope="col"><i class="fa fa-mouse-pointer"></i></i></th>
         </tr>
     </thead>
     <tbody class="text-center">
-        <tr >
-            <th height=100 width=150 scope="row">
-                <div class="align-middle custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">     
-                    <label  class=" custom-control-label" for="customCheck1" style=""><img style="width:100%; height:100%" src="{{ URL::to('/images/image.jpg') }}"></label> </label>  
-                </div>  
-            </th>
-            <td class="align-middle">Ahmed adel</td>
-            <td class="align-middle">ahmedadel@gmail.com</td>
-            <td class="align-middle">SE,HCI,105</td>
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-        </tr>
         <tr>
+            @foreach ($users as $user)
+            
             <th height=150 width=150 scope="row">
                 <div class="custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck2">  
-                    <label  class="custom-control-label" for="customCheck2" style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
+                <form action="{{route('deleteusers')}}" id="deleteForm" method="post">
+                    {{csrf_field()}}
+                    <input type="checkbox" class="custom-control-input" name='delete{{$user->id}}' value='{{$user->id}}' id={{$user->id}}>  
+                    <label  class="custom-control-label" for={{$user->id}} style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
+                </form>
                 </div>  
             </th>
-        <td class="align-middle">Jacob</td>
-        <td class="align-middle">Thornton</td>
-        <td class="align-middle">@fat</td>
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-    </tr>
-        <tr>
-            <th height=100 width=150 scope="row">
-                <div class="custom-control form-control-lg custom-checkbox">  
-                    <input type="checkbox" class="custom-control-input" id="customCheck3">     
-                    <label  class="custom-control-label" for="customCheck3" style=""><img style="width:100%; height:100%" src="{{ URL::to('/images/image2.jpg') }}"></label> </label>  
-                </div>  
-            </th>
-        <td class="align-middle">Larry</td>
-        <td class="align-middle">the Bird</td>
-        <td class="align-middle">@twitter</td>
-            <td class="align-middle"> <button class="btn btn-outline">edit</button></td>
-
-    </tr>
+            <input name="userid" value={{$user->id}} type="hidden">
+            <td class="align-middle">{{$user->Surname}}</td>
+            <td class="align-middle">{{$user->Email}};</td>
+            <td class="align-middle">w/e</td>
+            <td class="align-middle">{{$user->Name}}</td>
+            <td class="align-middle"> <button class="btn btn-outline" onclick="window.location.href='edituser/{{$user->id}}'">edit</button></td>
+        </tr>
+        @endforeach
 </tbody>
 </table>
-    </div>
-    <div style="margin-top:30px; margin-left: 60px;" class="row text-center">
+</div>
+</div>
+<script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+    $('#userTable').DataTable({
+        columnDefs: [
+            { orderable: false, targets: 5 }
+        ],
+        responsive: true,
+        "dom": '<"top" f>rt<"bottom"ip>',
+        buttons: [{className: "btn-dark"}]
+});
+    $('#dtPluginExample_wrapper .col-md-7:eq(0)').addClass("d-flex justify-content-center justify-content-md-end");
+    $('#dtPluginExample_paginate').addClass("mt-3 mt-md-2");
+    $('#dtPluginExample_paginate ul.pagination').addClass("pagination-sm");
 
-    <button class="btn btn-outline"><</button>
-    <h6 style="margin-top:10px;"class="text-center">&nbsp;Page 1 of 5&nbsp;</h6>
-    <button class="btn btn-outline">></button>
+})
 
+
+</script>
+<script>
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("import");
+var span = document.getElementById("close");
+
+// Get the <span> element that closes the modal
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+function SetEditModal()
+{
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+
+
+    jQuery.ajax({
+        url: "{{ route('fetchSubmission') }}",
+        method: 'post',
+
+        success: function(result){
+            console.log(result);
+            
+            $("#filepath").val(result[0]['LaravelName']);
+
+            //result[0]['OriginalName']
+            //result[0]['LaravelName']
+            //result[0]['created_at']
+
+
+        },
+        error:function(){
+        alert("error");
+        }
+
+
+    });
+
+
+}
+
+</script>
     </div>
 </div>
 
