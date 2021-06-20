@@ -22,7 +22,8 @@ element.classList.add("show");
                         <p class="text-center">{{$course->Name}}</p><br>
                         <p class="text-center">Instructor</p>
                         <p class="text-center">{{$course->instructor_name}}</p></p>
-                        <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course" onclick="location.href = '{{route('deleteCourse',['id'=>$course->id])}}'"><i class="fas fa-trash-alt" ></i></button>
+                        <button style="padding:5px;width:40px" data-toggle="modal" data-target="#myModalHorizontal" data-toggle="tooltip"  class="btn btn-light norms" title="delete course"><i class=" fas fa-trash-alt"></i></button>
+
                         <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="edit course info" onclick="location.href = '{{route('editCourseForm',['id'=>$course->id])}}'"><i class="fas fa-align-justify"></i></button>
                         <button style="margin-left:28px;padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="view course contet" onclick="location.href = '{{route('ViewCourse',['id'=>$course->id])}}'"><i class="fas fa-eye"></i></button>
                     </div>
@@ -31,4 +32,29 @@ element.classList.add("show");
         @endforeach
     </div>
 </body>
+
+
+
+<!-- Modal -->
+<!-- myModalHorizontal -->
+<div id="myModalHorizontal" class="modal modal-file" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Modal content -->
+    <div class="modal-content modal-file-content">
+        
+
+            <div style="width:100.5%; height:40px; background-color:#C63E47;margin-left:-1px;">
+                <p class="text-center" style="color:#fff;font-size:25px;">Are you want to delete</p>
+            </div>
+
+            <div class="row">
+                <button style=" width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline" class="close" data-dismiss="modal" aria-label="Close">Yes</button>
+                <button style=" width: 75px;margin-left:90px;margin-top:25px;" class="btn btn-outline" class="close" data-dismiss="modal" aria-label="Close">No</button>
+            </div>
+        
+    </div>
+</div>
+
+
+
+
 @endsection
