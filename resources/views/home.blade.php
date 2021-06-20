@@ -129,6 +129,19 @@ element.classList.add("show");
 										<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
                     <form action="{{route('UpdateTask')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
+                    @if($TODO_List->isEmpty())
+                      <h5>No tasks yet</h5>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
                     @foreach ($TODO_List as $Todo)
 											<li class="complete">
 												<div class="form-check form-check-flat">
@@ -153,6 +166,7 @@ element.classList.add("show");
                   </div>
                   <div class="col-md-6">
                   <button class="btn btn-danger" data-toggle="modal" data-target="#TaskModal"></i>Add new task</button>
+
                   </div>
 									</div>
 								</div>
@@ -235,6 +249,7 @@ element.classList.add("show");
 									<h4 class="card-title">Done To Do Lists</h4>
 									<div class="list-wrapper pt-2">
 										<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                    
                     @foreach ($Done_List as $Done)
 											<li class="complete">
 												<div class="form-check form-check-flat">

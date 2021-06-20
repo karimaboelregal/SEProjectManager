@@ -12,9 +12,11 @@ class ProjectController extends Controller
     public function index(Request $request, $id='0'){
         $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id == 0 && strlen($id) == 188) {
+        
+        if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
+        
         foreach ($projTemps as $proj) {
             if ($proj->id == $id) {
                 $selected = $projTemps[$id];
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     public function showStudent(Request $request, $id='0'){
         $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id == 0 && strlen($id) == 188) {
+        if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
         foreach ($projTemps as $proj) {
@@ -147,7 +149,7 @@ class ProjectController extends Controller
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
 
-        $project_template_id = $request->input('project_template_id');
+        $project_template_id = $request->input('tempID');
 
         //wala i put a project template id in the projects table so care
         DB::table('project')->insert([
