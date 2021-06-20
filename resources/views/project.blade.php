@@ -64,14 +64,14 @@
 
 
                             @else
-                            <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Not Submitted Yet</button>
+                            <button class="btn btn-light norms"   data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Not Submitted Yet</button>
 
                             @endif
 
 
                             @else
 
-                            <button class="btn btn-light norms" data-toggle="modal" onClick="setSubmissionModal({{$submission->id}})" data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Not Submitted Yet</button>
+                            <button class="btn btn-light norms"   data-target="#myModalHorizontal" data-toggle="tooltip" title="Add Submission">Not Submitted Yet</button>
 
                             @endif
 

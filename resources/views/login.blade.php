@@ -27,28 +27,23 @@ if ($state == 1) {
     invalid login details
   </div>
 @endif
+<form action="{{route('doLogin')}}" method="post">
+  <div class="login row d-flex justify-content-center">
 
-  <div class="login">
-    <div class="loginHead ">
-
-    <p class="text-center" style="color: white;font-family: Roboto;font-style: normal;font-size: 25px;line-height: 40px;user-select: none;">Login</p>
-    <div class="#formContent">
-    <form action="{{route('doLogin')}}" class="row d-flex justify-content-center" method="post">
     {{csrf_field()}}
-      <div class="col-md-6 text-center">
-     <input style="margin-top:30px;" type="text" class="inputDesign" id="Email" name="Email" placeholder="Email">
-      <input style="margin-top:30px;" type="password" class="inputDesign" id="password" name="password" placeholder="password">
-      <div class="custom-control form-control-lg custom-checkbox" style="margin-top: 15px; height:35px;">  
+     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
+     <input style="height:30px;" type="text" class="inputDesign" id="Email" name="Email" placeholder="Email">
+      <input style="height:30px;margin-top:20px;" type="password" class="inputDesign" id="password" name="password" placeholder="password">
+      <div class="custom-control form-control-lg custom-checkbox row d-flex justify-content-center text-center w-100" style="margin-top: 15px; height:35px;">  
           <input type="checkbox" class="custom-control-input" id="customCheck1">  
           <label class="custom-control-label" for="customCheck1" style="font-size:15px">Remember me</label>  
       </div>  
-        <a href="de7ko.com" class="text center">Forgot password</a><br>
-        <button style="margin-top: 10px; width:150px;" type="submit" class="btn btn-outline-dark">Login</button>
+      <div class="row text-center d-flex justify-content-center text-center w-100">
+        <a href="#">Forgot password</a><br>
+      </div>
+        <button style="margin-top: 10px; width:150px;padding:5px;margin-bottom:40px;" type="submit" class="btn btn-outline-dark">Login</button>
 
       </div>
     </form>
-    </div>
-    </div>
-  </div>
-</div>
+
 @endsection

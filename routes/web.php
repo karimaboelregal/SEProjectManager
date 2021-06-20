@@ -33,13 +33,11 @@ Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
 
-Route::get('/users', function () {
-    return view('users');
-});
 
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::post('/users', [UsersController::class,'deleteAll'])->name('deleteAll');
+Route::get('/users/download', [UsersController::class,'download'])->name('download');
 
 Route::post('/deleteusers', [UsersController::class,'deleteusers'])->name('deleteusers');
 Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUser');
@@ -63,9 +61,6 @@ Route::post('/createNewTask', [HomeController::class,'createNewTask'])->name('cr
 Route::post('/UpdateTask', [HomeController::class,'UpdateTask'])->name('UpdateTask');
 
 
-Route::get('/projectstate', function () {
-    return view('projectstate');
-});
 
 
 
@@ -144,7 +139,11 @@ Route::get('/projects/{id}', [ProjectController::class,'index'])->name('index');
 Route::get('/project_template/{id}', [ProjectController::class,'projTemp'])->name('projTemp');
 
 
+Route::get('/projectstate/{id}', [ProjectController::class,'projectstate'])->name('projectstate');
+Route::post('/projectstate/{id}', [ProjectController::class,'projectstate'])->name('projectstate');
+
 Route::get('/ViewProject/{id}', [ProjectController::class,'ViewProject'])->name('ViewProject');
+
 Route::get('/ViewStudentProject/{id}', [ProjectController::class,'ViewStudentProject'])->name('ViewStudentProject');
 
 Route::get('/createProjectForm', [ProjectController::class,'createProjectForm'])->name('createProjectForm');

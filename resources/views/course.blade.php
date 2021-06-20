@@ -34,6 +34,10 @@
     <h4 Style="margin-top:5%;">Project templates</h4>
         <button class="btn btn-outline" onclick="window.location.href='/createTemplate'">Create project template</button>
         <div class="row d-flex justify-content-center" style="width:80%;margin-top:2%;height:60vh;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;">
+        
+        @if(empty(json_decode($projTemps)))
+            <h4 style= "margin-top:15px;color:blue;">Your templates are empty<br> click on the create project templates tab to start</h4>
+        @endif
             @foreach ($projTemps as $temp)
             <div class="turningButtonContainer" style="width:200px;height:150px;">
                 <div class="turningButtonContainerInner">

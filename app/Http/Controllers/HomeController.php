@@ -59,6 +59,8 @@ class HomeController extends Controller
     }
 
     public function UpdateTask(Request $request) {
+        $validated = $request->validate(['Todo' => 'required',]);
+
         $tasks = $request->get('Todo');
         $active =0;
         foreach ($tasks as $task){

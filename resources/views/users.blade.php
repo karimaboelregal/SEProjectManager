@@ -11,7 +11,7 @@ element.classList.add("show");
             <div class="modal-content">
                 <div class="modal-header" style="background-color:#d9534f;">
 
-                    <h5 class="modal-title" id="viewTeamModalLabel">View Team</h5>
+                    <h5 class="modal-title" id="viewTeamModalLabel">Import data</h5>
 
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -38,11 +38,12 @@ element.classList.add("show");
     </div>
     </form>
     <div style="margin-top:80px;width:100%;" class="row d-flex justify-content-center ">
+    
         <div class="col-12 col-md-auto">
             <button style="padding:5px; width: 150px;"class="btn btn-outline" data-toggle="modal" id="import" data-target="#viewImport">Import data</button>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 150px;"class="btn btn-outline">Export data</button>
+            <a href="{{route('download')}}" style="padding:5px; width: 150px;"class="btn btn-outline">Export data</a>
         </div>
         <div class="col-12 col-md-auto">
         <form action="{{url('users')}}" method="post">
@@ -52,7 +53,7 @@ element.classList.add("show");
         </form>
         </div>
         <div class="col-12 col-md-auto">
-            <button style="padding:5px; width: 180px;"class="btn btn-outline" form="deleteForm">Delete selected users</button>
+            <button style="padding:5px; width: 180px;"class="btn btn-outline" >Delete selected users</button>
 
         </div>
 

@@ -84,7 +84,8 @@ var json = {
                 type: "matrix",
                 name: "Quality",
                 title: "Please indicate if you agree or disagree with the following statements",
-                isRequired:true,
+                	isAllRowRequired:true,
+
 
                 columns: [
                     {value: 1,text: "Strongly Disagree"}, 
@@ -97,6 +98,7 @@ var json = {
                     @foreach($surveyObj as $survey)
                         @if($survey['typeName'] == 'matrix')
                             {value: "{{$survey['questionId']}}",text: "{{$survey['QuestionText']}}"},
+                            
 
 
                         @endif

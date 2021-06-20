@@ -21,7 +21,7 @@ class UpdateSurveyAnswerTable extends Migration
             $table->foreign('SurveyId')->references('id')->on('survey');
             $table->foreign('ResponseId')->references('id')->on('users');  
             $table->foreign('QuestionId')->references('id')->on('question');
-            $table->foreign('StudentId')->references('id')->on('users');    
+            $table->foreign('StudentId')->references('id')->on('users')->onDelete("cascade");    
         });
     }
 

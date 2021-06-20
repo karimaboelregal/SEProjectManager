@@ -21,6 +21,7 @@ class CreateProjectTable extends Migration
             $table->string('ClientName','100');
             $table->string('ClientEmail','100');
             $table->timestamps();
+            $table->integer('state')->default(0);
         });
     }
 

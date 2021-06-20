@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Admin') }}</title>
     <script src="https://kit.fontawesome.com/df4285e61f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="icon" href="{{ asset('logonobg.png') }}" type="image/x-icon"/>
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/turningbutton.css') }}" rel="stylesheet">
 
@@ -121,7 +122,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/popper.js') }}" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-    <script src="{{asset('js/bootstrap-material-design.js')}}" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
     <script src="{{ asset('js/survey.jquery.min.js')}}"></script>
 
 
@@ -212,6 +212,10 @@ if ($state != 1 && Request::path() != "login") {
             </ul>
         </div>
     </nav>
+      <div class="row d-flex justify-content-center">
+     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
+     </div>
+
     <main class="py-10">
         @yield('content')
     </main>

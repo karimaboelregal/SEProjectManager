@@ -12,9 +12,11 @@ class ProjectController extends Controller
     public function index(Request $request, $id='0'){
         $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id == 0 && strlen($id) == 188) {
+        
+        if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
+        
         foreach ($projTemps as $proj) {
             if ($proj->id == $id) {
                 $selected = $projTemps[$id];
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     public function showStudent(Request $request, $id='0'){
         $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id == 0 && strlen($id) == 188) {
+        if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
         foreach ($projTemps as $proj) {
@@ -146,10 +148,10 @@ class ProjectController extends Controller
         $client_name = $request->input('client_name');
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
-        $project_template_id = $request->input('project_template_id');
-        $tempID = $request->input('tempID');
+        $project_template_id = $request->input('tempID');
+
         //wala i put a project template id in the projects table so care
-        DB::table('Project')->insert([
+        DB::table('project')->insert([
             'ProjectTitle'=>$title,
             'ProjectDesc' =>$description,
             'ClientNumber'=>$client_number,
@@ -165,6 +167,21 @@ class ProjectController extends Controller
     function projTemp(Request $request,$id=1) {
         $projectTemplate = DB::table('projectTemplate')->where('id', $id);
 
+    }
+
+    public function projectstate(Request $request,$id){
+        if ($request->state == 2) {
+            DB::table('project')->where('id',$id)->update(['state'=>1]);
+            return \redirect('/projects');
+        } elseif ($request->state == 1) {
+            DB::table('project')->where('id',$id)->delete();
+            return \redirect('/projects');
+        }
+        $project = DB::table("project")
+        ->join('team_members', 'team_members.TeamId', '=', 'project.TeamId')
+        ->join('users', 'users.id', '=', 'team_members.TeamMemberId')
+        ->where('project.id',$id)->get();
+        return view('projectstate', ["project"=>$project, 'projID'=>$id]);
     }
 
     public function editProject(Request $request){
