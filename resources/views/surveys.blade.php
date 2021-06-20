@@ -11,8 +11,8 @@
 
 <div style="margin-top:30px;width:100% !important;margin-bottom:50px;" class="row d-flex justify-content-center ">
     <div class="datatable-wide">
-    
-<button class="btn btn-outline" onclick="window.location.href='{{route('SurveyBuildIndex',['id'=>$surveys[0]->CourseId])}}'">Add Survey</button>
+
+<button class="btn btn-outline" onclick="window.location.href='{{route('SurveyBuildIndex',['id'=>$courseId])}}'">Add Survey</button>
 
 
 
@@ -31,6 +31,7 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                
                 <tr>
                     @foreach ($surveys as $survey)
 
@@ -50,8 +51,16 @@
 
                 </tr>
                 @endforeach
+                
+
             </tbody>
+           
+
         </table>
+         @if($surveys->isEmpty())
+         <h5>No data to show</h5>
+         @endif
+
     </div>
 </div>
 <script>
