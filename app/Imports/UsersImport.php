@@ -36,7 +36,7 @@ class UsersImport implements ToModel
         #    return;
         #}
         print("df");
-        $id  = User::insertGetId(['Surname' => $row[1], 'Email' => $row[2], 'Password' => $password, 'RoleId' => 1]);
+        $id  = User::insertGetId(['Surname' => $row[1], 'Email' => $row[2], 'Password' => $password, 'RoleId' => 3]);
         print($id);
         $coursestoAdd = explode(",", \Session::get("course_taken"));
         foreach ($coursestoAdd as $c) {
