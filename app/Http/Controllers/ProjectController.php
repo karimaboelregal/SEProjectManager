@@ -90,13 +90,24 @@ class ProjectController extends Controller
                 WHERE d.ProjectId = {$id}
                 ORDER BY d.id
                 ");
+
+        $team = DB::select("SELECT * 
+        FROM team t
+        JOIN team_members tm
+        ON tm.TeamId = t.id
+        JOIN project p
+        ON p.TeamId = t.id
+        JOIN users u 
+        ON u.id = tm.TeamMemberId
+        WHERE p.id = {$id}
+        ");
         //dd($discussions);
         $projectAndDiscussion = array();
         array_push($projectAndDiscussion, $discussions);
         array_push($projectAndDiscussion, $project);
         //wierdly i can only pass two varialbles to the view so i pushed all into an array
         
-        return view('project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions]);
+        return view('project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions,'team'=>$team]);
     }
     public static function isTeamMember($id)
     {
@@ -144,13 +155,24 @@ class ProjectController extends Controller
                 WHERE d.ProjectId = {$id}
                 ORDER BY d.id
                 ");
+
+        $team = DB::select("SELECT * 
+        FROM team t
+        JOIN team_members tm
+        ON tm.TeamId = t.id
+        JOIN project p
+        ON p.TeamId = t.id
+        JOIN users u 
+        ON u.id = tm.TeamMemberId
+        WHERE p.id = {$id}
+        ");
         //dd($discussions);
         $projectAndDiscussion = array();
         array_push($projectAndDiscussion, $discussions);
         array_push($projectAndDiscussion, $project);
         //wierdly i can only pass two varialbles to the view so i pushed all into an array
         
-        return view('student_project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions,'isMember'=>ProjectController::isTeamMember(\Session::get("userData")->userid)]);
+        return view('student_project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions,'team'=>$team,'isMember'=>ProjectController::isTeamMember(\Session::get("userData")->userid)]);
     }
 
     public function createProjectForm(){
