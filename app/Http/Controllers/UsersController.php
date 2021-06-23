@@ -46,16 +46,17 @@ class UsersController extends Controller {
         return \redirect('/profile');
     }
     public function storeUserSub(Request $request) {
-        $path = $request->file('file')->store('temp');
-        $t = Excel::import(new UsersImport, $path);
         $courses = DB::table('courses')->select("id", "Name")->get();
         \Session::put("course_taken", $courses[0]->id);
         unset($courses[0]);
         foreach ($courses as $c) {
+            echo $request->input($c->Name);
             if ($request->input($c->Name) == 1) {
                 \Session::put("course_taken", \Session::get("course_taken").", ".$c->id);
             }
         }
+        $path = $request->file('file')->store('temp');
+        Excel::import(new UsersImport, $path);
         return redirect ('/users');
 
     }

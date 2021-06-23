@@ -30,14 +30,12 @@ class UsersImport implements ToModel
             'name' => $row[1],
             'password' => $password
         ];
-       // $mail = new testMail($details);
-        //\Mail::to($row[2])->send($mail);  
-        #if (User::where('Email', $row[2])->first()) {
-        #    return;
-        #}
-        print("df");
+        $mail = new testMail($details);
+        \Mail::to($row[2])->send($mail);  
+        if (User::where('Email', $row[2])->first()) {
+            return;
+        }
         $id  = User::insertGetId(['Surname' => $row[1], 'Email' => $row[2], 'Password' => $password, 'RoleId' => 3]);
-        print($id);
         $coursestoAdd = explode(",", \Session::get("course_taken"));
         foreach ($coursestoAdd as $c) {
             DB::table('course_taken')->insert(["StudentId"=>$id,"CourseId"=>$c]);
