@@ -20,7 +20,31 @@ element.classList.add("show");
                 </div>
                 <div class="modal-body my-custom-scrollbar">
 
-    <div class="row d-flex justify-content-center"><input style="d-flex justify-content-center" type="file" id = "file" name= "file"  style="width:200px"></div>
+    <div class="justify-content-center"><input style="d-flex justify-content-center" type="file" id = "file" name= "file"  style="width:200px">
+@foreach ($courses as $temp)
+<li class="field">
+<input class="checbkox" type="checkbox" name={{$temp->Name}} value=1 />
+{{$temp->Name}}                                        
+</li>
+@endforeach                                          
+</div>
+<script>
+ $(function(){
+
+    $("#temp a").click(function(){
+
+      $("#tempText").text($(this).text());
+      $("#tempText").val($(this).text());
+      if ($("#tempText").text() == "Teachers") {
+        $("#sendThis").val("1");
+      } else {
+        $("#sendThis").val("0");
+      }
+   });
+
+});
+</script>
+
                     </div>
 
                     <div class="modal-footer">

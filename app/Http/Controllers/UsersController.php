@@ -12,7 +12,8 @@ use App\Models\User;
 class UsersController extends Controller {
     public function index() {
         $users = User::select('users.id', 'Email','Surname','RoleId','role.Name')->join('role', 'role.id', '=', 'users.RoleId')->get();
-        return view ('users',['users'=>$users]);
+        $course = DB::table('courses')->get();
+        return view ('users',['users'=>$users, 'courses'=>$course]);
     }
 
     public function deleteusers(Request $request) {
@@ -46,9 +47,15 @@ class UsersController extends Controller {
     }
     public function storeUserSub(Request $request) {
         $path = $request->file('file')->store('temp');
-        Excel::import(new UsersImport, $path);
-        //echo $path;
-        //print_r($request);
+        $t = Excel::import(new UsersImport, $path);
+        $courses = DB::table('courses')->select("id", "Name")->get();
+        \Session::put("course_taken", $courses[0]->id);
+        unset($courses[0]);
+        foreach ($courses as $c) {
+            if ($request->input($c->Name) == 1) {
+                \Session::put("course_taken", \Session::get("course_taken").", ".$c->id);
+            }
+        }
         return redirect ('/users');
 
     }
