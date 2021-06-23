@@ -32,7 +32,7 @@
                     <td class="align-middle" ><a href="student_project">{{$team->teamName}}</a></td>
                     <td class="align-middle">{{$team->Name}}</td>
                     <td class="align-middle"> 
-                        <button style="color: white !important;background-color: #C63E47 !important"type="button" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
+                        <button style="color: white !important;background-color: #C63E47 !important"type="button" onclick="location.href = '{{route('TeamMembers',['teamid'=>$team->id])}}'" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
                     </td>
                 </tr>
                 @endforeach
@@ -133,10 +133,7 @@
                     </button>
                 </div>
                 <div class="modal-body my-custom-scrollbar">
-
-
-                    <input type="text" class="inputDesign" name="Search" placeholder=" Live Search"><button style="margin-left:5px;" class="btn btn-outline"><i class="fa fa-search"></i></button>
-                    <div class="table-wrapper-scroll-y ">
+                  <div class="table-wrapper-scroll-y ">
 
 
                         <table>
@@ -153,15 +150,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($team_acceptance as $team_accept)
+                                @if(!empty($team_acceptance))
+                                <?php $i=1;?>@foreach ($team_acceptance as $team_accept)
                                     <tr>
-                                        <th scope="row">{{$team_accept->id}}</th>
+                                        <th scope="row"><?php echo $i;?></th>
                                         <td>{{$team_accept->Surname}}</td>
                                         <td>{{$team_accept->UniversityId}}</td>
                                         <td>{{$team_accept->Preference}}</td>
                                         
                                     </tr>
+                                    <?php $i++;?>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
 
@@ -191,8 +191,15 @@
 
 
 
-
-
+@if(!empty($error_code))
+@if($error_code == 5)
+<script>
+$(function() {
+    $('#viewTeamModal').modal('show');
+});
+</script>
+@endif
+@endif
 
 <script>
 $(function(){

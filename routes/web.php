@@ -32,8 +32,11 @@ Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
+Route::get('/searchCourse', [CoursesController::class,'SearchCourses'])->name('SearchCourses');
 
+Route::get('/searchProject', [ProjectController::class,'SearchProject'])->name('SearchProject');
 
+Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::post('/users', [UsersController::class,'deleteAll'])->name('deleteAll');
@@ -44,6 +47,8 @@ Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUse
 
 
 Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
+
+Route::get('/TeamMembers/{teamid}', [TeamController::class,'TeamMembers'])->name('TeamMembers');
 
 Route::post('/AcceptInvitation', [TeamController::class,'AcceptInvitation'])->name('AcceptInvitation');
 
@@ -132,8 +137,8 @@ Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])-
 
 Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
 
-Route::get('/projects', [ProjectController::class,'index'])->name('index');
-Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+Route::get('/projects', [ProjectController::class,'index'])->name('IndexProject');
+Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudentSearch');
 Route::get('/student_projects/{id}', [ProjectController::class,'showStudent'])->name('showStudent');
 Route::get('/projects/{id}', [ProjectController::class,'index'])->name('index');
 

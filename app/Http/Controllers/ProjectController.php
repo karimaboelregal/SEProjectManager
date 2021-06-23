@@ -10,8 +10,15 @@ use App\Models\Project;
 class ProjectController extends Controller
 {
     public function index(Request $request, $id='0'){
-        $projects = DB::table('project')->get();
         $projTemps = DB::table("projecttemplate")->get();
+
+        $search_text = $request->input('Search');
+        if ($search_text==NULL) {
+            $projects = DB::table('project')->get();
+        } else {
+            $projects = DB::table('project')
+            ->where('ProjectTitle','LIKE', '%'.$search_text.'%')->get();
+        }
         
         if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
@@ -28,7 +35,13 @@ class ProjectController extends Controller
         return view ('projects',['projects'=>$projects, 'projTemps'=>$projTemps, 'selected'=>$selected]);
     }
     public function showStudent(Request $request, $id='0'){
-        $projects = DB::table('project')->get();
+        $search_text = $request->input('Search');
+        if ($search_text==NULL) {
+            $projects = DB::table('project')->get();
+        } else {
+            $projects = DB::table('project')
+            ->where('ProjectTitle','LIKE', '%'.$search_text.'%')->get();
+        }
         $projTemps = DB::table("projecttemplate")->get();
         if ($id != 0 && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
@@ -245,5 +258,16 @@ class ProjectController extends Controller
         $projTemps = DB::table("projecttemplate")->get();
         return view('editProjectForm',['project'=>$project,'projTemps'=>$projTemps,'teams'=>$teams]);
 
+    }
+
+    public function SearchProject(Request $request) {
+        $search_text = $request->input('Search');
+        if ($search_text==NULL) {
+            $projects = DB::table('project')->get();
+        } else {
+            $projects = DB::table('project')
+            ->where('ProjectTitle','LIKE', '%'.$search_text.'%')->get();
+        }
+        return view ('projects',['projects'=>$projects]);
     }
 }

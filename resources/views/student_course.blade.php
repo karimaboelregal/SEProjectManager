@@ -71,7 +71,7 @@ display: block;
                 <div class="modal-body my-custom-scrollbar">
 
                     <div class = "createTeam">
-                        <input type="text" class="inputDesign" name="Search" placeholder=" Live Search"><button style="margin-left:5px;" class="btn btn-outline"><i class="fa fa-search"></i></button>
+                        <input type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;" class="btn btn-outline"><i class="fa fa-search"></i></button>
                         <div class="table-wrapper-scroll-y ">
 
 
