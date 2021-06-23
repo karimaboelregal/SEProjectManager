@@ -7,8 +7,10 @@ element.classList.add("show");
 <body>
 
     <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+    <form action="{{ route('SearchCourses') }}" method="GET" role="search">
             <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>
+    </form>
     <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
         <button onclick="location.href = '{{route('createCourseForm')}}'" style="width: 150px; margin-left:5px;"class="btn btn-outline">Add course</button>
     </div>
@@ -53,7 +55,6 @@ element.classList.add("show");
         
     </div>
 </div>
-
 
 
 

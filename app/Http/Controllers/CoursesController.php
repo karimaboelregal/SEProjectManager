@@ -134,4 +134,22 @@ class CoursesController extends Controller
         ->get();
         return view ('student_home', ['courses'=>$courses]);
     }
+
+    public function SearchCourses(Request $request) {
+        $search_text = $request->input('Search');
+
+        if ($search_text==NULL) {
+            $courses = DB::table('courses')
+            ->join('users', 'users.id', '=', 'courses.InstructorId')
+            ->select('courses.*', 'users.Surname as instructor_name')
+            ->get();
+        } else {
+            $courses=DB::table('courses')
+            ->join('users', 'users.id', '=', 'courses.InstructorId')
+            ->select('courses.*', 'users.Surname as instructor_name')
+            ->where('Name','LIKE', '%'.$search_text.'%')->get();
+        }
+        return view ('courses',['courses'=>$courses]);
+    }
+    
 }
