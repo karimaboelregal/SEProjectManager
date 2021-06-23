@@ -98,8 +98,21 @@ class ProjectController extends Controller
         
         return view('project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions]);
     }
+    public static function isTeamMember($id)
+    {
+        $isMember = true;
+        $team = DB::select("SELECT * 
+        FROM team t
+        JOIN team_members tm
+        ON tm.TeamId = t.id
+        WHERE t.LeaderId = {$id} OR tm.TeamMemberId = {$id}");
+    
+        
+        return !empty($team);
+    }
 
     public function ViewStudentProject(Request $request,$id){
+        
         $project = DB::select("SELECT p.*,pt.*
         FROM project p
         JOIN projecttemplate pt
@@ -137,7 +150,7 @@ class ProjectController extends Controller
         array_push($projectAndDiscussion, $project);
         //wierdly i can only pass two varialbles to the view so i pushed all into an array
         
-        return view('student_project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions]);
+        return view('student_project',['discussions'=>$discussions,'project'=>$project,'submissionValues'=>$has_submitted,'submissions'=>$submissions,'isMember'=>ProjectController::isTeamMember(\Session::get("userData")->userid)]);
     }
 
     public function createProjectForm(){

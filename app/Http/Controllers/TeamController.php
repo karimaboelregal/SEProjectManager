@@ -49,6 +49,7 @@ class TeamController extends Controller
 
         return \redirect('/student_team');
     }
+    
 
     public function TeamMembers($teamid){
 

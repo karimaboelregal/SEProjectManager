@@ -10,35 +10,40 @@
 
 
 <div class ="container">
-<h2 Style="margin-top:5%;">Welcome to {{$project[0]->ProjectTitle}}</h2>
+    <h2 Style="margin-top:5%;">Welcome to {{$project[0]->ProjectTitle}}</h2>
 
-<h4 Style="margin-top:5%;">Project Description</h4>
+    <h4 Style="margin-top:5%;">Project Description</h4>
 
-<p>{{$project[0]->ProjectDesc}}.</p>
+    <p>{{$project[0]->ProjectDesc}}.</p>
 
-<h4 Style="margin-top:5%;">Client info:</h4>
+    <h4 Style="margin-top:5%;">Client info:</h4>
 
-<p><b>Client Name : </b>{{$project[0]->ClientName}}.</p>
+    <p><b>Client Name : </b>{{$project[0]->ClientName}}.</p>
 
-<p><b>Client number : </b>{{$project[0]->ClientNumber}}.</p>
+    <p><b>Client number : </b>{{$project[0]->ClientNumber}}.</p>
 
-<p><b>Client Email : </b>{{$project[0]->ClientEmail}}.</p>
+    <p><b>Client Email : </b>{{$project[0]->ClientEmail}}.</p>
 
-<h4 Style="margin-top:5%;">Team info:</h4>
+    <h4 Style="margin-top:5%;">Team info:</h4>
 
-<p><b>Team members : </b>{{$project[0]->ClientName}}.</p>
+    <p><b>Team members : </b>{{$project[0]->ClientName}}.</p>
 
-<p><b>Team number : </b>{{$project[0]->ClientName}}.</p>
-
-
-    <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
-
-   
+    <p><b>Team number : </b>{{$project[0]->ClientName}}.</p>
 
 
+        <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
 
-<h1>Deliverables</h1>
+
 </div>
+
+
+
+@if($isMember)
+
+<h1 class="row d-flex justify-content-center" style="padding-left:20px;padding-top:20px;">Deliverables</h1>
+
+
+
     <div style="margin-left:30px;margin-top:30px;margin-bottom:30px;max-width:100%;padding:15px;border:1px solid;border-radius:25px;border-color:#C63E47;overflow:auto;" class="row d-flex justify-content-center ">
     @php
         $i = 0
@@ -86,7 +91,7 @@
 
 
 
-
+@endif
 
 
 
