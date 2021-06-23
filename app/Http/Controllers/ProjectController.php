@@ -148,7 +148,6 @@ class ProjectController extends Controller
         $client_name = $request->input('client_name');
         $client_email = $request->input('client_email');
         $team_id = $request->input('team_id');
-
         $project_template_id = $request->input('tempID');
 
         //wala i put a project template id in the projects table so care
@@ -160,7 +159,6 @@ class ProjectController extends Controller
             'ClientEmail' =>$client_email,
             'TeamId'=>$team_id,
             'ProjectTemplateId' => $project_template_id
-
         ]);
 
         return \redirect('/student_projects');
