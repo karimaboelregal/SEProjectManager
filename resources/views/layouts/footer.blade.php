@@ -50,7 +50,7 @@ width: 100%;
       </p>
     </section>
     <!-- Section: Text -->
-
+@if (\Session::get('loggedIn')) 
     <!-- Section: Links -->
     <section class="">
       <!--Grid row-->
@@ -110,6 +110,7 @@ width: 100%;
       <!--Grid row-->
     </section>
     <!-- Section: Links -->
+    @endif
   </div>
   <!-- Grid container -->
 
