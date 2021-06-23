@@ -203,12 +203,15 @@ if ($state != 1 && Request::path() != "login") {
           <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -80px !important;">
-          <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = 'student_profile'">my profile</a>
+          <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = '/profile'">my profile</a>
           <a class="dropdown-item" href="#" style="color: black!important;" onclick="location.href ='/logout'">logout</a>
         </div>
       </li>           </ul>
     </div>
 </nav>
+  <div class="row d-flex justify-content-center">
+     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
+     </div>
 @else 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#525252;height:60px;">
     <div class="d-flex flex-grow-1">
@@ -219,9 +222,6 @@ if ($state != 1 && Request::path() != "login") {
         </div>
 </nav>
 @endif
-  <div class="row d-flex justify-content-center">
-     <img style="height:130px; width:130px;" src="{{ URL::to('logonobg.png') }}">
-     </div>
 
 <main class="py-10">
     @yield('content')

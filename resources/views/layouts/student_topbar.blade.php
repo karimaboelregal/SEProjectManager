@@ -141,7 +141,7 @@
 @php
 $state = Session::get("loggedIn");
 $user = Session::get("userData");
-$allowedPages = array('ViewProject', 'createProjectForm');
+$allowedPages = array('ViewProject', 'createProjectForm', 'profile');
 $redirect = true;
 if ($state != 1 && Request::path() != "login") {
     echo "<script>window.location.href='login'</script>";
@@ -160,6 +160,9 @@ if ($state != 1 && Request::path() != "login") {
     } else {
         echo "<script>window.location.href='/home'</script>";
     }   
+} elseif ($state == 1 && $user->Name != "Student" && Str::contains(Request::path(), 'student_')) {
+        echo "<script>window.location.href='/home'</script>";
+        echo "<script>alert('sdf');</script>";
 }
 @endphp
 
@@ -204,7 +207,7 @@ if ($state != 1 && Request::path() != "login") {
                         <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -80px !important;">
-                        <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = 'student_profile'">my profile</a>
+                        <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = '/profile'">my profile</a>
                         <a class="dropdown-item" href="#" style="color: black!important;" onclick="location.href ='/logout'">logout</a>
                     </div>
                 </li>

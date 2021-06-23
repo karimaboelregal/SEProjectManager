@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Team;
 
 class TeamController extends Controller
@@ -28,11 +29,7 @@ class TeamController extends Controller
         // ->join('users', 'users.id', '=', 'invitations.InvitorId')
         // ->where('InvitedId',$userid)->where('Status',1)->get();
 
-        $team_acceptance = DB::table('users')
-        ->join('team_members', 'team_members.TeamMemberId', '=', 'users.id')
-        ->join('team', 'team.id', '=', 'team_members.TeamId')->get();
-
-        return view ('student_team',['teams'=>$teams,'team_invitations'=>$team_invitations,'team_acceptance'=>$team_acceptance]);
+        return view ('student_team',['teams'=>$teams,'team_invitations'=>$team_invitations]);
     }
 
     public function AcceptInvitation(Request $request){
@@ -53,9 +50,35 @@ class TeamController extends Controller
         return \redirect('/student_team');
     }
 
+    public function TeamMembers($teamid){
+
+        $team_acceptance = DB::table('users')
+        ->join('team_members', 'team_members.TeamMemberId', '=', 'users.id')
+        ->join('team', 'team.id', '=', 'team_members.TeamId')
+        ->where('team_members.TeamId',$teamid)
+        ->get();
+
+
+        $userid = \Session::get('userData')->userid;
+
+        // get team info 
+        $teams = DB::table('team')->select('team.id','team.Name as teamName','courses.Name')
+        ->join('courses', 'courses.id', '=', 'team.CourseId')
+        ->join('team_members', 'team_members.TeamId', '=', 'team.id')
+        ->where('team_members.TeamMemberId',$userid)->get();
+        
+        // get student team invitations
+        $team_invitations = DB::table('invitations')->select('invitations.id','invitations.InvitorId','users.Surname as InvitorName','users.UniversityId','users.Preference')
+        ->join('users', 'users.id', '=', 'invitations.InvitorId')
+        ->where('InvitedId',$userid)->where('Status',0)->get();
+
+        return view ('student_team',['error_code'=>5,'team_acceptance'=>$team_acceptance,'teams'=>$teams,'error_code'=>5,'team_invitations'=>$team_invitations]);
+    }
+
     public function InviteStudent(Request $request){
         // list of students enrolled in course
         $invitedid = $request->input('userId');
+        $invitedid = $request->input('Search');
         $invitorid = \Session::get('userData')->userid;
 
         DB::table('invitations')->insert([

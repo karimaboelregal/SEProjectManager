@@ -32,8 +32,11 @@ Route::get('/login', [loginControl::class,'showLogin'])->name('showLogin');
 Route::post('/login', [loginControl::class,'doLogin'])->name('doLogin');
 Route::get('/logout', [loginControl::class,'logout'])->name('logout');
 
+Route::get('/searchCourse', [CoursesController::class,'SearchCourses'])->name('SearchCourses');
 
+Route::get('/searchProject', [ProjectController::class,'SearchProject'])->name('SearchProject');
 
+Route::get('/courses', [CoursesController::class,'index'])->name('index');
 
 Route::get('/users', [UsersController::class,'index'])->name('index');
 Route::post('/users', [UsersController::class,'deleteAll'])->name('deleteAll');
@@ -44,6 +47,8 @@ Route::get('/edituser/{id}', [UsersController::class,'editUser'])->name('editUse
 
 
 Route::get('/student_team', [TeamController::class,'index'])->name('student_team');
+
+Route::get('/TeamMembers/{teamid}', [TeamController::class,'TeamMembers'])->name('TeamMembers');
 
 Route::post('/AcceptInvitation', [TeamController::class,'AcceptInvitation'])->name('AcceptInvitation');
 
@@ -117,6 +122,7 @@ Route::post('InsertAnswer', [SurveyController::class,'InsertAnswer'])->name('Ins
 
 Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
 Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
+Route::post('editedProfile', [UsersController::class,'editedProfile'])->name('editedProfile');
 
 Route::post('file-import', [UsersController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [UsersController::class, 'fileExport'])->name('file-export');
@@ -131,8 +137,8 @@ Route::get('/editCourseForm/{id}', [CoursesController::class,'editCourseForm'])-
 
 Route::get('/deleteCourse/{id}', [CoursesController::class,'deleteCourse'])->name('deleteCourse');
 
-Route::get('/projects', [ProjectController::class,'index'])->name('index');
-Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudent');
+Route::get('/projects', [ProjectController::class,'index'])->name('IndexProject');
+Route::get('/student_projects', [ProjectController::class,'showStudent'])->name('showStudentSearch');
 Route::get('/student_projects/{id}', [ProjectController::class,'showStudent'])->name('showStudent');
 Route::get('/projects/{id}', [ProjectController::class,'index'])->name('index');
 
@@ -157,9 +163,8 @@ Route::get('/editProjectForm/{id}', [ProjectController::class,'editProjectForm']
 Route::get('/deleteProject/{id}', [ProjectController::class,'deleteProject'])->name('deleteProject');
 
 
-Route::get('/editProfile', [student_profileController::class,'editprofile'])->name('editprofile');
 
-Route::get('/student_profile', [student_profileController::class,'index'])->name('index');
+Route::get('/profile', function () { return view('profile');});
 
 
 Route::get('/student_home', [CoursesController::class,'viewStudentCourses'])->name('viewStudentCourses');

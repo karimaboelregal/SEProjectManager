@@ -14,7 +14,7 @@ class SurveyController extends Controller
     public function SurveyFromCourse($id){  
           
         $surveys = Survey::where('CourseId',$id)->get();
-        return view ('surveys',['surveys'=>$surveys]);
+        return view ('surveys',['surveys'=>$surveys,'courseId'=>$id]);
     }
 
     public function SurveyBuildIndex($id)
