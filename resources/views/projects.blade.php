@@ -10,7 +10,9 @@ element.classList.add("show");
         <input style="width:75%;margin: 0 auto;" type="text" class="inputDesign text-center" name="Search" placeholder="Search"><button class="btn btn-outline"><i class="fa fa-search"></i></button>
     </div>-->
     <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">
+    <form action="{{ route('IndexProject') }}" method="GET" role="search">
             <input style="width:550px;"type="text" class="inputDesign" name="Search" placeholder="Search"><button style="margin-left:5px;"class="btn btn-outline"><i class="fa fa-search"></i></button>
+    </form>
     </div>
     <div style="margin-top:20px;max-width:100%;"  class="row d-flex justify-content-center ">
 
