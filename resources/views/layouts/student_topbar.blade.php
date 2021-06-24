@@ -207,7 +207,7 @@ if ($state != 1 && Request::path() != "login") {
                 @if(file_exists('storage/profiles/'.\Session::get("userData")->userid.'.jpg')) 
                     <img src="{{asset('storage/profiles/'.\Session::get("userData")->userid.'.jpg') }}" width="40" height="40" class="rounded-circle" />
                 @else
-                    <img src="{{asset("profile.png") }}" alt="" />
+                    <img src="{{asset("profile.png") }}" width = "40" height = 40 alt="" />
                 @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -80px !important;">
