@@ -78,7 +78,6 @@ class TeamController extends Controller
     public function InviteStudent(Request $request){
         // list of students enrolled in course
         $invitedid = $request->input('userId');
-        $invitedid = $request->input('Search');
         $invitorid = \Session::get('userData')->userid;
 
         DB::table('invitations')->insert([
