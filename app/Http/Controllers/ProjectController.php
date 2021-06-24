@@ -258,7 +258,6 @@ class ProjectController extends Controller
 
     public function projTempPage() {
         $course = DB::table('courses')->get();
-
         return view('projecttemplate', ['courses'=>$course]);
     }
 

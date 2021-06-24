@@ -38,7 +38,7 @@
                                     </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
-                                        <button onclick="location.href = '{{route('index')}}'" type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+                                        <button onclick="location.href = '{{url('/courses')}}'" type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
                                         <button class="btn btn-outline" type="submit" value="submit">submit</button>
                                     </div>
                                 </div>
