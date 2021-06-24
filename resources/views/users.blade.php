@@ -91,7 +91,6 @@ element.classList.add("show");
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Courses</th>
             <th scope="col">Role</th>
             <th scope="col"><i class="fa fa-mouse-pointer"></i></i></th>
         </tr>
@@ -105,14 +104,20 @@ element.classList.add("show");
                 <form action="{{route('deleteusers')}}" id="deleteForm" method="post">
                     {{csrf_field()}}
                     <input type="checkbox" class="custom-control-input" name='delete{{$user->id}}' value='{{$user->id}}' id={{$user->id}}>  
-                    <label  class="custom-control-label" for={{$user->id}} style=""><img style="width:100%; height:100%" src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"></label> </label>  
+                    <label  class="custom-control-label" for={{$user->id}} style="">
+                @if(file_exists('storage/profiles/'.$user->id.'.jpg')) 
+                    <img width="100" height="100" src="{{asset('storage/profiles/'.$user->id.'.jpg') }}" width="40" height="40" class="rounded-circle" />
+                @else
+                    <img width="100" height="100" src="{{asset("profile.png") }}" alt="" />
+                @endif
+
+                    </label> </label>  
                 </form>
                 </div>  
             </th>
             <input name="userid" value={{$user->id}} type="hidden">
             <td class="align-middle">{{$user->Surname}}</td>
             <td class="align-middle">{{$user->Email}};</td>
-            <td class="align-middle">w/e</td>
             <td class="align-middle">{{$user->Name}}</td>
             <td class="align-middle"> <button class="btn btn-outline" onclick="window.location.href='edituser/{{$user->id}}'">edit</button></td>
         </tr>

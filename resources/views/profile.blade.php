@@ -15,22 +15,38 @@ if (\Session::get("userData")->Name == "Student") {
 
 
 <div class ="container-fluid" style="padding-top:20px;max-width:50%;">
-<form action="{{route('editedProfile')}}" method="post" >
-{{csrf_field()}}
+<form action="{{route('profilepicture')}}" id="submitThis" method="post" enctype="multipart/form-data">
+    {{csrf_field()}}
+
         <div class="row d-flex justify-content-center">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
+                
+                @if(file_exists('storage/profiles/'.\Session::get("userData")->userid.'.jpg')) 
+                    <img src="{{asset('storage/profiles/'.\Session::get("userData")->userid.'.jpg') }}" alt="" />
+                @else
+                    <img src="{{asset("profile.png") }}" alt="" />
+                @endif
+                    <div class="file btn btn-lg btn-primary text-center">
+                        <input style="d-flex justify-content-center" type="file" id = "file" name= "file"  style="width:200px">
+                        Upload
                     </div>
                 </div>
             </div>
+            </form>
+            <script>
+            document.getElementById("file").onchange = function() {
+                document.getElementById("submitThis").submit();
+            };
+            </script>
+</form>
+
             <div class="col-md-12 text-center">
                 <div class="profile-head">
                     
-                    
+                    <form action="{{route('editedProfile')}}" id="submit2" method="post" >
+{{csrf_field()}}
+
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
