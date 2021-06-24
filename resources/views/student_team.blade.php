@@ -26,15 +26,16 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-            @foreach ($teams as $team)
+            <?php $i=1;?>@foreach ($teams as $team)
                 <tr>
-                    <td class="align-middle">{{$team->id}}</td>
+                    <td class="align-middle"><?php echo $i;?></td>
                     <td class="align-middle" ><a href="student_project">{{$team->teamName}}</a></td>
                     <td class="align-middle">{{$team->Name}}</td>
                     <td class="align-middle"> 
                         <button style="color: white !important;background-color: #C63E47 !important"type="button" onclick="location.href = '{{route('TeamMembers',['teamid'=>$team->id])}}'" class="btn btn-outline-dark view" >view</button>         
                     </td>
                 </tr>
+                <?php $i++;?>
                 @endforeach
             </tbody>
         </table>
@@ -83,10 +84,10 @@
                                 <tbody>
                                 <form action="{{route('AcceptInvitation')}}" method="post">
                                 {{csrf_field()}}
-                                @foreach ($team_invitations as $invite_student)
+                                <?php $i=1;?>@foreach ($team_invitations as $invite_student)
                                     <tr>
                                     <input name="invitorid" value="{{$invite_student->InvitorId}}" type="hidden">
-                                        <th scope="row">{{$invite_student->id}}</th>
+                                        <th scope="row"><?php echo $i;?></th>
                                         <td>{{$invite_student->InvitorName}}</td>
                                         <td>{{$invite_student->UniversityId}}</td>
                                         <td>{{$invite_student->Preference}}</td>
@@ -98,6 +99,7 @@
                                         <td><button class="btn btn-outline" type="submit" value="submit">Accept</button>
                                         </td>
                                     </tr>
+                                    <?php $i++;?>
                                 @endforeach
                                 </form>
                                 </tbody>

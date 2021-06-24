@@ -63,8 +63,8 @@
             <div class="turningButtonContainerInner">
                 <div class="turningButton"><i style="font-size:35px;margin-top:55px;"class="icons far fa-dot-circle"></i><span>{{$course->Name}}</span></div>
                 <div class="turnedButton">
-                <p><p class="text-center">{{$course->Code}}</p>
-                <p class="text-center">{{$course->Name}}</p><br>
+                <p><p class="text-center">{{$course->Name}}</p>
+                <p class="text-center">{{$course->Code}}</p><br>
                 <p class="text-center">Instructors</p>
                 <p class="text-center">{{$course->InstructorName}}</p></p>
                 <button style="padding:5px;width:40px"class="btn btn-light norms" data-toggle="tooltip" title="delete course"><i class="fas fa-trash-alt"></i></button>

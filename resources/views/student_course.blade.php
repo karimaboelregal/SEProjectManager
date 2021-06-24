@@ -91,16 +91,17 @@ display: block;
                                     <tbody>
                                     <form action="{{route('InviteStudent')}}" method="post">
                                         {{csrf_field()}}
-                                        @foreach ($invite_students as $team_invitation)
+                                        <?php $i=1;?>@foreach ($invite_students as $team_invitation)
                                         <tr>
                                         <input type="hidden" name="userId" value="{{$team_invitation->userId}}">
-                                        <th scope="row">{{$team_invitation->userId}}</th>
+                                        <th scope="row"><?php echo $i;?></th>
                                         <td>{{$team_invitation->Surname}}</td>
                                         <td>{{$team_invitation->UniversityId}}</td>
                                         <td>{{$team_invitation->Preference}}</td>
                                         <td><button class="btn btn-outline" type="submit" value="submit">Invite</button>
                                         </td>
                                         </tr> 
+                                        <?php $i++;?>
                                         @endforeach 
                                     </form>
                                     </tbody>
