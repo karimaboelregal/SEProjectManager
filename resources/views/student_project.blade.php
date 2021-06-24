@@ -190,9 +190,8 @@
 
 
             <div class="row">
-                <button style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-                <input type = 'submit' style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">upload</button>
-
+               
+                <input type = 'submit' style="padding:5px; width: 75px;margin-left:55px;margin-top:25px;" class="btn btn-outline">upload</button>
                 <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline"  class="close" data-dismiss="modal" aria-label="Close">close</button>
             </div>
         </form>
@@ -226,9 +225,8 @@
             
             <div class="row">
                 
-                <input type='submit' style="padding:5px; width: 75px;margin-left:60px;margin-top:25px;" class="btn btn-outline">change submission</button>
-
-                <button style="padding:5px; width: 75px;margin-left:110px;margin-top:25px;" class="btn btn-outline" class="close" data-dismiss="modal" aria-label="Close">close</button>
+                <input type='submit' style="padding:5px; width: 130px;margin-left:55px;margin-top:25px;" class="btn btn-outline" value = "change submission">
+                <button style="padding:5px; width: 75px;margin-left:100px;margin-top:25px;" class="btn btn-outline" class="close" data-dismiss="modal" aria-label="Close">close</button>
             </div>
         </form>
     </div>
