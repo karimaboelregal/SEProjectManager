@@ -32,7 +32,7 @@
                     <td class="align-middle" ><a href="student_project">{{$team->teamName}}</a></td>
                     <td class="align-middle">{{$team->Name}}</td>
                     <td class="align-middle"> 
-                        <button style="color: white !important;background-color: #C63E47 !important"type="button" onclick="location.href = '{{route('TeamMembers',['teamid'=>$team->id])}}'" class="btn btn-outline-dark view" data-toggle="modal" data-target="#viewTeamModal">view</button>         
+                        <button style="color: white !important;background-color: #C63E47 !important"type="button" onclick="location.href = '{{route('TeamMembers',['teamid'=>$team->id])}}'" class="btn btn-outline-dark view" >view</button>         
                     </td>
                 </tr>
                 @endforeach
