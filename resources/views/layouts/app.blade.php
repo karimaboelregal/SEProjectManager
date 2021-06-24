@@ -200,7 +200,12 @@ if ($state != 1 && Request::path() != "login") {
             </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                @if(file_exists('storage/profiles/'.\Session::get("userData")->userid.'.jpg')) 
+                    <img src="{{asset('storage/profiles/'.\Session::get("userData")->userid.'.jpg') }}" width="40" height="40" class="rounded-circle" />
+                @else
+                    <img src="{{asset("profile.png") }}" width="40" height="40" class="rounded-circle" />
+                @endif
+
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-left: -80px !important;">
           <a class="dropdown-item" href="#" style="color: black !important;" onclick="location.href = '/profile'">my profile</a>

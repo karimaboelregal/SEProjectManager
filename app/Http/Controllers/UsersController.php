@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\Exports\UsersExport;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller {
     public function index() {
@@ -30,6 +31,17 @@ class UsersController extends Controller {
     public function download() {
         return Excel::download(new UsersExport, 'user data.csv');
         #return \redirect('/users');
+    }
+
+    public function profilepicture(Request $request) {
+        $path = $request->file('file')->store('public/profiles');
+        $s = Storage::exists('public/profiles/'.\Session::get("userData")->userid.'.jpg');
+        if ($s) {
+            Storage::delete('public/profiles/'.\Session::get("userData")->userid.'.jpg');
+        }
+        Storage::move($path, 'public/profiles/'.\Session::get("userData")->userid.'.jpg');
+        Storage::delete($path);
+        return \redirect('/profile');
     }
     public function editedProfile(Request $request) {
         $id = \Session::get("userData")->userid;
