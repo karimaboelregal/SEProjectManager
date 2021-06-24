@@ -25,9 +25,15 @@
 
         <h4 Style="margin-top:5%;">Team info:</h4>
 
-        <p><b>Team members : </b>{{$project[0]->ClientName}}.</p>
+        <p><b> Members : </b></p>
 
-        <p><b>Team number : </b>{{$project[0]->ClientName}}.</p>
+
+        @foreach($team as $t)
+        <ul>
+            <li>{{$t->Surname}}.</li>
+        </ul>
+        @endforeach
+
 
 
         <div style="margin-top:80px;max-width:100%;" class="row d-flex justify-content-center ">

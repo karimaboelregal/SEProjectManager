@@ -43,7 +43,8 @@
                 <div class="card-body row justify-content-center">
                     <h5 class="card-title">My Profile</h5>
                     <p class="card-text">Check out your profile where you can edit or view it.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                    <a href="student_profile" class="btn btn-danger">Open profile</a>
+                    <a href="/profile" class="btn btn-danger">Open profile</a>
+
                 </div>
             </div>
         </div>
