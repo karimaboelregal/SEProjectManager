@@ -124,6 +124,7 @@ Route::get('fetchSubmission',[SubmissionsController::class,'fetchSubmission']);
 Route::post('fetchSubmission', [SubmissionsController::class,'fetchSubmission'])->name('fetchSubmission');
 Route::post('editedProfile', [UsersController::class,'editedProfile'])->name('editedProfile');
 Route::post('profilepicture', [UsersController::class,'profilepicture'])->name('profilepicture');
+Route::post('submitEdited', [UsersController::class,'submitEdited'])->name('submitEdited');
 
 Route::post('file-import', [UsersController::class, 'fileImport'])->name('file-import');
 Route::get('file-export', [UsersController::class, 'fileExport'])->name('file-export');

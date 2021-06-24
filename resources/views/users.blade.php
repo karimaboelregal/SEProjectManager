@@ -91,7 +91,6 @@ element.classList.add("show");
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Courses</th>
             <th scope="col">Role</th>
             <th scope="col"><i class="fa fa-mouse-pointer"></i></i></th>
         </tr>
@@ -119,7 +118,6 @@ element.classList.add("show");
             <input name="userid" value={{$user->id}} type="hidden">
             <td class="align-middle">{{$user->Surname}}</td>
             <td class="align-middle">{{$user->Email}};</td>
-            <td class="align-middle">w/e</td>
             <td class="align-middle">{{$user->Name}}</td>
             <td class="align-middle"> <button class="btn btn-outline" onclick="window.location.href='edituser/{{$user->id}}'">edit</button></td>
         </tr>

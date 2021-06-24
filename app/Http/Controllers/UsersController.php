@@ -72,11 +72,33 @@ class UsersController extends Controller {
         return redirect ('/users');
 
     }
-
+    public function submitEdited(Request $request) {
+        print_r($request->all());
+        $id = $request->input('ID');
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $roleid = $request->input('role');
+        DB::table('users')->where('id',$id)->update([
+            'Surname'=>$name,
+            'Email' =>$email,
+            'RoleId'=>$roleid
+        ]);
+        if ($roleid == 3) {
+            $courses = DB::table('courses')->select("id", "Name")->get();
+            foreach ($courses as $course) {
+                if ($request->input($course->Name) == 1) {
+                    DB::table('course_taken')->insert(["StudentId"=>$id,"CourseId"=>$course->id]);
+                }
+            }
+        }
+        return redirect ('/users');
+    }
     public function editUser(Request $request,$id) {
         $users = DB::table('users')->select('users.id', 'Email','Surname','RoleId','role.Name')->join('role', 'role.id', '=', 'users.RoleId')->where('users.id',$id)->get();
         $roles = DB::table('role')->get();
-        return view('edituser',['users'=>$users],['roles'=>$roles]);
+        $courses = $courses = DB::table('courses')->get();
+        $enrolled = DB::table('course_taken')->where('StudentId', $id)->select('CourseId')->get();
+        return view('edituser',['users'=>$users, 'roles'=>$roles, 'courses'=>$courses, 'enrolled'=>$enrolled]);
     }
 
     public function fileImport(Request $request) {
