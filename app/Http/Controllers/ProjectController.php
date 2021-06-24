@@ -20,7 +20,7 @@ class ProjectController extends Controller
             ->where('ProjectTitle','LIKE', '%'.$search_text.'%')->get();
         }
         
-        if ($id != 0 && strlen($id) == 188) {
+        if ($id != '0' && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
         
@@ -43,7 +43,7 @@ class ProjectController extends Controller
             ->where('ProjectTitle','LIKE', '%'.$search_text.'%')->get();
         }
         $projTemps = DB::table("projecttemplate")->get();
-        if ($id != 0 && strlen($id) == 188) {
+        if ($id != '0' && strlen($id) == 188) {
             $id = \Crypt::decrypt($id);
         }
         foreach ($projTemps as $proj) {
